@@ -1,0 +1,737 @@
+/* Original theme at https://github.com/catppuccin/joplin, modified for Adwaita. */
+/* For styling the entire Joplin app (except the rendered Markdown, which is defined in `userstyle.css`) */
+
+  :root {
+    /* Colors */
+    --blue-1: #99c1f1;
+    --green-1: #8ff0a4;
+    --yellow-1: #f9f06b;
+    --orange-1: #ffbe6f;
+    --red-1: #f66151;
+    --purple-1: #dc8add;
+
+    --light-1: #ffffff;
+    --light-2: #f6f5f4;
+    --light-3: #deddda;
+    --light-4: #c0bfbc;
+    --light-5: #9a9996;
+
+    --dark-1: #77767b;
+    --dark-2: #5e5c64;
+    --dark-3: #3d3846;
+    --dark-4: #241f31;
+    --dark-5: #000000;
+    
+    --window-bg-color: #222226;
+    --view-bg-color: #1d1d20;
+    --card-bg-color: rgb(255 255 255 / 8%);
+    
+    --sidebar-bg-color: #2e2e32;
+    --sidebar-backdrop-color: #28282c;
+    
+    --secondary-sidebar-bg-color: #28282c;
+    --secondary-sidebar-backdrop-color: #252529;
+
+    --separator-color: hsl(240, 1.59%, 31.5%);
+    --separator-color-darker: hsl(240, 1.59%, 10.5%);
+    
+    /* Fonts */
+    --font-family: "Adwaita Sans";
+    --font-family-mono: "Hack Nerd Font";
+    --font-size: 11pt;
+    --font-size-md: 13pt;
+    --font-size-lg: 15pt;
+  
+    --font-weight-regular: 400;
+    --font-weight-bold: 600;
+    --font-weight-boldest: 700;
+
+    --icon-size-regular: 12pt;
+
+    /* Buttons */
+    --btn-bg-color: hsl(240, 3.08%, 25.49%);
+    --btn-bg-color-hover: hsl(240, 3.08%, 28.49%);
+
+    --btn-bg-color-primary: hsl(212.91, 76.42%, 55.1%);
+    --btn-bg-color-primary-hover: hsl(212.91, 76.42%, 58.1%);
+
+    --btn-separator-color: hsl(240, 2.5%, 31.37%);
+
+    --btn-bg-color-light: hsl(240, 2.9%, 27.06%);
+    --btn-bg-color-light-hover: hsl(240, 2.9%, 24.06%);
+    --btn-bg-color-light-selected-hover: hsl(240, 2.9%, 30.06%);
+
+    /* Notes */
+    --note-bg-hover: hsl(240, 4.76%, 22.47%);
+    --note-bg-selected: hsl(213.21, 43.08%, 25.49%);
+    --note-bg-selected-hover: hsl(213.21, 43.08%, 28.49%);
+
+    /* Borders */
+    --border-radius: 8px;
+    --border-opacity:	15%;
+    --scroll-radius: 12px;
+
+    /* Spacing */
+    --spacing-sm: 4px;
+    --spacing-md: 8px;
+    --spacing-lg: 12px;
+    --btn-padding: 1.2em;
+  }
+  
+  /* Global Styles */
+  * {
+    font-family: var(--font-family) !important;
+    font-size: var(--font-size) !important;
+  }
+
+  html, body {
+    background-color: var(--view-bg-color) !important;
+    font-size: var(--font-size) !important;
+    font-weight: var(--font-weight-regular) !important;
+    color: var(--light-1) !important;
+  }
+
+  /* Remove bottom empty space */
+  .profile-default {
+    height: 100vh !important;
+  }
+
+  .profile-default > div {
+    height: 100vh !important;
+  }
+
+  .profile-default > div > div {
+    height: 100vh !important;
+  }
+
+  .profile-default > div > div > div {
+    height: 100vh !important;
+  }
+
+  .resizableLayoutItem > div:first-of-type {
+    height: 100% !important;
+  }
+
+  /* Placeholder */
+  ::placeholder {
+    color: var(--light-5) !important;
+  }
+
+  /* Icons */
+  .fa, .far, .fas {
+    color: var(--light-1);
+    font-weight: var(--font-weight-bold) !important;
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Free Regular" !important;
+    font-size: var(--icon-size-regular) !important;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px !important;
+  }
+
+  ::-webkit-scrollbar:hover {
+    background-color: var(--sidebar-bg-color) !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--btn-bg-color-light-hover) !important;
+    border-radius: var(--scroll-radius) !important;
+    border: 4px solid var(--window-bg-color) !important;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--btn-bg-color-light-selected-hover) !important;
+    border: none !important;
+  }
+
+  /*********************************************************************************
+  * PANELS
+  *********************************************************************************/
+  
+  /* General panel style */
+  .resizableLayoutItem > div {
+    background-color: var(--secondary-sidebar-bg-color) !important;
+    color: var(--light-1) !important;
+  }
+
+  /*********************************************************************************
+  * SIDEBAR
+  *********************************************************************************/
+  
+  .sidebar {
+    background-color: var(--sidebar-bg-color) !important;
+  }
+
+  .sidebar > div {
+    padding: var(--spacing-md) !important;
+  }
+
+  .sidebar-header-container {
+    background-color: var(--sidebar-bg-color) !important;
+    padding: 0 var(--spacing-md) !important;
+    margin: 0 0 var(--spacing-lg) !important;
+  }
+
+  .sidebar-header-container span {
+    font-weight: var(--font-weight-bold) !important;
+    text-transform: capitalize !important;
+  }
+  
+  /* Hide "All notes" icon
+   * Comment this next block if you want the "All notes" icon */
+  .all-notes {
+    display: none !important;
+  }
+  
+  /* Folders */
+  .new-folder-button {
+    border-radius: var(--border-radius) !important;
+    top: var(--spacing-sm) !important;
+    right: var(--spacing-sm) !important;
+    height: auto !important;
+    padding: var(--spacing-md) calc(var(--spacing-md) + 2px) !important;
+  }
+  
+  .new-folder-button:hover {
+    background-color: var(--btn-bg-color-light-hover) !important;
+  }
+
+  /* Tags */
+  .tags .list-item-container {
+      display: inline-block;
+      line-height: 0 !important;
+      padding: 0 !important;
+      height: auto !important;
+  }
+  .tags .list-item-container:hover {
+    display: inline-block;
+    line-height: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+  }
+  
+  .tags .list-item-container a {
+    padding-left: var(--spacing-lg) !important;
+    text-transform: initial;
+    font-weight: var(--font-weight-regular);
+  }
+  
+  .tags .list-item-container a:focus {
+    color: var(--light-1) !important;
+    background-color: var(--btn-bg-color-light-hover) !important;
+  }
+  
+  .tags .list-item-container a:hover {
+    color: var(--light-1) !important;
+    background-color: var(--btn-bg-color-light-hover) !important;
+  }
+
+  /* Breadcrumbs (In:...) - Used in tag listings */
+  .cJOYJm {
+    margin: 0 !important;
+    padding: 5px !important;
+    font-size: var(--font-size) !important;
+  }
+  
+  /* Tags */
+  .tag-bar {
+    background-color: transparent !important;
+  }
+
+  .tag-label {
+    text-transform: lowercase !important;
+  }
+  
+  .tag-list > button {
+    color: var(--light-1) !important;
+    background-color: var(--btn-bg-color) !important;
+  }
+  
+  /* Hide "Click to add tags..."*/
+  a[Title="Tags"] + div > span {
+    display: none !important;
+  }
+
+  /* Selected tag notebook indicator */
+  .dtFiFQ {
+    background-color: var(--blue-1)!important;
+    border-radius: var(--border-radius) !important;
+  }
+
+  .dtFiFQ > span {
+    color: var(--light-2) !important;
+    font-weight: var(--font-weight-bold) !important;
+  }
+
+  /* Synchronization */
+  .sidebar > div:last-of-type {
+    background-color: transparent !important;
+    margin-bottom: 3px !important;
+  }
+  
+  .sidebar > div:last-of-type > button {
+    background-color: var(--btn-bg-color-light) !important;
+    border: 0 !important;
+    color: var(--light-1) !important;
+    text-transform: capitalize;
+    font-size: var(--font-size) !important;
+    font-weight: var(--font-weight-bold) !important;
+    padding: var(--btn-padding) 0 !important;
+    border-radius: var(--border-radius) !important;
+    line-height: 1.7;
+  }
+  
+  .sidebar > div:last-of-type > button:hover {
+    background-color: var(--btn-bg-color-light-selected-hover) !important;
+  }
+
+  .sidebar > div:last-of-type > button:hover > span {
+    color: var(--light-1) !important;
+  }
+
+  .sidebar > div > .bLqnaV > .UdFVY { /* Synchronization message */
+    color: var(--light-3) !important;
+  }
+  
+  /*********************************************************************************
+  * NOTE LIST
+  *********************************************************************************/
+
+  .note-list {
+    background-color: transparent !important;
+    border: none !important;
+    padding: var(--spacing-lg) 0 !important;
+  }
+
+  .note-list > .emptylist {
+    background-color: transparent !important;
+    border: none !important;
+  }
+
+  .DnUmE > .dWsUEN > .note-list {
+    padding-top: 0 !important;
+  }
+
+  .cLdGCO, .cLdGCO > div { /* Set background for empty notelist */
+    background-color: var(--secondary-sidebar-bg-color) !important;
+  }
+
+  /* New note and todo buttons */
+  .new-note-todo-buttons {
+    margin: 0 0 var(--spacing-sm) 0;
+  }
+
+  .new-note-todo-buttons > button {
+    padding: var(--btn-padding) !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    font-weight: var(--font-weight-boldest) !important;
+    line-height: 1.7;
+  }
+
+  .new-note-button.hNhFhC {
+    background-color: var(--btn-bg-color-primary) !important;
+    border: none !important;
+  }
+
+  .new-note-button.hNhFhC:hover {
+    background-color: var(--btn-bg-color-primary-hover) !important;
+  }
+
+  .new-todo-button.hNhFhC {
+    background-color: var(--btn-bg-color) !important;
+    border: none !important;
+  }
+
+  .new-todo-button.hNhFhC:hover {
+    background-color: var(--btn-bg-color-hover) !important;
+  }
+
+  .new-note-button.hNhFhC > span, 
+  .new-todo-button.hNhFhC > span {
+    color: var(--light-1) !important;
+  }
+
+  /* Note list items */
+  .note-list-item-wrapper { /* Add spacing between notes in list */
+    margin: 0 0 var(--spacing-sm) 0 !important;
+  }
+
+  .note-list > .notes {
+    margin: 0 10px 0 0 !important;
+  }
+
+  .note-list-item { /* Make default note background transparent */
+    &:hover, 
+    &.-focus-visible > .content {
+        background-color: transparent !important;
+    }
+  }
+
+  .note-list-item > .content {
+    border-radius: var(--border-radius) !important;
+  }
+
+  .note-list-item:hover > .content {
+    background-color: hsl(240, 4.76%, 22.47%) !important;
+  }
+
+  .note-list-item > .content.-selected {
+    background-color: hsl(213.21, 43.08%, 25.49%) !important;
+  }
+
+  .note-list-item:hover > .content.-selected {
+    background-color: selected- !important;
+  }
+
+  .item-list.note-list .list-item-container::before,
+  .note-list-item::before {
+    border: none !important;
+  }
+
+  .list-item-wrapper.sidebar-header-container, .list-item-wrapper.sidebar-spacer-item {
+    padding: var(--btn-padding) 0 !important;
+  }
+
+  .sidebar-spacer-item {
+    border-bottom: 1px solid var(--separator-color) !important;
+  }
+
+  .list-item-wrapper:not(.sidebar-header-container):not(.sidebar-spacer-item) {
+    background-color: transparent !important;
+    border-radius: var(--border-radius) !important;
+    margin: 0 0 var(--spacing-sm) !important;
+    padding: var(--btn-padding) 0 !important;
+  }
+
+  .list-item-wrapper:not(.sidebar-header-container):not(.sidebar-spacer-item):hover {
+    background-color: var(--btn-bg-color-light-hover) !important;
+  }
+
+  .list-item-wrapper:not(.sidebar-header-container):not(.sidebar-spacer-item).-selected {
+    background-color: var(--btn-bg-color-light) !important;
+  }
+
+  .list-item-wrapper:not(.sidebar-header-container):not(.sidebar-spacer-item).-selected:hover {
+    background-color: var(--btn-bg-color-light-selected-hover) !important;
+  }
+
+  .list-item-wrapper > a > div > .emoji-box {
+    color: var(--light-1) !important;
+  }
+
+  .list-item-wrapper > a > .title {
+    color: var(--light-1) !important;
+  }
+
+  .item-list.note-list .list-item-container > a > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .item-list.note-list .list-item-container {
+    margin: 0 0 var(--spacing-sm) 0 !important;
+  }
+
+  .rli-noteList .dUXxSp {
+    background-color: transparent !important;
+    flex-direction: column !important;
+    margin-top: var(--spacing-sm) !important;
+  }
+
+  .rli-noteList .DnUmE > div {
+    flex-direction: column !important;
+  }
+
+  .rli-noteList > div > div > div {
+    padding: var(--spacing-md) !important;
+  }
+  
+  /* Note search bar */
+  .search-and-sort {
+      align-items: center !important;
+      margin: 0 0 var(--spacing-sm) 0 !important;
+  }
+  
+  .search-bar {
+      background-color: var(--btn-bg-color) !important;
+      border: none !important;
+      border-radius: var(--border-radius) !important;
+      min-width: 160px !important;
+  }
+  
+  .search-bar > div {
+      align-items: center;
+  }
+  
+  .search-bar > div > input {
+      background-color: transparent !important;
+      border: none !important;
+      color: var(--light-4);
+      font-weight: var(--font-weight-regular) !important;
+      padding: var(--btn-padding) 30px var(--btn-padding) 10px !important;
+  }
+  
+  .search-bar > div > button {
+      padding: 0 10px !important;
+  }
+  
+  .icon-search {
+      color: var(--light-3) !important;
+      font-weight: var(--font-weight-bold) !important;
+      font-size: var(--icon-size-regular) !important;
+  }
+  
+  /* Note sort order */
+  .sort-order-field-button, .sort-order-reverse-button {
+      background-color: var(--btn-bg-color) !important;
+      border: none !important;
+      padding: var(--btn-padding) !important;
+  }
+  
+  .sort-order-field-button:hover,
+  .sort-order-reverse-button:hover {
+      background-color: var(--btn-bg-color-hover) !important;
+  }
+  
+  .sort-order-field-button {
+      border-right: 1px solid var(--btn-separator-color) !important;
+      border-top-left-radius: var(--border-radius) !important;
+      border-bottom-left-radius: var(--border-radius) !important;
+  }
+  
+  .sort-order-reverse-button {
+      border-left: 1px solid var(--btn-separator-color) !important;
+      border-top-right-radius: var(--border-radius) !important;
+      border-bottom-right-radius: var(--border-radius) !important;
+  }
+  
+  .rGEbE .sc-fqkvVR {
+      color: inherit !important;
+  }
+  
+  /*********************************************************************************
+  * EDITOR
+  *********************************************************************************/
+  
+  /* Title */
+  /* Changes frequently with updates, need to keep tabs */
+  .note-editor-wrapper {
+    background-color: var(--window-bg-color) !important;
+  }
+  
+  .title-input {
+    background-color: transparent !important;
+    padding: 0 0 0 var(--spacing-sm) !important;
+  }
+
+  .note-title-info-group > .editor-toolbar {
+    background-color: var(--window-bg-color) !important;
+    margin: 0 !important;
+  }
+
+  .editor-toolbar {
+    background-color: var(--secondary-sidebar-bg-color) !important;
+    border-radius: var(--border-radius) !important;
+    margin: 0 var(--spacing-lg) 0 var(--spacing-sm) !important;
+  }
+
+  .toolbar-icon {
+    font-size: var(--font-size-md) !important;
+  }
+  
+  /* Hide "Spell checker" button */
+  .editor-toolbar a[title="Spell checker"] {
+   display: none !important;
+  }
+  
+  /* Hide "Markdown/Richtext editor" Button */
+  .tox-toolbar {
+  display: none !important;
+  }
+  
+  /* Hide the Toggle editors button */
+  .editor-toolbar button[title="Toggle editors"] {
+    display: none !important;
+  }
+
+  /*********************************************************************************
+  * EDITOR (CODE MIRROR)
+  *********************************************************************************/
+
+  .cm-s-material-darker.CodeMirror {
+    background-color: var(--window-bg-color) !important;
+    color: var(--green-1) !important;
+  }
+  
+  /* Header */
+  .cm-header {
+    color: var(--blue-1) !important;
+  }
+  
+  /* Italics/Emphasis, Bold, BoldItalics */
+  .cm-em, .cm-strong, .cm-strong.cm-em {
+    color: var(--green-1) !important;
+  }
+  
+  /* Lists (Bullet/number/todo) */
+  .cm-variable-2, .cm-variable-3, .cm-keyword {
+    color: var(--light-4) !important;
+  }
+
+  .cm-variable-2.cm-strong {
+    color: var(--green-1) !important;
+  }
+  
+  .cm-s-material-darker .cm-variable-2.cm-rm-list-token {
+    color: var(--purple-1) !important;
+  }
+  
+  /* Links (link) */
+  div.CodeMirror span.cm-url  {
+    color: var(--blue-1) !important;
+    opacity: .7 !important;
+    text-decoration: underline !important;
+  }
+  
+  /* Links (text) */
+  .cm-link-text {
+    color: var(--blue-1) !important;
+  }
+  pre.CodeMirror-line {
+    color: var(--light-2) !important;
+    background-color: none !important;
+  }
+  /* Image links in the editor */
+  span.cm-image {
+    color: var(--light-5) !important;
+  }
+  /* Comment outside code block */
+  pre.CodeMirror-line span.cm-comment {
+    color: var(--purple-1) !important;
+    background-color: none !important;
+    border: 0 !important;
+  }
+  
+  /* Codeblock selection color */
+  /* For some reason, the CodeMirror selection does not pick the color correctly, left for now. */
+  pre.CodeMirror-line span.CodeMirror-selectedtext {
+    background: #6B6B6B !important;
+  }
+
+  div[class^="cm-jn-code-block-background "]::selection {
+    background-color: var(--orange-1) !important;
+    border-color: var(--purple-1) !important;
+  }
+
+  pre.cm-jn-code-block.CodeMirror-line span.cm-comment.cm-jn-monospace.CodeMirror-selectedtext {
+    background: #6B6B6B !important;
+  }
+
+  pre.cm-jn-code-block.CodeMirror-line::selection {
+    background: #6B6B6B !important;
+  }
+
+  div.cm-jn-code-block-background.CodeMirror-linebackground::selection {
+    background: #6B6B6B !important;
+  }
+
+  pre.cm-jn-code-block.CodeMirror-line::selection span {
+    background: #6B6B6B !important;
+  }
+
+  div.CodeMirror span.cm-comment.cm-jn-inline-code {
+    background-color: var(--view-bg-color) !important;
+    padding: auto 0 !important;
+  }
+
+  /* Code Block Text */
+  div.CodeMirror span.cm-comment:not(.cm-jn-inline-code) {
+    color: var(--purple-1) !important;
+    background-color: transparent !important;
+  }
+
+  /* Code block background */
+  div.CodeMirror div.cm-jn-code-block-background {
+    background-color: var(--view-bg-color) !important;
+  }
+
+  /* Horizontal line */
+  .cm-hr {
+    color: var(--separator-color) !important;
+  }
+
+  /* Cursor color */
+  .CodeMirror-cursor {
+    border-left: 1px solid var(--light-1) !important;
+    border-right: none !important;
+    width: 0 !important;
+  }
+
+  .cm-fat-cursor div.CodeMirror-cursor {
+    width: 10px !important;
+    border: 0 !important;
+    background: var(--purple-1) !important;
+  }
+
+  .cm-fat-cursor div.CodeMirror-cursors {
+    z-index: 1 !important;
+  }
+
+  .cm-fat-cursor-mark {
+    background-color: var(--red-1) !important;
+  }
+
+  .cm-animate-fat-cursor {
+    width: auto !important;
+    border: 0;
+    background-color: var(--yellow-1) !important;
+  }
+
+  /* Rich markdown */
+  .cm-header.cm-rm-header-token {
+    color: var(--green-1) !important;
+  }
+
+  .cm-strong.cm-rm-strong-token {
+    color: var(--blue-1) !important;
+  }
+
+  pre.cm-rm-blockquote.CodeMirror-line {
+    font-style: italic !important;
+  }
+
+  /* Command palette */
+  .dialog-modal-layer > .content {
+    background-color: var(--card-bg-color) !important;
+    border-radius: var(--border-radius) !important;
+  }
+
+  .dialog-modal-layer > .content > div > input {
+    background-color: var(--sidebar-bg-color) !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    color: var(--light-1) !important;
+  }
+
+  .dialog-modal-layer > .content > .item-list {
+    background-color: transparent !important;
+  }
+
+  .dialog-modal-layer > .content > .item-list > div {
+    border-bottom: none !important;
+  }
+
+  .dialog-modal-layer > .content > .item-list > div > div {
+    color: var(--light-3) !important;
+  }
+
+  .dialog-modal-layer > .content > .item-list div.selected {
+    background-color: var(--dark-2) !important;
+    border-radius: var(--border-radius) !important;
+  }
+
+  .dialog-modal-layer > .content > .item-list div.selected > div {
+    color: var(--light-1) !important;
+  }
