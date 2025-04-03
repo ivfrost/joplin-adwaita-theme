@@ -17,6 +17,10 @@
 	- **Windows:** C:\Users\%USERNAME%\.config\joplin-desktop\
 - Enable the dark theme from Appearance to use the theme
 
+## Resources
+- [Adwaita Style Classes](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/main/style-classes.html)
+- [Adwaita Named Colors](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1.5/named-colors.html)
+
 ## Credits
 - [popcar](https://github.com/catppuccin/joplin) for the Catpuccin theme, which served as a base for creating this one.
 - [stysebae](https://github.com/stysebae/joplin-vsc-material-theme) for the initial vsc-type themes on which the Catpuccin theme is based. 
