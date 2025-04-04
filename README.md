@@ -15,7 +15,11 @@
 - Move these files to the Joplin configuration directory:
 	- **Linux/macOS:** ~/.config/joplin-desktop/
 	- **Windows:** C:\Users\%USERNAME%\.config\joplin-desktop\
-- Enable the dark theme from Appearance to use the theme
+- Enable the dark theme from Appearance
+- (Optional but recommended) Install the plugins:
+	- [CodePerfect](https://joplinapp.org/plugins/plugin/jl15988.JoplinCodePerfectPlugin/) (Required for showing code lines)
+ 	- [Better Code Blocks](https://joplinapp.org/plugins/plugin/com.ckant.joplin-plugin-better-code-blocks/)
+  	- [Github Alerts](https://joplinapp.org/plugins/plugin/com.github.alan-null.joplin-plugin-github-alerts/) 
 
 ## Resources
 - [Adwaita Style Classes](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/main/style-classes.html)
