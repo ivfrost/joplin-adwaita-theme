@@ -1,6 +1,5 @@
 /* Style for rendered Markdown */
-
-  :root {
+:root {
     /* Colors */
     --blue-1: #99c1f1;
     --green-1: #8ff0a4;
@@ -80,6 +79,7 @@
   #rendered-md, body, th, td {
     background-color: var(--window-bg-color) !important;
     font-family: var(--font-family) !important;
+    font-size: var(--font-size) !important;
   }
   
   p, ul, ol, li {
@@ -135,9 +135,9 @@
   }
   
   h3, h4, h5, h6 {
-    color: var(--light-3) !important;
+    color: var(--light-2) !important;
     border-bottom: 0 !important;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size);
     font-weight: var(--font-weight-bold) !important;
   }
   
@@ -164,12 +164,8 @@
   *********************************************************************************/
   
   pre, .hljs {
-    background-color: var(--view-bg-color) !important;
-    font-family: var(--font-family) !important;
-    padding: 10px 0 0 0 !important;
-    color: var(--light-3) !important;
-    font-size: var(--adw-font-size) !important;
-    overflow: scroll !important;
+    border-radius: var(--border-radius) !important;
+    padding: var(--spacing-md) var(--spacing-lg) !important;
   }
   
   /* Inline code */
@@ -177,9 +173,9 @@
     background-color: var(--btn-bg-color-light) !important;
     border: none !important;
     border-radius: 4px;
-    font-family: var(--font-family-monospace) !important;
     color: var(--light-3) !important;
-    font-size: var(--adw-font-size) !important;
+    font-family: var(--font-family-mono) !important;
+    font-size: .95em !important;
     padding: .16em .4em .2em !important;
   }
   
@@ -236,34 +232,38 @@
   * PLUGINS
   *********************************************************************************/
   
-  /* SPOILERS (https://github.com/martinkorelic/joplin-plugin-spoilers) */
-  /* CODEPERFECT () */
+  /* CodePerfect (https://joplinapp.org/plugins/plugin/jl15988.JoplinCodePerfectPlugin/) */
 
-  /* Set code block border radius */
+  /* Set code block background, border radius, font style and spacing */
   .code-perfect-container pre.hljs {
-    border-radius: var(--border-radius);
-    padding-left: 32px !important;
+    border-radius: var(--border-radius) !important;
+    padding: 0 0 0 32px !important;
   }
 
-  /* Adjust position of line numbers, remove separator, set custom colors */
-  pre ul.hljs-line-num {
-    padding: 1.2em 0 0 10px !important;
-    border-right: none !important;
+  .code-perfect-container pre.hljs code.hljs,
+  .code-perfect-container pre.hljs ul.hljs-line-num {
     background: var(--view-bg-color) !important;
-    line-height: 22px !important;
-    text-align: center;
+    font-family: var(--font-family-mono) !important;
+    font-size: var(--font-size) !important;
   }
 
-  pre ul.hljs-line-num li {
-    color: var(--dark-3) !important;
-  }
-
-  /* Decrease code padding */
-  .joplin-editable.code-perfect-container pre.hljs code {
+  .code-perfect-container pre.hljs code {
     padding: .5em .5em .17em !important;
   }
 
-  /* GITHUB ALERTS () */
+  /* Adjust line number position and set color */ 
+  .code-perfect-container pre.hljs ul.hljs-line-num {
+    padding: 1em 8px !important;
+    border-right: none !important;
+  }
+
+  .code-perfect-container pre.hljs ul.hljs-line-num li {
+    color: var(--dark-3) !important;
+  }
+
+  /* Github Alerts (https://discourse.joplinapp.org/t/plugin-github-alerts/42902) */
+
+  /* Apply colors to callouts */
   .markdown-alert.markdown-alert-warning {
     border-left-color: var(--yellow-1) !important;
     > .markdown-alert-title {
@@ -358,17 +358,7 @@
     color: var(--blue-1) !important;
     text-decoration: underline !important;
   }
-  
-  /* Inline code */
-  .inline-code {
-    background: var(--light-3) !important;
-    border: 0 !important;
-    border-radius: var(--border-radius) !important;
-    color: var(--dark-3) !important;
-    font-family: var(--font-family-mono) !important;
-    font-size: 14px !important;
-  }
-  
+
   pre, .hljs {
     background: var(--light-2) !important;
     color: var(--dark-2) !important;
@@ -388,15 +378,22 @@
     border-left: 5px solid var(--dark-3) !important;
   }
 
-  pre ul.hljs-line-num {
-    padding: 1.2em 0 0 10px !important;
-    border-right: none !important;
-    background: var(--light-2) !important;
-    line-height: 22px !important;
-    text-align: center;
+  .inline-code {
+    background-color: var(--light-2) !important;
+    border: none !important;
+    border-radius: 4px;
+    color: var(--dark-3) !important;
+    font-family: var(--font-family-mono) !important;
+    font-size: .95em !important;
+    padding: .16em .4em .2em !important;
   }
 
-  pre ul.hljs-line-num li {
-    color: var(--light-4) !important;
+  .code-perfect-container pre.hljs code.hljs,
+  .code-perfect-container pre.hljs ul.hljs-line-num {
+    background: var(--light-2) !important;
+  }
+
+  .code-perfect-container pre.hljs ul.hljs-line-num li {
+    color: var(--dark-1) !important;
   }
 }

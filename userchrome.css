@@ -1,7 +1,6 @@
 /* Original theme at https://github.com/catppuccin/joplin, modified for Adwaita. */
 /* For styling the entire Joplin app (except the rendered Markdown, which is defined in `userstyle.css`) */
-
-  :root {
+:root {
     /* Colors */
     --blue-1: #99c1f1;
     --green-1: #8ff0a4;
@@ -33,7 +32,7 @@
     --secondary-sidebar-backdrop-color: #252529;
 
     --separator-color: hsl(240, 1.59%, 31.5%);
-    --separator-color-darker: hsl(240, 1.59%, 10.5%);
+    --separator-color-darker: hsl(240, 1.59%, 23.5%);
     
     /* Fonts */
     --font-family: "Adwaita Sans";
@@ -41,7 +40,7 @@
     --font-size: 11pt;
     --font-size-md: 13pt;
     --font-size-lg: 15pt;
-  
+
     --font-weight-regular: 400;
     --font-weight-bold: 600;
     --font-weight-boldest: 700;
@@ -96,20 +95,12 @@
     height: 100vh !important;
   }
 
-  .profile-default > div {
-    height: 100vh !important;
-  }
-
-  .profile-default > div > div {
-    height: 100vh !important;
-  }
-
-  .profile-default > div > div > div {
-    height: 100vh !important;
-  }
-
   .resizableLayoutItem > div:first-of-type {
     height: 100% !important;
+  }
+
+  .resizableLayoutItem {
+    height: 100vh !important;
   }
 
   /* Placeholder */
