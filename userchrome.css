@@ -3,11 +3,13 @@
 :root {
     /* Colors */
     --blue-1: #99c1f1;
+    --teal-1: #94d9cb;
     --green-1: #8ff0a4;
     --yellow-1: #f9f06b;
     --orange-1: #ffbe6f;
     --red-1: #f66151;
     --purple-1: #dc8add;
+    --lavender-1: #a18ee0;
 
     --light-1: #ffffff;
     --light-2: #f6f5f4;
@@ -56,8 +58,8 @@
 
     --btn-separator-color: hsl(240, 2.5%, 31.37%);
 
-    --btn-bg-color-light: hsl(240, 2.9%, 27.06%);
-    --btn-bg-color-light-hover: hsl(240, 2.9%, 24.06%);
+    --btn-bg-color-light: hsl(240, 2.9%, 24.06%);
+    --btn-bg-color-light-hover: hsl(240, 2.9%, 27.06%);
     --btn-bg-color-light-selected-hover: hsl(240, 2.9%, 30.06%);
 
     /* Notes */
@@ -118,21 +120,20 @@
 
   /* Scrollbar */
   ::-webkit-scrollbar {
+    background-color: var(--window-bg-color) !important;
     width: 10px !important;
   }
 
   ::-webkit-scrollbar:hover {
     background-color: var(--sidebar-bg-color) !important;
   }
-
+  
   ::-webkit-scrollbar-thumb {
-    background-color: var(--btn-bg-color-light-hover) !important;
-    border-radius: var(--scroll-radius) !important;
-    border: 4px solid var(--window-bg-color) !important;
+    background: var(--btn-bg-color) !important;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--btn-bg-color-light-selected-hover) !important;
+    background-color: var(--btn-bg-color-hover) !important;
     border: none !important;
   }
 
@@ -551,9 +552,9 @@
   * EDITOR (CODE MIRROR)
   *********************************************************************************/
 
+  /* Background */
   .cm-s-material-darker.CodeMirror {
     background-color: var(--window-bg-color) !important;
-    color: var(--green-1) !important;
   }
   
   /* Header */
@@ -578,33 +579,54 @@
   .cm-s-material-darker .cm-variable-2.cm-rm-list-token {
     color: var(--purple-1) !important;
   }
-  
-  /* Links (link) */
-  div.CodeMirror span.cm-url  {
+
+  /* Code Blocks */ 
+  /* Set code block background */
+  .cm-jn-code-block-background {
+    background-color: var(--view-bg-color) !important;
+  }
+
+  /* Apply colors to elements in code block */
+  .cm-keyword, .cm-atom {
+    color: var(--lavender-1) !important;
+  }
+
+  .cm-operator {
+    color: var(--red-1) !important;
+  }
+
+  .cm-number, .cm-string {
+    color: var(--green-1) !important; 
+  }
+
+  .cm-type {
     color: var(--blue-1) !important;
-    opacity: .7 !important;
-    text-decoration: underline !important;
+  }
+
+  .cm-variable {
+    color: var(--light-4) !important;
   }
   
-  /* Links (text) */
-  .cm-link-text {
+  .cm-def, .cm-type {
     color: var(--blue-1) !important;
   }
-  pre.CodeMirror-line {
-    color: var(--light-2) !important;
-    background-color: none !important;
+
+  .cm-meta {
+    color: var(--teal-1) !important;
   }
-  /* Image links in the editor */
-  span.cm-image {
-    color: var(--light-5) !important;
+
+  .cm-comment:not(.cm-jn-inline-code) {
+    color: var(--dark-1) !important;
+    background-color: transparent !important;
   }
-  /* Comment outside code block */
-  pre.CodeMirror-line span.cm-comment {
+
+  .cm-comment.cm-jn-inline-code {
+    background-color: var(--view-bg-color) !important;
+    border: none !important;
     color: var(--purple-1) !important;
-    background-color: none !important;
-    border: 0 !important;
+    font-family: var(--font-family-mono) !important;
   }
-  
+
   /* Codeblock selection color */
   /* For some reason, the CodeMirror selection does not pick the color correctly, left for now. */
   pre.CodeMirror-line span.CodeMirror-selectedtext {
@@ -632,20 +654,24 @@
     background: #6B6B6B !important;
   }
 
-  div.CodeMirror span.cm-comment.cm-jn-inline-code {
-    background-color: var(--view-bg-color) !important;
-    padding: auto 0 !important;
+  /* Links (link) */
+  div.CodeMirror span.cm-url  {
+    color: var(--blue-1) !important;
+    opacity: .7 !important;
+    text-decoration: underline !important;
   }
-
-  /* Code Block Text */
-  div.CodeMirror span.cm-comment:not(.cm-jn-inline-code) {
-    color: var(--purple-1) !important;
-    background-color: transparent !important;
+  
+  /* Links (text) */
+  .cm-link-text {
+    color: var(--blue-1) !important;
   }
-
-  /* Code block background */
-  div.CodeMirror div.cm-jn-code-block-background {
-    background-color: var(--view-bg-color) !important;
+  pre.CodeMirror-line {
+    color: var(--light-2) !important;
+    background-color: none !important;
+  }
+  /* Image links in the editor */
+  span.cm-image {
+    color: var(--light-5) !important;
   }
 
   /* Horizontal line */
