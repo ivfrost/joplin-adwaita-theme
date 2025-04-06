@@ -67,16 +67,22 @@
     --note-bg-selected: hsl(213.21, 43.08%, 25.49%);
     --note-bg-selected-hover: hsl(213.21, 43.08%, 28.49%);
 
+    /* Lists */
+    --list-item-height: 35px !important;
+
     /* Borders */
     --border-radius: 8px;
-    --border-opacity:	15%;
+    --btn-pill-border-radius: 32px;
     --scroll-radius: 12px;
 
     /* Spacing */
     --spacing-sm: 4px;
-    --spacing-md: 8px;
+    --spacing-md: 6px;
     --spacing-lg: 12px;
-    --btn-padding: 1.2em;
+    --btn-height: 35px;
+    --btn-padding: 1.1em;
+    --btn-toolbar-height: 32px;
+    --btn-toolbar-width: 33px;
   }
   
   /* Global Styles */
@@ -86,10 +92,30 @@
   }
 
   html, body {
-    background-color: var(--view-bg-color) !important;
+    background: var(--view-bg-color) !important;
     font-size: var(--font-size) !important;
     font-weight: var(--font-weight-regular) !important;
     color: var(--light-1) !important;
+  }
+
+  /* Buttons */
+  button {
+    transition: all ease-in-out 100ms;
+  }
+
+  button:not(.new-folder-button, .toolbar-button) {
+    background: var(--btn-bg-color) !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    font-weight: var(--font-weight-boldest) !important;
+    font-size: var(--font-size) !important;
+    min-height: var(--btn-height) !important;
+    min-width: min-content !important;
+    line-height: 1.7 !important;
+  }
+
+  button:not(.new-folder-button, .toolbar-button):hover {
+    background: var(--btn-bg-color-hover) !important;
   }
 
   /* Remove bottom empty space */
@@ -120,20 +146,21 @@
 
   /* Scrollbar */
   ::-webkit-scrollbar {
-    background-color: var(--window-bg-color) !important;
+    background: var(--window-bg-color) !important;
     width: 10px !important;
   }
 
   ::-webkit-scrollbar:hover {
-    background-color: var(--sidebar-bg-color) !important;
+    background: var(--sidebar-bg-color) !important;
   }
   
   ::-webkit-scrollbar-thumb {
     background: var(--btn-bg-color) !important;
+    border-radius: var(--scroll-radius) !important;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--btn-bg-color-hover) !important;
+    background: var(--btn-bg-color-hover) !important;
     border: none !important;
   }
 
@@ -143,7 +170,7 @@
   
   /* General panel style */
   .resizableLayoutItem > div {
-    background-color: var(--secondary-sidebar-bg-color) !important;
+    background: var(--secondary-sidebar-bg-color) !important;
     color: var(--light-1) !important;
   }
 
@@ -152,7 +179,7 @@
   *********************************************************************************/
   
   .sidebar {
-    background-color: var(--sidebar-bg-color) !important;
+    background: var(--sidebar-bg-color) !important;
   }
 
   .sidebar > div {
@@ -160,7 +187,7 @@
   }
 
   .sidebar-header-container {
-    background-color: var(--sidebar-bg-color) !important;
+    background: var(--sidebar-bg-color) !important;
     padding: 0 var(--spacing-md) !important;
     margin: 0 0 var(--spacing-lg) !important;
   }
@@ -179,14 +206,15 @@
   /* Folders */
   .new-folder-button {
     border-radius: var(--border-radius) !important;
-    top: var(--spacing-sm) !important;
+    top: 4px !important;
     right: var(--spacing-sm) !important;
-    height: auto !important;
-    padding: var(--spacing-md) calc(var(--spacing-md) + 2px) !important;
+    height: var(--btn-toolbar-height) !important;
+    padding: .5em !important;
+    width: var(--btn-toolbar-height) !important;
   }
   
   .new-folder-button:hover {
-    background-color: var(--btn-bg-color-light-hover) !important;
+    background: var(--btn-bg-color-light-hover) !important;
   }
 
   /* Tags */
@@ -211,12 +239,12 @@
   
   .tags .list-item-container a:focus {
     color: var(--light-1) !important;
-    background-color: var(--btn-bg-color-light-hover) !important;
+    background: var(--btn-bg-color-light-hover) !important;
   }
   
   .tags .list-item-container a:hover {
     color: var(--light-1) !important;
-    background-color: var(--btn-bg-color-light-hover) !important;
+    background: var(--btn-bg-color-light-hover) !important;
   }
 
   /* Breadcrumbs (In:...) - Used in tag listings */
@@ -228,7 +256,11 @@
   
   /* Tags */
   .tag-bar {
-    background-color: transparent !important;
+    background: transparent !important;
+  }
+
+  .tag-bar span {
+    color: var(--light-4) !important;
   }
 
   .tag-label {
@@ -237,7 +269,12 @@
   
   .tag-list > button {
     color: var(--light-1) !important;
-    background-color: var(--btn-bg-color) !important;
+    background: var(--btn-bg-color) !important;
+    border-radius: var(--btn-pill-border-radius) !important;
+    height: 25px !important;
+    min-height: unset !important;
+    font-weight: var(--font-weight-regular) !important;
+    padding: inherit .8em !important;
   }
   
   /* Hide "Click to add tags..."*/
@@ -247,7 +284,7 @@
 
   /* Selected tag notebook indicator */
   .dtFiFQ {
-    background-color: var(--blue-1)!important;
+    background: var(--blue-1)!important;
     border-radius: var(--border-radius) !important;
   }
 
@@ -258,24 +295,19 @@
 
   /* Synchronization */
   .sidebar > div:last-of-type {
-    background-color: transparent !important;
+    background: transparent !important;
     margin-bottom: 3px !important;
   }
   
   .sidebar > div:last-of-type > button {
-    background-color: var(--btn-bg-color-light) !important;
-    border: 0 !important;
+    background: var(--btn-bg-color-light) !important;
     color: var(--light-1) !important;
     text-transform: capitalize;
-    font-size: var(--font-size) !important;
-    font-weight: var(--font-weight-bold) !important;
-    padding: var(--btn-padding) 0 !important;
-    border-radius: var(--border-radius) !important;
     line-height: 1.7;
   }
   
   .sidebar > div:last-of-type > button:hover {
-    background-color: var(--btn-bg-color-light-selected-hover) !important;
+    background: var(--btn-bg-color-light-selected-hover) !important;
   }
 
   .sidebar > div:last-of-type > button:hover > span {
@@ -291,13 +323,13 @@
   *********************************************************************************/
 
   .note-list {
-    background-color: transparent !important;
+    background: transparent !important;
     border: none !important;
     padding: var(--spacing-lg) 0 !important;
   }
 
   .note-list > .emptylist {
-    background-color: transparent !important;
+    background: transparent !important;
     border: none !important;
   }
 
@@ -306,7 +338,7 @@
   }
 
   .cLdGCO, .cLdGCO > div { /* Set background for empty notelist */
-    background-color: var(--secondary-sidebar-bg-color) !important;
+    background: var(--secondary-sidebar-bg-color) !important;
   }
 
   /* New note and todo buttons */
@@ -314,35 +346,16 @@
     margin: 0 0 var(--spacing-sm) 0;
   }
 
-  .new-note-todo-buttons > button {
-    padding: var(--btn-padding) !important;
-    border: none !important;
-    border-radius: var(--border-radius) !important;
-    font-weight: var(--font-weight-boldest) !important;
-    line-height: 1.7;
-  }
-
-  .new-note-button.hNhFhC {
-    background-color: var(--btn-bg-color-primary) !important;
-    border: none !important;
-  }
-
-  .new-note-button.hNhFhC:hover {
-    background-color: var(--btn-bg-color-primary-hover) !important;
-  }
-
-  .new-todo-button.hNhFhC {
-    background-color: var(--btn-bg-color) !important;
-    border: none !important;
-  }
-
-  .new-todo-button.hNhFhC:hover {
-    background-color: var(--btn-bg-color-hover) !important;
-  }
-
-  .new-note-button.hNhFhC > span, 
-  .new-todo-button.hNhFhC > span {
+  .new-note-todo-buttons button span {
     color: var(--light-1) !important;
+  }
+
+  button.new-note-button {
+    background: var(--btn-bg-color-primary) !important;
+  }
+
+  button.new-note-button:hover {
+    background: var(--btn-bg-color-primary-hover) !important;
   }
 
   /* Note list items */
@@ -351,30 +364,32 @@
   }
 
   .note-list > .notes {
-    margin: 0 10px 0 0 !important;
+    margin: 0 3px 0 0 !important;
   }
 
   .note-list-item { /* Make default note background transparent */
+    height: var(--list-item-height) !important;
     &:hover, 
     &.-focus-visible > .content {
-        background-color: transparent !important;
+        background: transparent !important;
     }
   }
 
   .note-list-item > .content {
     border-radius: var(--border-radius) !important;
+    transition: all ease-in-out 100ms;
   }
 
   .note-list-item:hover > .content {
-    background-color: hsl(240, 4.76%, 22.47%) !important;
+    background: hsl(240, 4.76%, 22.47%) !important;
   }
 
   .note-list-item > .content.-selected {
-    background-color: hsl(213.21, 43.08%, 25.49%) !important;
+    background: hsl(213.21, 43.08%, 25.49%) !important;
   }
 
   .note-list-item:hover > .content.-selected {
-    background-color: selected- !important;
+    background: var(--note-bg-selected-hover) !important;
   }
 
   .item-list.note-list .list-item-container::before,
@@ -391,22 +406,23 @@
   }
 
   .list-item-wrapper:not(.sidebar-header-container):not(.sidebar-spacer-item) {
-    background-color: transparent !important;
+    background: transparent !important;
     border-radius: var(--border-radius) !important;
+    height: var(--list-item-height) !important;
     margin: 0 0 var(--spacing-sm) !important;
     padding: var(--btn-padding) 0 !important;
   }
 
   .list-item-wrapper:not(.sidebar-header-container):not(.sidebar-spacer-item):hover {
-    background-color: var(--btn-bg-color-light-hover) !important;
+    background: var(--btn-bg-color-light-hover) !important;
   }
 
   .list-item-wrapper:not(.sidebar-header-container):not(.sidebar-spacer-item).-selected {
-    background-color: var(--btn-bg-color-light) !important;
+    background: var(--btn-bg-color-light) !important;
   }
 
   .list-item-wrapper:not(.sidebar-header-container):not(.sidebar-spacer-item).-selected:hover {
-    background-color: var(--btn-bg-color-light-selected-hover) !important;
+    background: var(--btn-bg-color-light-selected-hover) !important;
   }
 
   .list-item-wrapper > a > div > .emoji-box {
@@ -427,7 +443,7 @@
   }
 
   .rli-noteList .dUXxSp {
-    background-color: transparent !important;
+    background: transparent !important;
     flex-direction: column !important;
     margin-top: var(--spacing-sm) !important;
   }
@@ -437,71 +453,84 @@
   }
 
   .rli-noteList > div > div > div {
-    padding: var(--spacing-md) !important;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-md) + 3px) !important;
   }
   
   /* Note search bar */
   .search-and-sort {
-      align-items: center !important;
-      margin: 0 0 var(--spacing-sm) 0 !important;
+    align-items: center !important;
+    margin: 0 0 var(--spacing-sm) 0 !important;
   }
   
   .search-bar {
-      background-color: var(--btn-bg-color) !important;
-      border: none !important;
-      border-radius: var(--border-radius) !important;
-      min-width: 160px !important;
+    background: var(--btn-bg-color) !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    height: var(--btn-toolbar-height) !important;
+    min-width: 160px !important;
   }
   
   .search-bar > div {
-      align-items: center;
+    flex-direction: row-reverse !important;
   }
   
   .search-bar > div > input {
-      background-color: transparent !important;
-      border: none !important;
-      color: var(--light-4);
-      font-weight: var(--font-weight-regular) !important;
-      padding: var(--btn-padding) 30px var(--btn-padding) 10px !important;
+    background: transparent !important;
+    border: none !important;
+    color: var(--light-4);
+    font-size: var(--font-size) !important;
+    font-weight: 500 !important;
+    padding: var(--btn-padding) 30px var(--btn-padding) 7px !important;
   }
   
   .search-bar > div > button {
-      padding: 0 10px !important;
+    background: transparent !important;
+    position: relative !important;
+    min-width: unset !important;
+    padding: 6px 0 0 6px !important;
   }
-  
-  .icon-search {
-      color: var(--light-3) !important;
-      font-weight: var(--font-weight-bold) !important;
-      font-size: var(--icon-size-regular) !important;
+
+  .search-bar > div > button:hover {
+    background: transparent !important;
+  }
+
+  .search-bar button > span.icon-search {
+    color: var(--light-3) !important;
+    font-weight: 600 !important;
+    font-size: 14pt !important;
   }
   
   /* Note sort order */
-  .sort-order-field-button, .sort-order-reverse-button {
-      background-color: var(--btn-bg-color) !important;
-      border: none !important;
-      padding: var(--btn-padding) !important;
+  .search-and-sort button {
+    border-radius: 0 !important;
+    min-height: var(--btn-toolbar-height) !important;
+    max-width: var(--btn-toolbar-width) !important;
+    min-width: var(--btn-toolbar-width) !important
   }
   
-  .sort-order-field-button:hover,
-  .sort-order-reverse-button:hover {
-      background-color: var(--btn-bg-color-hover) !important;
+  .search-and-sort button > span {
+    color: var(--light-3) !important;
+  }
+
+  button.sort-order-field-button {   
+    border-top-left-radius: var(--border-radius) !important;
+    border-bottom-left-radius: var(--border-radius) !important;
   }
   
-  .sort-order-field-button {
-      border-right: 1px solid var(--btn-separator-color) !important;
-      border-top-left-radius: var(--border-radius) !important;
-      border-bottom-left-radius: var(--border-radius) !important;
+  button.sort-order-reverse-button {
+    border-top-right-radius: var(--border-radius) !important;
+    border-bottom-right-radius: var(--border-radius) !important;
   }
-  
-  .sort-order-reverse-button {
-      border-left: 1px solid var(--btn-separator-color) !important;
-      border-top-right-radius: var(--border-radius) !important;
-      border-bottom-right-radius: var(--border-radius) !important;
+
+  button.sort-order-field-button::after {
+    content: '';
+    position: relative;
+    right: -9px;
+    height: 100%;
+    width: 1px;
+    background: var(--btn-separator-color);
   }
-  
-  .rGEbE .sc-fqkvVR {
-      color: inherit !important;
-  }
+
   
   /*********************************************************************************
   * EDITOR
@@ -510,26 +539,27 @@
   /* Title */
   /* Changes frequently with updates, need to keep tabs */
   .note-editor-wrapper {
-    background-color: var(--window-bg-color) !important;
+    background: var(--window-bg-color) !important;
   }
   
   .title-input {
-    background-color: transparent !important;
+    background: transparent !important;
     padding: 0 0 0 var(--spacing-sm) !important;
   }
 
   .note-title-info-group > .editor-toolbar {
-    background-color: var(--window-bg-color) !important;
+    background: var(--window-bg-color) !important;
     margin: 0 !important;
   }
 
   .editor-toolbar {
-    background-color: var(--secondary-sidebar-bg-color) !important;
+    background: var(--secondary-sidebar-bg-color) !important;
     border-radius: var(--border-radius) !important;
     margin: 0 var(--spacing-lg) 0 var(--spacing-sm) !important;
   }
 
   .toolbar-icon {
+    color: var(--light-3) !important;
     font-size: var(--font-size-md) !important;
   }
   
@@ -554,7 +584,7 @@
 
   /* Background */
   .cm-s-material-darker.CodeMirror {
-    background-color: var(--window-bg-color) !important;
+    background: var(--window-bg-color) !important;
   }
   
   /* Header */
@@ -583,7 +613,7 @@
   /* Code Blocks */ 
   /* Set code block background */
   .cm-jn-code-block-background {
-    background-color: var(--view-bg-color) !important;
+    background: var(--view-bg-color) !important;
   }
 
   /* Apply colors to elements in code block */
@@ -617,11 +647,11 @@
 
   .cm-comment:not(.cm-jn-inline-code) {
     color: var(--dark-1) !important;
-    background-color: transparent !important;
+    background: transparent !important;
   }
 
   .cm-comment.cm-jn-inline-code {
-    background-color: var(--view-bg-color) !important;
+    background: var(--view-bg-color) !important;
     border: none !important;
     color: var(--purple-1) !important;
     font-family: var(--font-family-mono) !important;
@@ -634,7 +664,7 @@
   }
 
   div[class^="cm-jn-code-block-background "]::selection {
-    background-color: var(--orange-1) !important;
+    background: var(--orange-1) !important;
     border-color: var(--purple-1) !important;
   }
 
@@ -667,7 +697,7 @@
   }
   pre.CodeMirror-line {
     color: var(--light-2) !important;
-    background-color: none !important;
+    background: none !important;
   }
   /* Image links in the editor */
   span.cm-image {
@@ -697,13 +727,13 @@
   }
 
   .cm-fat-cursor-mark {
-    background-color: var(--red-1) !important;
+    background: var(--red-1) !important;
   }
 
   .cm-animate-fat-cursor {
     width: auto !important;
     border: 0;
-    background-color: var(--yellow-1) !important;
+    background: var(--yellow-1) !important;
   }
 
   /* Rich markdown */
@@ -721,19 +751,19 @@
 
   /* Command palette */
   .dialog-modal-layer > .content {
-    background-color: var(--card-bg-color) !important;
+    background: var(--card-bg-color) !important;
     border-radius: var(--border-radius) !important;
   }
 
   .dialog-modal-layer > .content > div > input {
-    background-color: var(--sidebar-bg-color) !important;
+    background: var(--sidebar-bg-color) !important;
     border: none !important;
     border-radius: var(--border-radius) !important;
     color: var(--light-1) !important;
   }
 
   .dialog-modal-layer > .content > .item-list {
-    background-color: transparent !important;
+    background: transparent !important;
   }
 
   .dialog-modal-layer > .content > .item-list > div {
@@ -745,7 +775,7 @@
   }
 
   .dialog-modal-layer > .content > .item-list div.selected {
-    background-color: var(--dark-2) !important;
+    background: var(--dark-2) !important;
     border-radius: var(--border-radius) !important;
   }
 

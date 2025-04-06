@@ -66,16 +66,22 @@
     --note-bg-selected: hsl(213.21, 43.08%, 25.49%);
     --note-bg-selected-hover: hsl(213.21, 43.08%, 28.49%);
 
+    /* Lists */
+    --list-item-height: 35px !important;
+
     /* Borders */
     --border-radius: 8px;
-    --border-opacity:	15%;
+    --btn-pill-border-radius: 32px;
     --scroll-radius: 12px;
 
     /* Spacing */
     --spacing-sm: 4px;
-    --spacing-md: 8px;
+    --spacing-md: 6px;
     --spacing-lg: 12px;
-    --btn-padding: 1.2em;
+    --btn-height: 2.18em;
+    --btn-padding: 1.1em;
+    --btn-toolbar-height: 32px;
+    --btn-toolbar-width: 33px;
   }
   
   #rendered-md, body, th, td {
@@ -106,6 +112,7 @@
   
   ::-webkit-scrollbar-thumb {
     background: var(--btn-bg-color) !important;
+    border-radius: var(--scroll-radius) !important;
   }
 
   ::-webkit-scrollbar-thumb:hover {
