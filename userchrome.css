@@ -35,6 +35,8 @@
 
     --separator-color: hsl(240, 1.59%, 31.5%);
     --separator-color-darker: hsl(240, 1.59%, 23.5%);
+
+    --icon-color: #BFBFC2;
     
     /* Fonts */
     --font-family: "Adwaita Sans";
@@ -138,10 +140,35 @@
 
   /* Icons */
   .fa, .far, .fas {
-    color: var(--light-1);
+    color: var(--icon-color) !important;
     font-weight: var(--font-weight-bold) !important;
     font-family: "Font Awesome 6 Free", "Font Awesome 6 Free Regular" !important;
     font-size: var(--icon-size-regular) !important;
+  }
+  
+  .search-bar button > span.icon-search {
+    color: var(--light-3) !important;
+    font-weight: 600 !important;
+    font-size: 14pt !important;
+  }
+
+  .editor-toolbar .toolbar-button > span.toolbar-icon {
+    color: var(--light-3) !important;
+  }
+
+  .editor-toolbar .toolbar-button.disabled > span.toolbar-icon {
+    color: var(--dark-1) !important;
+    opacity: 1 !important;
+  }
+
+  .toolbar-icon, .toolbar-button > span.toolbar-icon  {
+    color: var(--icon-color) !important;
+    font-size: 1.1em !important;
+  }
+
+  .sidebar-list-items-wrapper a:not(.sidebar-expand-link) > div > .emoji-box,
+  .sidebar-list-items-wrapper a:not(.sidebar-expand-link) > div > .fa-trash {
+    color: var(--icon-color) !important;
   }
 
   /* Scrollbar */
@@ -206,6 +233,7 @@
   /* Folders */
   .new-folder-button {
     border-radius: var(--border-radius) !important;
+    color: var(--light-1) !important;
     top: 4px !important;
     right: var(--spacing-sm) !important;
     height: var(--btn-toolbar-height) !important;
@@ -425,12 +453,24 @@
     background: var(--btn-bg-color-light-selected-hover) !important;
   }
 
-  .list-item-wrapper > a > div > .emoji-box {
-    color: var(--light-1) !important;
+  .list-item-wrapper .list-item {
+    opacity: 1 !important;
   }
 
-  .list-item-wrapper > a > .title {
-    color: var(--light-1) !important;
+  .sidebar-list-items-wrapper a:not(.sidebar-expand-link) { /* Make <a> tag cover the whole button on first sidebar */
+    padding: 0 1em !important;
+    height: var(--list-item-height) !important;
+    color: var(--light-2) !important;
+    width: -webkit-fill-available !important;
+  }
+
+  .sidebar-list-items-wrapper a:not(.sidebar-expand-link) > div > .emoji-box,
+  .sidebar-list-items-wrapper a:not(.sidebar-expand-link) > div > .fa-trash {
+    color: var(--icon-color) !important;
+  }
+
+  .sidebar-expand-link {
+    order: 0 !important;
   }
 
   .item-list.note-list .list-item-container > a > span {
@@ -493,12 +533,6 @@
   .search-bar > div > button:hover {
     background: transparent !important;
   }
-
-  .search-bar button > span.icon-search {
-    color: var(--light-3) !important;
-    font-weight: 600 !important;
-    font-size: 14pt !important;
-  }
   
   /* Note sort order */
   .search-and-sort button {
@@ -556,11 +590,6 @@
     background: var(--secondary-sidebar-bg-color) !important;
     border-radius: var(--border-radius) !important;
     margin: 0 var(--spacing-lg) 0 var(--spacing-sm) !important;
-  }
-
-  .toolbar-icon {
-    color: var(--light-3) !important;
-    font-size: var(--font-size-md) !important;
   }
   
   /* Hide "Spell checker" button */

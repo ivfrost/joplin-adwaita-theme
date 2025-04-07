@@ -34,6 +34,8 @@
 
     --separator-color: hsl(240, 1.59%, 31.5%);
     --separator-color-darker: hsl(240, 1.59%, 23.5%);
+
+    --icon-color: #BFBFC2;
     
     /* Fonts */
     --font-family: "Adwaita Sans";
@@ -78,7 +80,7 @@
     --spacing-sm: 4px;
     --spacing-md: 6px;
     --spacing-lg: 12px;
-    --btn-height: 2.18em;
+    --btn-height: 35px;
     --btn-padding: 1.1em;
     --btn-toolbar-height: 32px;
     --btn-toolbar-width: 33px;
