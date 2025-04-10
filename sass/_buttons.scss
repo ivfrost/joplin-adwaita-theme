@@ -1,0 +1,22 @@
+// _buttons.scss
+@use "sass:color";
+@use "sass:math";
+
+$btn-bg: #444444;
+$btn-bg-light: #4f4f4f;
+$btn-bg-lighter: #4b4b4b;
+
+$btn-bg-primary: #3584e4;
+$btn-bg-primary-light: #4990e7;
+
+$btn-separator: #363636;
+
+$btn-size: 35px;
+$btn-size-toolbar: 33px;
+
+$btn-padding: 1.1em;
+
+$btn-radius: 8px;
+$btn-radius-sm: 6px;
+$btn-radius-md: 12px;
+$btn-radius-lg: 32px;

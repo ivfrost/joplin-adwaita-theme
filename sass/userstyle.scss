@@ -1,0 +1,352 @@
+// userstyle.scss
+
+@use 'variables' as vars;
+@use 'fonts' as fnt;
+@use 'colors' as clr;
+@use 'spacing' as sp;
+@use 'buttons' as btn;
+
+#rendered-md, body, th, td {
+  background-color: clr.$window-bg-color !important;
+  font-family: fnt.$font-family !important;
+  font-size: fnt.$font-size !important;
+}
+
+p, ul, ol, li, em, strong {
+  color: clr.$light-3 !important;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid clr.$light-5!important;
+  margin: 2.5em 0 !important;
+}
+
+/*********************************************************************************
+* TITLES
+*********************************************************************************/
+
+h1 {
+  color: clr.$light-1 !important;
+  border-bottom: 1px solid clr.$separator-color !important;
+  font-size:fnt.$font-size-lg;
+  font-weight:fnt.$font-weight-boldest !important;
+}
+
+h2 {
+  color: clr.$light-2 !important;
+  border-bottom: 1px solid clr.$separator-color!important;
+  font-size: fnt.$font-size-md;
+  font-weight: fnt.$font-weight-bold!important;
+}
+
+h3, h4, h5, h6 {
+  color: clr.$light-2 !important;
+  border-bottom: 0 !important;
+  font-size: fnt.$font-size;
+  font-weight: fnt.$font-weight-bold!important;
+}
+
+/*********************************************************************************
+* LINKS
+*********************************************************************************/
+
+a {
+  color: clr.$blue-1 !important;
+  text-decoration: underline !important;
+}
+
+a:hover {
+  text-decoration: underline !important;
+}
+
+/* Joplin icon in Joplin link */
+.resource-icon {
+  background-color: clr.$purple-1 !important;
+}
+
+/*********************************************************************************
+* CODE BLOCK
+*********************************************************************************/
+
+pre, .hljs {
+  border-radius: btn.$btn-radius !important;
+  padding: sp.$spacing-md sp.$spacing-lg !important;
+}
+
+/* Inline code */
+.inline-code {
+  background-color: btn.$btn-bg-light !important;
+  border: none !important;
+  border-radius: 4px;
+  color: clr.$light-3 !important;
+  font-family: fnt.$font-family-monospace!important;
+  font-size: .95em !important;
+  padding: .16em .4em .2em !important;
+}
+
+/*********************************************************************************
+* BLOCKQUOTE
+*********************************************************************************/
+
+blockquote {
+  background-color: var(--card-bg-color) !important;
+  padding: 10px !important;
+  color: var(--light) !important;
+  font-size: 14px !important;
+  font-style: italic !important;
+  border: 0 !important;
+  border-left: 5px solid clr.$dark-1 !important;
+}
+
+/*********************************************************************************
+* TABLES
+*********************************************************************************/
+
+th {
+  border: 1px solid clr.$separator-color !important;
+  color: clr.$light-1 !important;
+  border-bottom: 1px solid clr.$separator-color !important;
+}
+
+td {
+  border: 1px solid clr.$separator-color !important;
+  color: clr.$light-1 !important;
+  border-bottom: 1px solid clr.$separator-color !important;
+}
+
+/*********************************************************************************
+* HIGHLIGHTING
+*********************************************************************************/
+
+::selection {
+  background-color: clr.$note-bg-selected !important;
+  color: clr.$light-1 !important;
+}
+
+mark, mark strong {
+  background: clr.$yellow-1 !important;
+  color: clr.$light-1 !important;
+}
+
+/* Highlighted searched item */
+mark[data-markjs] {
+  background-color: clr.$purple-1 !important;
+}
+
+/*********************************************************************************
+* PLUGINS
+*********************************************************************************/
+
+/* CodePerfect (https://joplinapp.org/plugins/plugin/jl15988.JoplinCodePerfectPlugin/) */
+
+/* Set code block background, border radius, font style and spacing */
+.code-perfect-container pre.hljs {
+  background-color: clr.$view-bg-color !important;
+  border-radius: btn.$btn-radius !important;
+  padding: 0 0 0 32px !important;
+}
+
+.code-perfect-container pre.hljs code.hljs,
+.code-perfect-container pre.hljs ul.hljs-line-num {
+  background: clr.$view-bg-color !important;
+  font-family: fnt.$font-family-monospace!important;
+  font-size: fnt.$font-size !important;
+}
+
+.code-perfect-container pre.hljs code {
+  margin: 0 0 0 8px !important;
+  padding: .5em .5em .17em !important;
+}
+
+.code-perfect-container pre.hljs ul.hljs-line-num {
+  border-radius: 0 !important;
+}
+
+/* Apply colors to elements in code block */
+.code-perfect-container pre.hljs span {
+  color: clr.$light-5!important;
+}
+
+.code-perfect-container pre.hljs code.hljs .hljs-keyword,
+.code-perfect-container pre.hljs code.hljs .hljs-literal {
+  color: clr.$lavender-1 !important;
+}
+
+.code-perfect-container pre.hljs code.hljs .hljs-built_in,
+.code-perfect-container pre.hljs code.hljs .hljs-title.function_ {
+  color: clr.$light-4 !important;
+}
+
+.code-perfect-container pre.hljs code.hljs .hljs-operator {
+  color: clr.$red-1 !important;
+}
+
+.code-perfect-container pre.hljs code.hljs .hljs-string,
+.code-perfect-container pre.hljs code.hljs .hljs-number{
+  color: clr.$green-1 !important;
+}
+
+.code-perfect-container pre.hljs code.hljs .hljs-type,
+.code-perfect-container pre.hljs code.hljs .hljs-title.class_ {
+  color: clr.$blue-1 !important;
+}
+
+.code-perfect-container pre.hljs code.hljs .hljs-variable,
+.code-perfect-container pre.hljs code.hljs .hljs-params {
+  color: clr.$light-4 !important;
+}
+
+.code-perfect-container pre.hljs code.hljs .hljs-meta {
+  color: clr.$teal-1 !important;
+}
+
+.code-perfect-container pre.hljs code.hljs .hljs-comment {
+  color: clr.$dark-1 !important;
+}
+
+/* Adjust line number position and set color */ 
+.code-perfect-container pre.hljs ul.hljs-line-num {
+  padding: 1em 8px !important;
+  border-right: none !important;
+}
+
+.code-perfect-container pre.hljs ul.hljs-line-num li {
+  color: clr.$dark-2 !important;
+}
+
+/* Github Alerts (https://discourse.joplinapp.org/t/plugin-github-alerts/42902) */
+
+/* Apply colors to callouts */
+.markdown-alert.markdown-alert-warning {
+  border-left-color: clr.$yellow-1 !important;
+  > .markdown-alert-title {
+    color: clr.$yellow-1 !important;
+  }
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: clr.$purple-1 !important;
+  > .markdown-alert-title {
+    color: clr.$purple-1 !important;
+  }
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: clr.$red-1 !important;
+  > .markdown-alert-title {
+    color: clr.$red-1 !important;
+  }
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: clr.$blue-1 !important;
+  > .markdown-alert-title {
+    color: clr.$blue-1 !important;
+  }
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: clr.$red-1 !important;
+  > .markdown-alert-title {
+    color: clr.$red-1 !important;
+  }
+}
+
+/*********************************************************************************
+* PRINT VERSION
+*********************************************************************************/
+
+@media print {
+  #rendered-md, body, th, td {
+    /* background-color: var(--white) !important; */
+    background-color: clr.$light-1 !important;
+    font-family: fnt.$font-family !important;
+  }
+
+  p, ul, ol, li {
+    color: clr.$dark-3 !important;
+  }
+
+  strong {
+    color: clr.$dark-3 !important;
+    }
+
+  th {
+    border: 1px solid clr.$light-3 !important;
+    color: clr.$dark-2 !important;
+    border-bottom: 1px solid clr.$light-3 !important;
+  }
+
+  td {
+    border: 1px solid clr.$light-3 !important;
+    color: clr.$dark-2 !important;
+    border-bottom: 1px solid clr.$light-3 !important;
+  }
+
+  h1 {
+    border-bottom: 1px solid clr.$light-3 !important;
+    color: clr.$dark-3 !important;
+    font-weight: fnt.$font-weight-bold!important;
+  }
+
+  h2 {
+    border-bottom: 1px solid clr.$light-2 !important;
+    color: clr.$dark-3 !important;
+  }
+
+  h2, h3, h4, h5, h6 {
+    border-bottom: 0 !important;
+    font-weight: fnt.$font-weight-bold!important;
+    color: clr.$dark-3 !important;
+  }
+
+  hr {
+    border: none;
+    border-bottom: 1px solid clr.$light-2 !important;
+    margin: 2.5em 0 !important;
+  }
+
+  a {
+    color: clr.$blue-1 !important;
+    text-decoration: underline !important;
+  }
+
+  pre, .hljs {
+    background: clr.$light-2 !important;
+    color: clr.$dark-2 !important;
+    font-family: fnt.$font-family-monospace!important;
+    padding: 10px !important;
+    font-size: 14px !important;
+    overflow: scroll !important;
+  }
+
+  blockquote {
+    background-color: clr.$light-2 !important;
+    padding: 10px !important;
+    color: clr.$dark-2 !important;
+    font-size: 14px !important;
+    font-style: italic !important;
+    border: 0 !important;
+    border-left: 5px solid clr.$dark-3 !important;
+  }
+
+  .inline-code {
+    background-color: clr.$light-2 !important;
+    border: none !important;
+    border-radius: 4px;
+    color: clr.$dark-3 !important;
+    font-family: fnt.$font-family-monospace!important;
+    font-size: .95em !important;
+    padding: .16em .4em .2em !important;
+  }
+
+  .code-perfect-container pre.hljs code.hljs,
+  .code-perfect-container pre.hljs ul.hljs-line-num {
+    background: clr.$light-2 !important;
+  }
+
+  .code-perfect-container pre.hljs ul.hljs-line-num li {
+    color: clr.$dark-1 !important;
+  }
+}

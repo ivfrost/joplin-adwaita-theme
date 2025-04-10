@@ -1,0 +1,53 @@
+// _colors.scss
+
+@use "sass:color";
+
+$blue-1: #99c1f1;
+$blue-2: #62a0ea;
+$charcoal-blue-1: #2a3439;
+$teal-1: #94d9cb;
+$green-1: #8ff0a4;
+$yellow-1: #f9f06b;
+$orange-1: #ffbe6f;
+$red-1: #f66151;
+$purple-1: #dc8add;
+$lavender-1: #a18ee0;
+
+$color-array: $blue-1, $teal-1, $yellow-1, $orange-1, $red-1, $purple-1, $lavender-1;
+
+$light-1: #ffffff;
+$light-2: #f6f5f4;
+$light-3: #deddda;
+$light-4: #c0bfbc;
+$light-5: #9a9996;
+
+$dark-1: #77767b;
+$dark-2: #5e5c64;
+$dark-3: #3d3846;
+$dark-4: #241f31;
+$dark-5: #000000;
+
+$window-bg-color: #242424;
+$view-bg-color: #1e1e1e;
+
+$headerbar-bg-color: #303030;
+$modal-row-bg-color: #353535;
+
+$sidebar-bg-color: $headerbar-bg-color;
+$sidebar-backdrop-color: #2a2a2a;
+
+$secondary-sidebar-bg-color: #2a2a2a;
+$secondary-sidebar-backdrop-color: #272727;
+
+$note-bg-hover: hsl(240, 4.76%, 22.47%);
+$note-bg-selected: hsl(213.21, 43.08%, 25.49%);
+$note-bg-selected-hover: hsl(213.21, 43.08%, 28.49%);
+
+$modal-bg-color: $window-bg-color;
+
+$separator-color: #4f4f4f;
+
+$icon-color: $light-3;
+$icon-color-disabled: color.adjust($icon-color, $lightness: -60%);
+
+$icon-color-disabled-lighter: color.adjust($icon-color, $lightness: -40%);

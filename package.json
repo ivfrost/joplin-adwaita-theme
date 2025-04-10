@@ -1,0 +1,16 @@
+{
+  "name": "joplin-adwaita-sass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass sass/userchrome.scss src/userchrome.css -w --style compressed & sass sass/userstyle.scss src/userstyle.css -w --style compressed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.86.3"
+  }
+}
