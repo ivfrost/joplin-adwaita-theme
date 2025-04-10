@@ -1,0 +1,807 @@
+// userchrome.scss
+
+@use 'variables' as vars;
+@use 'fonts' as fnt;
+@use 'colors' as clr;
+@use 'spacing' as sp;
+@use 'buttons' as btn;
+
+// Global styles
+* {
+  font-family: fnt.$font-family !important;
+  font-size: fnt.$font-size !important;
+}
+
+html, body {
+  color: clr.$light-1 !important;
+  font-family: fnt.$font-family !important;
+  font-size: fnt.$font-size !important;
+  font-weight: fnt.$font-weight !important;
+}
+
+// General panel styles
+
+.resizableLayoutItem {
+  > div:first-of-type {
+    height: 100vh !important;
+  }
+
+  background-color: clr.$secondary-sidebar-bg-color !important;
+  height: 100vh !important; // Remove empty space at the bottom of the window
+}
+
+.profile-default {
+  height: 100vh !important;
+}
+
+/* ==================
+   FONTS
+   ================== */
+
+// Icons
+[class^="icon-"], [class*=" icon-"],
+[class^=" fa-"], [class*=" fa-"], [class^=" fas-"], [class*=" fas-"],
+.emoji-box {
+  color: clr.$icon-color !important;
+  font-size: fnt.$icon-size !important;
+  font-family: 'awesome-adwaita-icons', 'icomoon', 'Font Awesome 5 Free' !important;
+  font-weight: fnt.$font-weight !important;
+}
+
+// Set custom unicode for adding tags
+.toolbar-button > .icon-tags::before {
+  content: "\e907";
+}
+
+
+/* ==================
+   BUTTONS
+   ================== */
+
+// General button styles
+button {
+  cursor: default !important;
+}
+
+button:not(.new-folder-button, .toolbar-button, .tag-list > button, .config-screen button, .emoji-picker button, .icon-selector-row > button) {
+  background: btn.$btn-bg !important;
+  border: none !important;
+  border-radius: btn.$btn-radius !important;
+  font-weight: fnt.$font-weight-boldest !important;
+  min: {
+    height: btn.$btn-size !important;
+    width: btn.$btn-size !important;
+  }
+
+  &:hover {
+    background: btn.$btn-bg-light !important;
+  }
+}
+
+.sidebar > div:last-of-type { // Synchronization button
+  background: transparent !important;
+  margin-bottom: 3px !important;
+
+  button {
+    background-color: btn.$btn-bg !important;
+    cursor: default !important;
+
+    &:hover {
+      background-color: btn.$btn-bg-light !important;
+      opacity: 1 !important;
+
+      span:nth-of-type(2) {
+        color: clr.$light-1 !important;
+      }
+    }
+  }
+}
+
+div > .bLqnaV > .UdFVY { // Synchronization message
+  color: clr.$light-3 !important;
+}
+
+// Toolbar button styles
+.button, .toolbar-button, .new-folder-button, .tag-list > button, span[role=cell] a:not([style*="text-decoration: underline"]) { 
+  border: none !important;
+  border-radius: btn.$btn-radius-sm !important;
+  height: btn.$btn-size-toolbar !important;
+  min-width: btn.$btn-size-toolbar !important;
+  opacity: 1 !important;
+  padding: 0 !important;
+
+  &.disabled {
+    span, i {
+      color: clr.$icon-color !important;
+      opacity: .4 !important;
+    }
+
+    &:hover {
+      background: transparent !important;
+    }
+  }
+
+  &:hover {
+    background: btn.$btn-bg-light !important;
+  }
+}
+
+// New folder button styles
+.folder-and-tag-list > .item-list > .new-folder-button {
+  top: calc(sp.$spacing-xxs) !important;
+  right: 0 !important;
+  padding-inline-end: 0 !important;
+
+  i {
+    color: clr.$light-1 !important;
+  }
+  
+  &:hover {
+    background: btn.$btn-bg-light !important;
+    color: clr.$light-1 !important;
+  }
+}
+
+// New note and to-do button styles
+.new-note-todo-buttons {
+  gap: sp.$spacing !important;
+  margin: 0 0 sp.$spacing 0 !important;
+
+  button.new-note-button, button.new-todo-button {
+    min-width: min-content !important;
+
+    span {
+      color: clr.$light-1 !important;
+    }
+  }
+
+  button.new-note-button {
+    background: btn.$btn-bg-primary !important;
+  }
+
+  button.new-note-button:hover {
+    background: btn.$btn-bg-primary-light !important;
+  }
+}
+
+// Sort order button styles
+.search-and-sort button.sort-order-field-button, .search-and-sort button.sort-order-reverse-button {
+  border-radius: 0 !important;
+  min-height: btn.$btn-size-toolbar !important;
+
+  > span {
+    color: clr.$light-1 !important;
+  }
+}
+
+.search-and-sort button.sort-order-field-button {
+  position: relative;
+  border-top-left-radius: btn.$btn-radius !important;
+  border-bottom-left-radius: btn.$btn-radius !important;
+  min-width: btn.$btn-size-toolbar + 1px !important; // Compensate separator size
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    width: 1px;
+    background: clr.$separator-color !important;
+  }
+}
+
+.search-and-sort button.sort-order-reverse-button {
+  border-top-right-radius: btn.$btn-radius !important;
+  border-bottom-right-radius: btn.$btn-radius !important;
+  min-width: btn.$btn-size-toolbar !important;
+}
+
+
+/* ==================
+   NOTEBOOKS SIDEBAR
+   ================== */
+
+.sidebar {
+  background: clr.$sidebar-bg-color !important;
+
+  > div {
+    padding: sp.$spacing-sm !important; // Set general spacing around containers
+  }
+}
+
+// Notebooks section
+.all-notes { // Hide "All notes" button
+  display: none !important;
+}
+
+// Headers ("Notebooks" and "Tags")
+.sidebar-list-items-wrapper {
+  .sidebar-header-container {
+    margin: sp.$spacing-xxs sp.$spacing sp.$spacing-lg sp.$spacing !important;
+
+    > div {
+      align-items: center !important;
+      padding: 0 !important;
+    }
+
+    span, i {
+      color: clr.$light-1 !important;
+      font-weight: fnt.$font-weight !important;
+      text-transform: capitalize !important;
+    }
+
+    span {
+      margin: 0 20px 0 0 !important;
+      text-align: center;
+      font-weight: fnt.$font-weight-bold !important;
+    }
+
+    i {
+      margin-right: 0 !important;
+    }
+  }
+}
+
+.sidebar-expand-link.toggle {
+  order: 0 !important;
+  padding-right: 0 !important;
+}
+
+.list-item-wrapper:not(.sidebar-header-container):not(.sidebar-spacer-item) {
+  background: transparent !important; // Remove default notebook background
+  border-radius: btn.$btn-radius-sm !important;
+  height: btn.$btn-size !important;
+  padding: 0 sp.$spacing-lg !important;
+  margin: 0 0 sp.$spacing-xxs calc(var(--depth)* sp.$spacing-md - sp.$spacing-md);
+
+  .note-count-label {
+    color: clr.$light-3 !important;
+  }
+
+  a.list-item {
+    padding: 0 !important;
+    order: -1 !important;
+  }
+
+  i {
+    color: clr.$icon-color !important;
+  }
+
+  &:hover {
+    background: btn.$btn-bg !important;
+
+    a, i {
+      opacity: 1 !important;
+    }
+  }
+
+  &.-selected {
+    background: btn.$btn-bg !important;
+
+    &:hover {
+      background: btn.$btn-bg-lighter !important;
+    }
+  }
+}
+
+// TO-DO Depth Aria Level Div [aria-level^=X]
+
+// Tags section
+.sidebar-list-items-wrapper .sidebar-spacer-item {
+  height: 1px !important;
+  background: clr.$separator-color !important;
+  margin: sp.$spacing-md 0 !important;
+}
+
+
+/* ==================
+   NOTES SIDEBAR
+   ================== */
+
+.DnUmE .dWsUEN > div {
+  margin: sp.$spacing-lg sp.$spacing-md !important; // Set general spacing around containers
+
+  &.note-list {
+    margin-top: 0 !important;
+
+    .notes {
+      margin: 0 10px 0 0 !important;
+    } 
+  }
+}
+
+.dUXxSp { // Remove padding and background of note controls and force flex direction
+  background: transparent !important;
+  padding: 0 !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+// Notes search bar
+.search-bar {
+  background: btn.$btn-bg !important;
+  border: 3px solid btn.$btn-bg !important;
+  border-radius: btn.$btn-radius !important;
+  height: btn.$btn-size-toolbar !important;
+  min-width: 120px !important;
+  box-sizing: border-box !important;
+
+  div {
+    flex-direction: row-reverse !important;
+
+    input {
+      background: transparent !important;
+      border: none !important;
+      max-height: none !important;
+      height: 100% !important;
+      font-size: fnt.$font-size !important;
+      font-weight: fnt.$font-weight !important;
+      color: clr.$light-3 !important;
+      padding: 0 !important;
+    }
+
+    button {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+      position: relative !important;
+      min-height: 0 !important;
+      min-width: 28px !important;
+      background: transparent !important;
+
+      span {
+        display: block !important;
+        line-height: 2 !important;
+      }
+    }
+  }
+
+  &:focus-within {
+    border: 3px solid clr.$blue-2 !important;
+  }
+}
+
+// Note list
+.note-list {
+  background: transparent !important; // Remove background of note list
+
+  .emptylist { // Remove background of empty note list message
+    background: transparent !important;
+  }
+}
+
+.note-list-item-wrapper {
+  margin: 0 0 sp.$spacing-xxs 0 !important; // Add spacing between notes in list
+
+  .note-list-item {
+    .content {
+      background: transparent !important; // Remove default note background
+      height: btn.$btn-size-toolbar !important;
+      border-radius: btn.$btn-radius-sm !important;
+
+      &.-selected {
+        background: clr.$note-bg-selected !important;
+      }
+    }
+
+    &:hover {
+      background: transparent !important; // Remove default hover note background
+
+      .content {
+        background: clr.$note-bg-hover !important;
+
+        &.-selected {
+          background: clr.$note-bg-selected-hover !important;
+        }
+      }
+    }
+
+    &::before {
+      border: none !important; // Remove note separators
+    }
+  }
+}
+
+
+/* ==================
+   EDITOR
+   ================== */
+
+.note-editor-wrapper {
+  > div {
+    background: clr.$window-bg-color !important;
+  }
+
+  > div > div > div:nth-last-child(3) {
+    padding-left: 0 !important;
+  }
+}
+
+.note-title-wrapper {
+  padding: sp.$spacing-xxs sp.$spacing-lg 0 calc(sp.$spacing-lg) !important;
+
+  .title-input {
+    background: clr.$window-bg-color !important;
+    color: clr.$light-3 !important;
+  }
+}
+
+.note-title-info-group {
+  height: btn.$btn-size !important;
+  
+  > .updated-time-label {
+    margin: 0 sp.$spacing-xs !important;
+    color: clr.$light-3 !important;
+  }
+
+  > .editor-toolbar {
+    background: clr.$window-bg-color !important;
+    margin: 0 !important;
+    padding: 0 sp.$spacing-xxs !important;
+    height: btn.$btn-size-toolbar !important;
+
+    button.toolbar-button {
+
+      > span {
+        font-size: fnt.$font-size !important;
+      }
+
+      &.disabled {
+        span, i {
+          color: clr.$icon-color !important;
+          opacity: .3 !important;
+        }
+    
+        &:hover {
+          background: transparent !important;
+        }
+      }
+    }
+  }
+}
+
+// Notebook indicator on tag press
+.sc-gEvEer.sc-dcJsrY.jiwcuV.dtFiFQ.sc-jXbUNg {
+  margin: 0 sp.$spacing !important;
+  background: clr.$charcoal-blue-1 !important;
+  border-radius: btn.$btn-radius-sm !important;
+
+  > span {
+    color: clr.$blue-2 !important;
+  }
+}
+
+.editor-toolbar {
+  background: clr.$secondary-sidebar-bg-color !important;
+  border-radius: btn.$btn-radius !important;
+  height: sp.$toolbar-height !important;
+  margin: sp.$spacing-xxs sp.$spacing-lg !important;
+
+  button.toolbar-button {
+    
+    > span {
+      font-size: .9em !important;
+    }
+
+    &.-has-title {
+      padding: 0 sp.$spacing !important;
+    }
+  }
+}
+
+// Hide the Toggle editors button
+.editor-toolbar button[title="Toggle editors"] {
+  display: none !important;
+}
+
+.CodeMirror-scroll {
+  background: clr.$window-bg-color !important;
+}
+
+.CodeMirror-sizer {
+  padding: 0 sp.$spacing-md !important; // Set padding for plain markdown
+}
+
+// Document colors
+
+// Header
+.cm-header {
+  color: clr.$blue-1 !important;
+}
+
+// Italics/Emphasis, Bold, BoldItalics
+.cm-em, .cm-strong, .cm-strong.cm-em {
+  color: clr.$green-1 !important;
+}
+
+// Lists (Bullet/number/todo)
+.cm-variable-2, .cm-variable-3, .cm-keyword {
+  color: clr.$light-4 !important;
+}
+
+// Links (link)
+div.CodeMirror span.cm-url  {
+  color: clr.$blue-1 !important;
+  opacity: .7 !important;
+  text-decoration: underline !important;
+}
+
+// Links (text)
+.cm-link-text {
+  color: clr.$blue-1 !important;
+}
+
+pre.CodeMirror-line {
+  color: clr.$light-2 !important;
+  background: none !important;
+}
+// Image links in the editor
+span.cm-image {
+  color: clr.$light-5 !important;
+}
+
+// Horizontal line
+.cm-hr {
+  color: clr.$separator-color!important;
+}
+
+.cm-variable-2.cm-strong {
+  color: clr.$green-1 !important;
+}
+
+.cm-s-material-darker .cm-variable-2.cm-rm-list-token {
+  color: clr.$purple-1 !important;
+}
+
+// Code blocks
+.CodeMirror .cm-jn-code-block-background {
+  background: clr.$view-bg-color !important;
+}
+
+.cm-comment:not(.cm-jn-inline-code) {
+  color: clr.$dark-1 !important;
+  background: transparent !important;
+}
+
+// Apply colors to elements in code blocks
+.cm-keyword, .cm-atom {
+  color: clr.$lavender-1 !important;
+}
+
+.cm-operator {
+  color: clr.$red-1 !important;
+}
+
+.cm-number, .cm-string {
+  color: clr.$green-1 !important; 
+}
+
+.cm-type {
+  color: clr.$blue-1 !important;
+}
+
+.cm-variable {
+  color: clr.$light-4 !important;
+}
+
+.cm-def, .cm-type {
+  color: clr.$blue-1 !important;
+}
+
+.cm-meta {
+  color: clr.$teal-1 !important;
+}
+
+// Inline code
+.cm-comment.cm-jn-inline-code {
+  background: clr.$view-bg-color !important;
+  border: none !important;
+  color: clr.$purple-1 !important;
+  font-family: fnt.$font-family-monospace !important;
+}
+
+// Tag bar
+.tag-bar {
+  padding: sp.$spacing-xs sp.$spacing !important;
+
+  button {
+    padding: 0 sp.$spacing-md !important;
+    border-radius: btn.$btn-radius-lg !important;
+    background: btn.$btn-bg !important;
+
+    &:hover {
+      background: btn.$btn-bg-light !important;  
+    }
+  }
+}
+
+// Set padding for rendered markdown
+.note-editor-viewer-row {
+  padding: sp.$spacing-md 0 0 sp.$spacing-md !important;
+}
+
+/* ==================
+   MODALS
+   ================== */
+
+   .dialog-modal-layer {
+    align-items: center !important;
+  
+    > .content {
+      display: flex !important;
+      flex-direction: column !important;
+      background: clr.$modal-bg-color !important;
+      border-radius: vars.$window-radius !important;
+      padding: 0 !important;
+      width: 25vw !important;
+
+      #note-properties-dialog-title {
+        margin: sp.$spacing-xxl sp.$spacing sp.$spacing sp.$spacing-lg;
+      }
+  
+      > div[role=table] {
+        border-radius: btn.$btn-radius-md !important;
+        margin: 0 sp.$spacing-lg sp.$spacing-lg !important;
+        overflow: hidden !important;
+
+        .note-property-box {
+          position: relative !important;
+          flex-direction: column !important;
+          justify-content: center;
+          align-items: start !important;
+          background: clr.$modal-row-bg-color !important;
+          padding: sp.$spacing-sm 25% calc(sp.$spacing-sm + 1px) sp.$spacing-lg !important;
+          height: sp.$modal-row-height !important;
+          margin-bottom: 0 !important;
+          border: 3px solid clr.$modal-row-bg-color !important;
+          border-bottom: 1px solid clr.$modal-bg-color !important;
+          box-sizing: border-box !important;
+  
+          label[role=rowheader] {
+            font-weight: fnt.$font-weight !important;
+            font-size: fnt.$font-size-sm !important;
+            color: clr.$light-5 !important;
+          }
+  
+          span[role=cell] {
+            display: flex !important;
+            width: 100% !important;
+            justify-content: space-between !important;
+            overflow: hidden !important;
+
+            > div {
+              color: clr.$light-1 !important;
+            }
+
+            a:not([style*="text-decoration: underline"]) {
+              background: clr.$modal-row-bg-color !important;
+              position: absolute !important;
+              right: sp.$spacing-lg !important;
+              top: 15% !important;
+
+              &:hover {
+                background: btn.$btn-bg !important;
+              }
+            }
+
+            .form-control {
+              padding-inline: 0 !important;
+              padding-block: 0 !important;
+              height: 23px !important;
+            }
+          }
+
+          input {
+            background: transparent !important;
+            border: none !important;
+          }
+
+          &:focus-within {
+              border: 3px solid clr.$blue-2 !important;
+          }
+
+          &:first-of-type {
+            &:focus-within {
+              border-top-left-radius: btn.$btn-radius-md !important;
+              border-top-right-radius: btn.$btn-radius-md !important;
+            }
+          }
+
+          &:last-of-type {
+            &:focus-within {
+              border-bottom-left-radius: btn.$btn-radius-md !important;
+              border-bottom-right-radius: btn.$btn-radius-md !important;
+            }
+          }
+        }
+      }
+  
+      .item-list {
+        background: transparent !important;
+  
+        > div {
+          border-bottom: none !important;
+  
+          > div {
+            color: clr.$light-3 !important;
+          }
+  
+          &.selected {
+            background: clr.$dark-2 !important;
+            border-radius: btn.$btn-radius !important;
+  
+            > div {
+              color: clr.$light-1 !important;
+            }
+          }
+        }
+      }
+  
+      > div:last-of-type:not(.dialog-root) {
+        display: flex !important;
+        flex-direction: row-reverse !important;
+        justify-content: space-between !important;
+        order: -1 !important;
+        padding: sp.$spacing-sm !important;
+        margin-top: 0 !important;
+        background: clr.$headerbar-bg-color !important;
+        border-top-left-radius: vars.$window-radius !important;
+        border-top-right-radius: vars.$window-radius !important;
+  
+        button {
+          color: clr.$light-1 !important;
+          margin-left: 0 !important;
+
+          &:first-of-type {
+            background: btn.$btn-bg-primary !important;
+
+            &:hover {
+              background: btn.$btn-bg-primary-light !important;
+            }
+          }
+        }
+      }
+
+      .dialog-root {
+        background: transparent !important;
+        border-radius: vars.$window-radius !important;
+        min-width: unset !important;
+        max-width: unset !important;
+        width: inherit !important;
+        display: flex !important;
+        flex-direction: column !important;
+
+        > div:last-of-type { // To-do: Create a mixin to reuse this code (headerbar)
+          display: flex !important;
+          flex-direction: row-reverse !important;
+          justify-content: space-between !important;
+          order: -1 !important;
+          padding: sp.$spacing-sm !important;
+          margin-top: 0 !important;
+          background: clr.$headerbar-bg-color !important;
+          border-top-left-radius: vars.$window-radius !important;
+          border-top-right-radius: vars.$window-radius !important;
+
+          button {
+            color: clr.$light-1 !important;
+            margin-left: 0 !important;
+  
+            &:first-of-type {
+              background: btn.$btn-bg-primary !important;
+  
+              &:hover {
+                background: btn.$btn-bg-primary-light !important;
+              }
+            }
+          }
+        }
+
+        .dialog-content {
+          background: transparent !important;
+        }
+      }
+    }
+
+    &::backdrop {
+      background-color: rgba(0, 0, 0, .4) !important;
+    }
+  }
