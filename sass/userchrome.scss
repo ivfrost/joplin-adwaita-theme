@@ -1,10 +1,15 @@
 // userchrome.scss
 
+@use './components/components.mixins.buttons' as mixBtn;
+@use './components/components.mixins.inputs' as mixInput;
+@use './components/components.mixins.modals' as mixModal;
+
+
 @use 'variables' as vars;
 @use 'fonts' as fnt;
 @use 'colors' as clr;
 @use 'spacing' as sp;
-@use 'buttons' as btn;
+@use './components/components.buttons' as btn;
 
 // Global styles
 * {
@@ -64,18 +69,7 @@ button {
 }
 
 button:not(.new-folder-button, .toolbar-button, .tag-list > button, .config-screen button, .emoji-picker button, .icon-selector-row > button) {
-  background: btn.$btn-bg !important;
-  border: none !important;
-  border-radius: btn.$btn-radius !important;
-  font-weight: fnt.$font-weight-boldest !important;
-  min: {
-    height: btn.$btn-size !important;
-    width: btn.$btn-size !important;
-  }
-
-  &:hover {
-    background: btn.$btn-bg-light !important;
-  }
+  @include mixBtn.buttonDefault;
 }
 
 .sidebar > div:last-of-type { // Synchronization button
@@ -83,17 +77,7 @@ button:not(.new-folder-button, .toolbar-button, .tag-list > button, .config-scre
   margin-bottom: 3px !important;
 
   button {
-    background-color: btn.$btn-bg !important;
-    cursor: default !important;
-
-    &:hover {
-      background-color: btn.$btn-bg-light !important;
-      opacity: 1 !important;
-
-      span:nth-of-type(2) {
-        color: clr.$light-1 !important;
-      }
-    }
+    @include mixBtn.buttonDefault;
   }
 }
 
@@ -103,27 +87,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 
 // Toolbar button styles
 .button, .toolbar-button, .new-folder-button, .tag-list > button, span[role=cell] a:not([style*="text-decoration: underline"]) { 
-  border: none !important;
-  border-radius: btn.$btn-radius-sm !important;
-  height: btn.$btn-size-toolbar !important;
-  min-width: btn.$btn-size-toolbar !important;
-  opacity: 1 !important;
-  padding: 0 !important;
-
-  &.disabled {
-    span, i {
-      color: clr.$icon-color !important;
-      opacity: .4 !important;
-    }
-
-    &:hover {
-      background: transparent !important;
-    }
-  }
-
-  &:hover {
-    background: btn.$btn-bg-light !important;
-  }
+  @include mixBtn.buttonToolbar;
 }
 
 // New folder button styles
@@ -149,18 +113,6 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 
   button.new-note-button, button.new-todo-button {
     min-width: min-content !important;
-
-    span {
-      color: clr.$light-1 !important;
-    }
-  }
-
-  button.new-note-button {
-    background: btn.$btn-bg-primary !important;
-  }
-
-  button.new-note-button:hover {
-    background: btn.$btn-bg-primary-light !important;
   }
 }
 
@@ -265,6 +217,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 
   i {
     color: clr.$icon-color !important;
+    opacity: 1 !important;
   }
 
   &:hover {
@@ -283,8 +236,6 @@ div > .bLqnaV > .UdFVY { // Synchronization message
     }
   }
 }
-
-// TO-DO Depth Aria Level Div [aria-level^=X]
 
 // Tags section
 .sidebar-list-items-wrapper .sidebar-spacer-item {
@@ -493,6 +444,10 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   display: none !important;
 }
 
+.CodeMirror {
+  background: clr.$window-bg-color !important;
+}
+
 .CodeMirror-scroll {
   background: clr.$window-bg-color !important;
 }
@@ -627,20 +582,23 @@ span.cm-image {
     align-items: center !important;
   
     > .content {
+      position: relative !important;
       display: flex !important;
       flex-direction: column !important;
       background: clr.$modal-bg-color !important;
       border-radius: vars.$window-radius !important;
       padding: 0 !important;
-      width: 25vw !important;
+      min-width: 400px !important;
 
       #note-properties-dialog-title {
-        margin: sp.$spacing-xxl sp.$spacing sp.$spacing sp.$spacing-lg;
+        @include mixModal.positionModalTitle;
+        margin-bottom: 0 !important;
+        top: 5% !important;
       }
   
       > div[role=table] {
         border-radius: btn.$btn-radius-md !important;
-        margin: 0 sp.$spacing-lg sp.$spacing-lg !important;
+        margin: sp.$spacing-lg sp.$spacing-lg !important;
         overflow: hidden !important;
 
         .note-property-box {
@@ -672,14 +630,22 @@ span.cm-image {
               color: clr.$light-1 !important;
             }
 
+            a {
+              background:  transparent !important;
+            }
+
+            a[style*="text-decoration: underline"] {
+              color: clr.$blue-1 !important;
+              text-decoration: underline !important;
+            }
+
             a:not([style*="text-decoration: underline"]) {
-              background: clr.$modal-row-bg-color !important;
               position: absolute !important;
               right: sp.$spacing-lg !important;
               top: 15% !important;
 
               &:hover {
-                background: btn.$btn-bg !important;
+                background: btn.$btn-bg-lighter !important;
               }
             }
 
@@ -693,6 +659,12 @@ span.cm-image {
           input {
             background: transparent !important;
             border: none !important;
+          }
+
+          &:hover {
+            background: clr.$modal-row-bg-color-hover !important;
+            border: 3px solid clr.$modal-row-bg-color-hover !important;
+            border-bottom: 1px solid clr.$modal-bg-color !important;
           }
 
           &:focus-within {
@@ -762,6 +734,7 @@ span.cm-image {
       }
 
       .dialog-root {
+        position: relative !important;
         background: transparent !important;
         border-radius: vars.$window-radius !important;
         min-width: unset !important;
@@ -770,33 +743,38 @@ span.cm-image {
         display: flex !important;
         flex-direction: column !important;
 
-        > div:last-of-type { // To-do: Create a mixin to reuse this code (headerbar)
-          display: flex !important;
-          flex-direction: row-reverse !important;
-          justify-content: space-between !important;
-          order: -1 !important;
-          padding: sp.$spacing-sm !important;
-          margin-top: 0 !important;
-          background: clr.$headerbar-bg-color !important;
-          border-top-left-radius: vars.$window-radius !important;
-          border-top-right-radius: vars.$window-radius !important;
+        > .bXOgJJ {
+          @include mixModal.positionModalTitle;
+        }
 
-          button {
-            color: clr.$light-1 !important;
-            margin-left: 0 !important;
-  
-            &:first-of-type {
-              background: btn.$btn-bg-primary !important;
-  
-              &:hover {
-                background: btn.$btn-bg-primary-light !important;
-              }
-            }
-          }
+        > div:last-of-type {
+          @include mixModal.headerBar;
         }
 
         .dialog-content {
           background: transparent !important;
+
+          .form-input-group {
+            input {
+              @include mixInput.input;
+            }
+
+            button:not(.emoji-picker__emoji, .emoji-picker__category-buttons, .emoji-picker__category-button) {
+              @include mixBtn.buttonToolbar;
+              background:  btn.$btn-bg !important;
+              padding: 0 btn.$btn-padding !important;
+            }
+          }
+
+          .emoji-picker.light {
+            background: clr.$modal-bg-color !important;
+            border-radius: vars.$window-radius !important;
+            border: none !important;
+
+            .emoji-picker__preview {
+              border-top: 1px solid clr.$separator-color !important;
+            }
+          }
         }
       }
     }

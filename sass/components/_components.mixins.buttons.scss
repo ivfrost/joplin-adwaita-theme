@@ -1,0 +1,53 @@
+// _components.mixins.buttons.scss
+
+@use '../fonts' as fnt;
+@use '../colors' as clr;
+@use 'components.buttons' as btn;
+
+@mixin buttonDefault() {
+    background: btn.$btn-bg !important;
+    border: none !important;
+    border-radius: btn.$btn-radius !important;
+    font-weight: fnt.$font-weight-boldest !important;
+    min: {
+        height: btn.$btn-size !important;
+        width: btn.$btn-size !important;
+    }
+
+    span {
+        color: clr.$light-1 !important;
+    }
+
+    &:hover {
+        background: btn.$btn-bg-light !important;
+        opacity: 1 !important;
+    }
+}
+
+@mixin buttonToolbar {
+    border: none !important;
+    border-radius: btn.$btn-radius-sm !important;
+    height: btn.$btn-size-toolbar !important;
+    min-width: btn.$btn-size-toolbar !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+
+    span {
+        color: clr.$light-1 !important;
+    }
+
+    &.disabled {
+        span, i {
+        color: clr.$icon-color !important;
+        opacity: .4 !important;
+        }
+
+        &:hover {
+        background: transparent !important;
+        }
+    }
+
+    &:hover {
+        background: btn.$btn-bg-light !important;
+    }
+}

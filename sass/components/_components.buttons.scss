@@ -1,10 +1,11 @@
-// _buttons.scss
+// _components.buttons.scss
+
 @use "sass:color";
 @use "sass:math";
 
 $btn-bg: #444444;
 $btn-bg-light: #4f4f4f;
-$btn-bg-lighter: #4b4b4b;
+$btn-bg-lighter: #494949;
 
 $btn-bg-primary: #3584e4;
 $btn-bg-primary-light: #4990e7;

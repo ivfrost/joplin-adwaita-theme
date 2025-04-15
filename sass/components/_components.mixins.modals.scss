@@ -1,0 +1,39 @@
+// _components.mixins.modals
+
+@use '../variables' as vars;
+@use '../fonts' as fnt;
+@use '../colors' as clr;
+@use '../spacing' as sp;
+@use 'components.buttons' as btn;
+
+@mixin positionModalTitle() {
+    position: absolute !important;
+    transform: translate(-50%, -50%) !important;
+    left: 50% !important;
+    top: 11% !important;
+}
+
+@mixin headerBar() {
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    order: -1 !important;
+    padding: sp.$spacing-sm !important;
+    margin-top: 0 !important;
+    background: clr.$headerbar-bg-color !important;
+    border-top-left-radius: vars.$window-radius !important;
+    border-top-right-radius: vars.$window-radius !important;
+
+    button {
+    color: clr.$light-1 !important;
+    margin-left: 0 !important;
+
+    &:first-of-type {
+        background: btn.$btn-bg-primary !important;
+
+        &:hover {
+        background: btn.$btn-bg-primary-light !important;
+        }
+    }
+    }
+}

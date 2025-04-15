@@ -1,0 +1,48 @@
+// _components.mixins.inputs.scss
+
+@use '../fonts' as fnt;
+@use '../colors' as clr;
+@use 'components.buttons' as btn;
+
+@mixin input {
+    background: btn.$btn-bg !important;
+    border: 3px solid btn.$btn-bg !important;
+    border-radius: btn.$btn-radius !important;
+    height: btn.$btn-size-toolbar !important;
+    min-height: btn.$btn-size-toolbar !important;
+    min-width: 120px !important;
+    box-sizing: border-box !important;
+  
+    div {
+      flex-direction: row-reverse !important;
+  
+      input {
+        background: transparent !important;
+        border: none !important;
+        max-height: none !important;
+        height: 100% !important;
+        font-size: fnt.$font-size !important;
+        font-weight: fnt.$font-weight !important;
+        color: clr.$light-3 !important;
+        padding: 0 !important;
+      }
+  
+      button {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        position: relative !important;
+        min-height: 0 !important;
+        min-width: 28px !important;
+        background: transparent !important;
+  
+        span {
+          display: block !important;
+          line-height: 2 !important;
+        }
+      }
+    }
+  
+    &:focus-within {
+      border: 3px solid clr.$blue-2 !important;
+    }
+}

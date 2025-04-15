@@ -1,10 +1,9 @@
 // userstyle.scss
 
-@use 'variables' as vars;
 @use 'fonts' as fnt;
 @use 'colors' as clr;
 @use 'spacing' as sp;
-@use 'buttons' as btn;
+@use './components/components.buttons' as btn;
 
 #rendered-md, body, th, td {
   background-color: clr.$window-bg-color !important;
