@@ -24,6 +24,15 @@
     }
 }
 
+@mixin buttonPrimary() {
+    @include buttonDefault();
+    background: btn.$btn-bg-primary !important;
+
+    &:hover {
+        background: btn.$btn-bg-primary-light !important;
+    }
+}
+
 @mixin buttonToolbar {
     border: none !important;
     border-radius: btn.$btn-radius-sm !important;
@@ -33,7 +42,7 @@
     padding: 0 !important;
 
     span {
-        color: clr.$light-1 !important;
+        color: clr.$icon-color !important;
     }
 
     &.disabled {

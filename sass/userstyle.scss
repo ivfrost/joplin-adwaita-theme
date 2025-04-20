@@ -6,7 +6,7 @@
 @use './components/components.buttons' as btn;
 
 #rendered-md, body, th, td {
-  background-color: clr.$window-bg-color !important;
+  background: clr.$window-bg-color !important;
   font-family: fnt.$font-family !important;
   font-size: fnt.$font-size !important;
 }
@@ -21,9 +21,9 @@ hr {
   margin: 2.5em 0 !important;
 }
 
-/*********************************************************************************
-* TITLES
-*********************************************************************************/
+/* ==================
+   HEADINGS
+   ================== */
 
 h1 {
   color: clr.$light-1 !important;
@@ -46,9 +46,9 @@ h3, h4, h5, h6 {
   font-weight: fnt.$font-weight-bold!important;
 }
 
-/*********************************************************************************
-* LINKS
-*********************************************************************************/
+/* ==================
+   LINKS
+   ================== */
 
 a {
   color: clr.$blue-1 !important;
@@ -61,12 +61,12 @@ a:hover {
 
 /* Joplin icon in Joplin link */
 .resource-icon {
-  background-color: clr.$purple-1 !important;
+  background: clr.$purple-1 !important;
 }
 
-/*********************************************************************************
-* CODE BLOCK
-*********************************************************************************/
+/* ==================
+   CODE BLOCK
+   ================== */
 
 pre, .hljs {
   border-radius: btn.$btn-radius !important;
@@ -75,7 +75,7 @@ pre, .hljs {
 
 /* Inline code */
 .inline-code {
-  background-color: btn.$btn-bg-light !important;
+  background: btn.$btn-bg-light !important;
   border: none !important;
   border-radius: 4px;
   color: clr.$light-3 !important;
@@ -84,23 +84,26 @@ pre, .hljs {
   padding: .16em .4em .2em !important;
 }
 
-/*********************************************************************************
-* BLOCKQUOTE
-*********************************************************************************/
+/* ==================
+   BLOCKQUOTE
+   ================== */
 
 blockquote {
-  background-color: var(--card-bg-color) !important;
-  padding: 10px !important;
-  color: var(--light) !important;
-  font-size: 14px !important;
+  background: clr.$blockquote-bg-color !important;
+  padding: sp.$spacing-lg !important;
   font-style: italic !important;
   border: 0 !important;
-  border-left: 5px solid clr.$dark-1 !important;
+  border-left: 5px solid clr.$dark-2 !important;
+  opacity: 1 !important;
+
+  p {
+    color: clr.$light-4 !important;
+  }
 }
 
-/*********************************************************************************
-* TABLES
-*********************************************************************************/
+/* ==================
+   TODO: TABLES
+   ================== */
 
 th {
   border: 1px solid clr.$separator-color !important;
@@ -114,12 +117,12 @@ td {
   border-bottom: 1px solid clr.$separator-color !important;
 }
 
-/*********************************************************************************
-* HIGHLIGHTING
-*********************************************************************************/
+/* ==================
+   HIGHLIGHTING
+   ================== */
 
 ::selection {
-  background-color: clr.$note-bg-selected !important;
+  background: clr.$note-bg-selected !important;
   color: clr.$light-1 !important;
 }
 
@@ -130,18 +133,18 @@ mark, mark strong {
 
 /* Highlighted searched item */
 mark[data-markjs] {
-  background-color: clr.$purple-1 !important;
+  background: clr.$purple-1 !important;
 }
 
-/*********************************************************************************
-* PLUGINS
-*********************************************************************************/
+/* ==================
+   PLUGINS
+   ================== */
 
-/* CodePerfect (https://joplinapp.org/plugins/plugin/jl15988.JoplinCodePerfectPlugin/) */
+// CodePerfect (https://joplinapp.org/plugins/plugin/jl15988.JoplinCodePerfectPlugin/) */
 
-/* Set code block background, border radius, font style and spacing */
+// Set code block background, border radius, font style and spacing
 .code-perfect-container pre.hljs {
-  background-color: clr.$view-bg-color !important;
+  background: clr.$view-bg-color !important;
   border-radius: btn.$btn-radius !important;
   padding: 0 0 0 32px !important;
 }
@@ -162,7 +165,7 @@ mark[data-markjs] {
   border-radius: 0 !important;
 }
 
-/* Apply colors to elements in code block */
+// Apply colors to elements in code block
 .code-perfect-container pre.hljs span {
   color: clr.$light-5!important;
 }
@@ -204,7 +207,7 @@ mark[data-markjs] {
   color: clr.$dark-1 !important;
 }
 
-/* Adjust line number position and set color */ 
+// Adjust line number position and set color 
 .code-perfect-container pre.hljs ul.hljs-line-num {
   padding: 1em 8px !important;
   border-right: none !important;
@@ -214,9 +217,9 @@ mark[data-markjs] {
   color: clr.$dark-2 !important;
 }
 
-/* Github Alerts (https://discourse.joplinapp.org/t/plugin-github-alerts/42902) */
+// Github Alerts (https://discourse.joplinapp.org/t/plugin-github-alerts/42902)
 
-/* Apply colors to callouts */
+// Apply colors to callouts
 .markdown-alert.markdown-alert-warning {
   border-left-color: clr.$yellow-1 !important;
   > .markdown-alert-title {
@@ -252,14 +255,14 @@ mark[data-markjs] {
   }
 }
 
-/*********************************************************************************
-* PRINT VERSION
-*********************************************************************************/
+/* ==================
+   PRINT VERSION
+   ================== */
 
 @media print {
   #rendered-md, body, th, td {
-    /* background-color: var(--white) !important; */
-    background-color: clr.$light-1 !important;
+    /* background: var(--white) !important; */
+    background: clr.$light-1 !important;
     font-family: fnt.$font-family !important;
   }
 
@@ -321,17 +324,16 @@ mark[data-markjs] {
   }
 
   blockquote {
-    background-color: clr.$light-2 !important;
+    background: clr.$light-2 !important;
     padding: 10px !important;
     color: clr.$dark-2 !important;
-    font-size: 14px !important;
     font-style: italic !important;
     border: 0 !important;
     border-left: 5px solid clr.$dark-3 !important;
   }
 
   .inline-code {
-    background-color: clr.$light-2 !important;
+    background: clr.$light-2 !important;
     border: none !important;
     border-radius: 4px;
     color: clr.$dark-3 !important;

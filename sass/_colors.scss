@@ -13,8 +13,6 @@ $red-1: #f66151;
 $purple-1: #dc8add;
 $lavender-1: #a18ee0;
 
-$color-array: $blue-1, $teal-1, $yellow-1, $orange-1, $red-1, $purple-1, $lavender-1;
-
 $light-1: #ffffff;
 $light-2: #f6f5f4;
 $light-3: #deddda;
@@ -35,20 +33,21 @@ $modal-row-bg-color: #353535;
 $modal-row-bg-color-hover: #3b3b3b;
 
 $sidebar-bg-color: $headerbar-bg-color;
-$sidebar-backdrop-color: #2a2a2a;
-
 $secondary-sidebar-bg-color: #2a2a2a;
-$secondary-sidebar-backdrop-color: #272727;
+$editor-bg-toolbar: $secondary-sidebar-bg-color;
 
 $note-bg-hover: hsl(240, 4.76%, 22.47%);
 $note-bg-selected: hsl(213.21, 43.08%, 25.49%);
 $note-bg-selected-hover: hsl(213.21, 43.08%, 28.49%);
 
+$blockquote-bg-color: #292929;
+
 $modal-bg-color: $window-bg-color;
+$modal-backdrop-color: rgba(0, 0, 0, .4);
 
 $separator-color: #4f4f4f;
 
-$icon-color: $light-3;
+$icon-color: $light-4;
 $icon-color-disabled: color.adjust($icon-color, $lightness: -60%);
 
 $icon-color-disabled-lighter: color.adjust($icon-color, $lightness: -40%);

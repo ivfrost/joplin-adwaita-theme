@@ -31,7 +31,7 @@ html, body {
     height: 100vh !important;
   }
 
-  background-color: clr.$secondary-sidebar-bg-color !important;
+  background: clr.$secondary-sidebar-bg-color !important;
   height: 100vh !important; // Remove empty space at the bottom of the window
 }
 
@@ -110,6 +110,10 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 .new-note-todo-buttons {
   gap: sp.$spacing !important;
   margin: 0 0 sp.$spacing 0 !important;
+
+  button.new-note-button {
+    @include mixBtn.buttonPrimary();
+  }
 
   button.new-note-button, button.new-todo-button {
     min-width: min-content !important;
@@ -205,6 +209,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   height: btn.$btn-size !important;
   padding: 0 sp.$spacing-lg !important;
   margin: 0 0 sp.$spacing-xxs calc(var(--depth)* sp.$spacing-md - sp.$spacing-md);
+  opacity: 1 !important;
 
   .note-count-label {
     color: clr.$light-3 !important;
@@ -213,6 +218,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   a.list-item {
     padding: 0 !important;
     order: -1 !important;
+    color: clr.$light-1 !important;
   }
 
   i {
@@ -301,7 +307,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 
       span {
         display: block !important;
-        line-height: 2 !important;
+        color: clr.$icon-color !important;
       }
     }
   }
@@ -328,6 +334,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
       background: transparent !important; // Remove default note background
       height: btn.$btn-size-toolbar !important;
       border-radius: btn.$btn-radius-sm !important;
+      padding-left: sp.$spacing-md !important;
 
       &.-selected {
         background: clr.$note-bg-selected !important;
@@ -368,7 +375,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 }
 
 .note-title-wrapper {
-  padding: sp.$spacing-xxs sp.$spacing-lg 0 calc(sp.$spacing-lg) !important;
+  padding: sp.$spacing-xxs sp.$spacing-lg 0 sp.$spacing-lg !important;
 
   .title-input {
     background: clr.$window-bg-color !important;
@@ -381,7 +388,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   
   > .updated-time-label {
     margin: 0 sp.$spacing-xs !important;
-    color: clr.$light-3 !important;
+    color: clr.$light-4 !important;
   }
 
   > .editor-toolbar {
@@ -422,7 +429,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 }
 
 .editor-toolbar {
-  background: clr.$secondary-sidebar-bg-color !important;
+  background: clr.$editor-bg-toolbar !important;
   border-radius: btn.$btn-radius !important;
   height: sp.$toolbar-height !important;
   margin: sp.$spacing-xxs sp.$spacing-lg !important;
@@ -431,10 +438,12 @@ div > .bLqnaV > .UdFVY { // Synchronization message
     
     > span {
       font-size: .9em !important;
+      line-height: 1 !important;
+      padding: 0 0 3px !important;
     }
 
     &.-has-title {
-      padding: 0 sp.$spacing !important;
+      padding: 0 3px !important;
     }
   }
 }
@@ -556,11 +565,14 @@ span.cm-image {
 
 // Tag bar
 .tag-bar {
-  padding: sp.$spacing-xs sp.$spacing !important;
+  padding: sp.$spacing-xs sp.$spacing-md !important;
 
   button {
+    color: clr.$light-3 !important;
     padding: 0 sp.$spacing-md !important;
     border-radius: btn.$btn-radius-lg !important;
+    height: btn.$btn-size-toolbar !important;
+    min-width: btn.$btn-size-toolbar !important;
     background: btn.$btn-bg !important;
 
     &:hover {
@@ -780,6 +792,6 @@ span.cm-image {
     }
 
     &::backdrop {
-      background-color: rgba(0, 0, 0, .4) !important;
+      background:  clr.$modal-backdrop-color !important;
     }
   }
