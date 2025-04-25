@@ -1,15 +1,14 @@
 // userchrome.scss
 
-@use './components/components.mixins.buttons' as mixBtn;
-@use './components/components.mixins.inputs' as mixInput;
-@use './components/components.mixins.modals' as mixModal;
+@use "./components/components.mixins.buttons" as mixBtn;
+@use "./components/components.mixins.inputs" as mixInput;
+@use "./components/components.mixins.modals" as mixModal;
 
-
-@use 'variables' as vars;
-@use 'fonts' as fnt;
-@use 'colors' as clr;
-@use 'spacing' as sp;
-@use './components/components.buttons' as btn;
+@use "variables" as vars;
+@use "fonts" as fnt;
+@use "colors" as clr;
+@use "spacing" as sp;
+@use "./components/components.buttons" as btn;
 
 // Global styles
 * {
@@ -17,7 +16,8 @@
   font-size: fnt.$font-size !important;
 }
 
-html, body {
+html,
+body {
   color: clr.$light-1 !important;
   font-family: fnt.$font-family !important;
   font-size: fnt.$font-size !important;
@@ -44,12 +44,16 @@ html, body {
    ================== */
 
 // Icons
-[class^="icon-"], [class*=" icon-"],
-[class^=" fa-"], [class*=" fa-"], [class^=" fas-"], [class*=" fas-"],
+[class^="icon-"],
+[class*=" icon-"],
+[class^=" fa-"],
+[class*=" fa-"],
+[class^=" fas-"],
+[class*=" fas-"],
 .emoji-box {
   color: clr.$icon-color !important;
   font-size: fnt.$icon-size !important;
-  font-family: 'awesome-adwaita-icons', 'icomoon', 'Font Awesome 5 Free' !important;
+  font-family: "awesome-adwaita-icons", "icomoon", "Font Awesome 5 Free" !important;
   font-weight: fnt.$font-weight !important;
 }
 
@@ -57,7 +61,6 @@ html, body {
 .toolbar-button > .icon-tags::before {
   content: "\e907";
 }
-
 
 /* ==================
    BUTTONS
@@ -68,11 +71,19 @@ button {
   cursor: default !important;
 }
 
-button:not(.new-folder-button, .toolbar-button, .tag-list > button, .config-screen button, .emoji-picker button, .icon-selector-row > button) {
+button:not(
+    .new-folder-button,
+    .toolbar-button,
+    .tag-list > button,
+    .config-screen button,
+    .emoji-picker button,
+    .icon-selector-row > button
+  ) {
   @include mixBtn.buttonDefault;
 }
 
-.sidebar > div:last-of-type { // Synchronization button
+.sidebar > div:last-of-type {
+  // Synchronization button
   background: transparent !important;
   margin-bottom: 3px !important;
 
@@ -81,12 +92,17 @@ button:not(.new-folder-button, .toolbar-button, .tag-list > button, .config-scre
   }
 }
 
-div > .bLqnaV > .UdFVY { // Synchronization message
+div > .bLqnaV > .UdFVY {
+  // Synchronization message
   color: clr.$light-3 !important;
 }
 
 // Toolbar button styles
-.button, .toolbar-button, .new-folder-button, .tag-list > button, span[role=cell] a:not([style*="text-decoration: underline"]) { 
+.button,
+.toolbar-button,
+.new-folder-button,
+.tag-list > button,
+span[role="cell"] a:not([style*="text-decoration: underline"]) {
   @include mixBtn.buttonToolbar;
 }
 
@@ -99,7 +115,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   i {
     color: clr.$light-1 !important;
   }
-  
+
   &:hover {
     background: btn.$btn-bg-light !important;
     color: clr.$light-1 !important;
@@ -111,17 +127,15 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   gap: sp.$spacing !important;
   margin: 0 0 sp.$spacing 0 !important;
 
-  button.new-note-button {
-    @include mixBtn.buttonPrimary();
-  }
-
-  button.new-note-button, button.new-todo-button {
+  button.new-note-button,
+  button.new-todo-button {
     min-width: min-content !important;
   }
 }
 
 // Sort order button styles
-.search-and-sort button.sort-order-field-button, .search-and-sort button.sort-order-reverse-button {
+.search-and-sort button.sort-order-field-button,
+.search-and-sort button.sort-order-reverse-button {
   border-radius: 0 !important;
   min-height: btn.$btn-size-toolbar !important;
 
@@ -137,7 +151,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   min-width: btn.$btn-size-toolbar + 1px !important; // Compensate separator size
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     right: 0px;
     height: 100%;
@@ -152,7 +166,6 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   min-width: btn.$btn-size-toolbar !important;
 }
 
-
 /* ==================
    NOTEBOOKS SIDEBAR
    ================== */
@@ -166,7 +179,8 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 }
 
 // Notebooks section
-.all-notes { // Hide "All notes" button
+.all-notes {
+  // Hide "All notes" button
   display: none !important;
 }
 
@@ -180,7 +194,8 @@ div > .bLqnaV > .UdFVY { // Synchronization message
       padding: 0 !important;
     }
 
-    span, i {
+    span,
+    i {
       color: clr.$light-1 !important;
       font-weight: fnt.$font-weight !important;
       text-transform: capitalize !important;
@@ -208,7 +223,8 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   border-radius: btn.$btn-radius-sm !important;
   height: btn.$btn-size !important;
   padding: 0 sp.$spacing-lg !important;
-  margin: 0 0 sp.$spacing-xxs calc(var(--depth)* sp.$spacing-md - sp.$spacing-md);
+  margin: 0 0 sp.$spacing-xxs
+    calc(var(--depth) * sp.$spacing-md - sp.$spacing-md);
   opacity: 1 !important;
 
   .note-count-label {
@@ -218,7 +234,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   a.list-item {
     padding: 0 !important;
     order: -1 !important;
-    color: clr.$light-1 !important;
+    opacity: 1 !important;
   }
 
   i {
@@ -229,7 +245,8 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   &:hover {
     background: btn.$btn-bg !important;
 
-    a, i {
+    a,
+    i {
       opacity: 1 !important;
     }
   }
@@ -250,7 +267,6 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   margin: sp.$spacing-md 0 !important;
 }
 
-
 /* ==================
    NOTES SIDEBAR
    ================== */
@@ -263,11 +279,12 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 
     .notes {
       margin: 0 10px 0 0 !important;
-    } 
+    }
   }
 }
 
-.dUXxSp { // Remove padding and background of note controls and force flex direction
+.dUXxSp {
+  // Remove padding and background of note controls and force flex direction
   background: transparent !important;
   padding: 0 !important;
   flex-direction: column !important;
@@ -321,7 +338,8 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 .note-list {
   background: transparent !important; // Remove background of note list
 
-  .emptylist { // Remove background of empty note list message
+  .emptylist {
+    // Remove background of empty note list message
     background: transparent !important;
   }
 }
@@ -334,7 +352,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
       background: transparent !important; // Remove default note background
       height: btn.$btn-size-toolbar !important;
       border-radius: btn.$btn-radius-sm !important;
-      padding-left: sp.$spacing-md !important;
+      padding: 0 sp.$spacing !important;
 
       &.-selected {
         background: clr.$note-bg-selected !important;
@@ -358,7 +376,6 @@ div > .bLqnaV > .UdFVY { // Synchronization message
     }
   }
 }
-
 
 /* ==================
    EDITOR
@@ -385,7 +402,7 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 
 .note-title-info-group {
   height: btn.$btn-size !important;
-  
+
   > .updated-time-label {
     margin: 0 sp.$spacing-xs !important;
     color: clr.$light-4 !important;
@@ -398,17 +415,17 @@ div > .bLqnaV > .UdFVY { // Synchronization message
     height: btn.$btn-size-toolbar !important;
 
     button.toolbar-button {
-
       > span {
         font-size: fnt.$font-size !important;
       }
 
       &.disabled {
-        span, i {
+        span,
+        i {
           color: clr.$icon-color !important;
-          opacity: .3 !important;
+          opacity: 0.3 !important;
         }
-    
+
         &:hover {
           background: transparent !important;
         }
@@ -435,9 +452,8 @@ div > .bLqnaV > .UdFVY { // Synchronization message
   margin: sp.$spacing-xxs sp.$spacing-lg !important;
 
   button.toolbar-button {
-    
     > span {
-      font-size: .9em !important;
+      font-size: 0.9em !important;
       line-height: 1 !important;
       padding: 0 0 3px !important;
     }
@@ -473,19 +489,23 @@ div > .bLqnaV > .UdFVY { // Synchronization message
 }
 
 // Italics/Emphasis, Bold, BoldItalics
-.cm-em, .cm-strong, .cm-strong.cm-em {
+.cm-em,
+.cm-strong,
+.cm-strong.cm-em {
   color: clr.$green-1 !important;
 }
 
 // Lists (Bullet/number/todo)
-.cm-variable-2, .cm-variable-3, .cm-keyword {
+.cm-variable-2,
+.cm-variable-3,
+.cm-keyword {
   color: clr.$light-4 !important;
 }
 
 // Links (link)
-div.CodeMirror span.cm-url  {
+div.CodeMirror span.cm-url {
   color: clr.$blue-1 !important;
-  opacity: .7 !important;
+  opacity: 0.7 !important;
   text-decoration: underline !important;
 }
 
@@ -505,7 +525,7 @@ span.cm-image {
 
 // Horizontal line
 .cm-hr {
-  color: clr.$separator-color!important;
+  color: clr.$separator-color !important;
 }
 
 .cm-variable-2.cm-strong {
@@ -527,7 +547,8 @@ span.cm-image {
 }
 
 // Apply colors to elements in code blocks
-.cm-keyword, .cm-atom {
+.cm-keyword,
+.cm-atom {
   color: clr.$lavender-1 !important;
 }
 
@@ -535,8 +556,9 @@ span.cm-image {
   color: clr.$red-1 !important;
 }
 
-.cm-number, .cm-string {
-  color: clr.$green-1 !important; 
+.cm-number,
+.cm-string {
+  color: clr.$green-1 !important;
 }
 
 .cm-type {
@@ -547,7 +569,8 @@ span.cm-image {
   color: clr.$light-4 !important;
 }
 
-.cm-def, .cm-type {
+.cm-def,
+.cm-type {
   color: clr.$blue-1 !important;
 }
 
@@ -576,222 +599,226 @@ span.cm-image {
     background: btn.$btn-bg !important;
 
     &:hover {
-      background: btn.$btn-bg-light !important;  
+      background: btn.$btn-bg-light !important;
     }
   }
 }
 
-// Set padding for rendered markdown
+// Adjust padding for editor and rendered markdown
 .note-editor-viewer-row {
-  padding: sp.$spacing-md 0 0 sp.$spacing-md !important;
+  padding: sp.$spacing 0 0 sp.$spacing-md !important;
 }
 
 /* ==================
    MODALS
    ================== */
 
-   .dialog-modal-layer {
-    align-items: center !important;
-  
-    > .content {
-      position: relative !important;
-      display: flex !important;
-      flex-direction: column !important;
-      background: clr.$modal-bg-color !important;
-      border-radius: vars.$window-radius !important;
-      padding: 0 !important;
-      min-width: 400px !important;
+.dialog-modal-layer {
+  align-items: center !important;
 
-      #note-properties-dialog-title {
-        @include mixModal.positionModalTitle;
+  > .content {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: clr.$modal-bg-color !important;
+    border-radius: vars.$window-radius !important;
+    padding: 0 !important;
+    min-width: 400px !important;
+
+    #note-properties-dialog-title {
+      @include mixModal.positionModalTitle;
+      margin-bottom: 0 !important;
+      top: 5% !important;
+    }
+
+    > div[role="table"] {
+      border-radius: btn.$btn-radius-md !important;
+      margin: sp.$spacing-lg sp.$spacing-lg !important;
+      overflow: hidden !important;
+
+      .note-property-box {
+        position: relative !important;
+        flex-direction: column !important;
+        justify-content: center;
+        align-items: start !important;
+        background: clr.$modal-row-bg-color !important;
+        padding: sp.$spacing-sm 25% calc(sp.$spacing-sm + 1px) sp.$spacing-lg !important;
+        height: sp.$modal-row-height !important;
         margin-bottom: 0 !important;
-        top: 5% !important;
-      }
-  
-      > div[role=table] {
-        border-radius: btn.$btn-radius-md !important;
-        margin: sp.$spacing-lg sp.$spacing-lg !important;
-        overflow: hidden !important;
+        border: 3px solid clr.$modal-row-bg-color !important;
+        border-bottom: 1px solid clr.$modal-bg-color !important;
+        box-sizing: border-box !important;
 
-        .note-property-box {
-          position: relative !important;
-          flex-direction: column !important;
-          justify-content: center;
-          align-items: start !important;
-          background: clr.$modal-row-bg-color !important;
-          padding: sp.$spacing-sm 25% calc(sp.$spacing-sm + 1px) sp.$spacing-lg !important;
-          height: sp.$modal-row-height !important;
-          margin-bottom: 0 !important;
-          border: 3px solid clr.$modal-row-bg-color !important;
-          border-bottom: 1px solid clr.$modal-bg-color !important;
-          box-sizing: border-box !important;
-  
-          label[role=rowheader] {
-            font-weight: fnt.$font-weight !important;
-            font-size: fnt.$font-size-sm !important;
-            color: clr.$light-5 !important;
-          }
-  
-          span[role=cell] {
-            display: flex !important;
-            width: 100% !important;
-            justify-content: space-between !important;
-            overflow: hidden !important;
-
-            > div {
-              color: clr.$light-1 !important;
-            }
-
-            a {
-              background:  transparent !important;
-            }
-
-            a[style*="text-decoration: underline"] {
-              color: clr.$blue-1 !important;
-              text-decoration: underline !important;
-            }
-
-            a:not([style*="text-decoration: underline"]) {
-              position: absolute !important;
-              right: sp.$spacing-lg !important;
-              top: 15% !important;
-
-              &:hover {
-                background: btn.$btn-bg-lighter !important;
-              }
-            }
-
-            .form-control {
-              padding-inline: 0 !important;
-              padding-block: 0 !important;
-              height: 23px !important;
-            }
-          }
-
-          input {
-            background: transparent !important;
-            border: none !important;
-          }
-
-          &:hover {
-            background: clr.$modal-row-bg-color-hover !important;
-            border: 3px solid clr.$modal-row-bg-color-hover !important;
-            border-bottom: 1px solid clr.$modal-bg-color !important;
-          }
-
-          &:focus-within {
-              border: 3px solid clr.$blue-2 !important;
-          }
-
-          &:first-of-type {
-            &:focus-within {
-              border-top-left-radius: btn.$btn-radius-md !important;
-              border-top-right-radius: btn.$btn-radius-md !important;
-            }
-          }
-
-          &:last-of-type {
-            &:focus-within {
-              border-bottom-left-radius: btn.$btn-radius-md !important;
-              border-bottom-right-radius: btn.$btn-radius-md !important;
-            }
-          }
+        label[role="rowheader"] {
+          font-weight: fnt.$font-weight !important;
+          font-size: fnt.$font-size-sm !important;
+          color: clr.$light-5 !important;
         }
-      }
-  
-      .item-list {
-        background: transparent !important;
-  
-        > div {
-          border-bottom: none !important;
-  
+
+        span[role="cell"] {
+          display: flex !important;
+          width: 100% !important;
+          justify-content: space-between !important;
+          overflow: hidden !important;
+
           > div {
-            color: clr.$light-3 !important;
+            color: clr.$light-1 !important;
           }
-  
-          &.selected {
-            background: clr.$dark-2 !important;
-            border-radius: btn.$btn-radius !important;
-  
-            > div {
-              color: clr.$light-1 !important;
-            }
-          }
-        }
-      }
-  
-      > div:last-of-type:not(.dialog-root) {
-        display: flex !important;
-        flex-direction: row-reverse !important;
-        justify-content: space-between !important;
-        order: -1 !important;
-        padding: sp.$spacing-sm !important;
-        margin-top: 0 !important;
-        background: clr.$headerbar-bg-color !important;
-        border-top-left-radius: vars.$window-radius !important;
-        border-top-right-radius: vars.$window-radius !important;
-  
-        button {
-          color: clr.$light-1 !important;
-          margin-left: 0 !important;
 
-          &:first-of-type {
-            background: btn.$btn-bg-primary !important;
+          a {
+            background: transparent !important;
+          }
+
+          a[style*="text-decoration: underline"] {
+            color: clr.$blue-1 !important;
+            text-decoration: underline !important;
+          }
+
+          a:not([style*="text-decoration: underline"]) {
+            position: absolute !important;
+            right: sp.$spacing-lg !important;
+            top: 15% !important;
 
             &:hover {
-              background: btn.$btn-bg-primary-light !important;
+              background: btn.$btn-bg-lighter !important;
             }
           }
-        }
-      }
 
-      .dialog-root {
-        position: relative !important;
-        background: transparent !important;
-        border-radius: vars.$window-radius !important;
-        min-width: unset !important;
-        max-width: unset !important;
-        width: inherit !important;
-        display: flex !important;
-        flex-direction: column !important;
-
-        > .bXOgJJ {
-          @include mixModal.positionModalTitle;
+          .form-control {
+            padding-inline: 0 !important;
+            padding-block: 0 !important;
+            height: 23px !important;
+          }
         }
 
-        > div:last-of-type {
-          @include mixModal.headerBar;
-        }
-
-        .dialog-content {
+        input {
           background: transparent !important;
+          border: none !important;
+        }
 
-          .form-input-group {
-            input {
-              @include mixInput.input;
-            }
+        &:hover {
+          background: clr.$modal-row-bg-color-hover !important;
+          border: 3px solid clr.$modal-row-bg-color-hover !important;
+          border-bottom: 1px solid clr.$modal-bg-color !important;
+        }
 
-            button:not(.emoji-picker__emoji, .emoji-picker__category-buttons, .emoji-picker__category-button) {
-              @include mixBtn.buttonToolbar;
-              background:  btn.$btn-bg !important;
-              padding: 0 btn.$btn-padding !important;
-            }
+        &:focus-within {
+          border: 3px solid clr.$blue-2 !important;
+        }
+
+        &:first-of-type {
+          &:focus-within {
+            border-top-left-radius: btn.$btn-radius-md !important;
+            border-top-right-radius: btn.$btn-radius-md !important;
           }
+        }
 
-          .emoji-picker.light {
-            background: clr.$modal-bg-color !important;
-            border-radius: vars.$window-radius !important;
-            border: none !important;
-
-            .emoji-picker__preview {
-              border-top: 1px solid clr.$separator-color !important;
-            }
+        &:last-of-type {
+          &:focus-within {
+            border-bottom-left-radius: btn.$btn-radius-md !important;
+            border-bottom-right-radius: btn.$btn-radius-md !important;
           }
         }
       }
     }
 
-    &::backdrop {
-      background:  clr.$modal-backdrop-color !important;
+    .item-list {
+      background: transparent !important;
+
+      > div {
+        border-bottom: none !important;
+
+        > div {
+          color: clr.$light-3 !important;
+        }
+
+        &.selected {
+          background: clr.$dark-2 !important;
+          border-radius: btn.$btn-radius !important;
+
+          > div {
+            color: clr.$light-1 !important;
+          }
+        }
+      }
+    }
+
+    > div:last-of-type:not(.dialog-root) {
+      display: flex !important;
+      flex-direction: row-reverse !important;
+      justify-content: space-between !important;
+      order: -1 !important;
+      padding: sp.$spacing-sm !important;
+      margin-top: 0 !important;
+      background: clr.$headerbar-bg-color !important;
+      border-top-left-radius: vars.$window-radius !important;
+      border-top-right-radius: vars.$window-radius !important;
+
+      button {
+        color: clr.$light-1 !important;
+        margin-left: 0 !important;
+
+        &:first-of-type {
+          background: btn.$btn-bg-primary !important;
+
+          &:hover {
+            background: btn.$btn-bg-primary-light !important;
+          }
+        }
+      }
+    }
+
+    .dialog-root {
+      position: relative !important;
+      background: transparent !important;
+      border-radius: vars.$window-radius !important;
+      min-width: unset !important;
+      max-width: unset !important;
+      width: inherit !important;
+      display: flex !important;
+      flex-direction: column !important;
+
+      > .bXOgJJ {
+        @include mixModal.positionModalTitle;
+      }
+
+      > div:last-of-type {
+        @include mixModal.headerBar;
+      }
+
+      .dialog-content {
+        background: transparent !important;
+
+        .form-input-group {
+          input {
+            @include mixInput.input;
+          }
+
+          button:not(
+              .emoji-picker__emoji,
+              .emoji-picker__category-buttons,
+              .emoji-picker__category-button
+            ) {
+            @include mixBtn.buttonToolbar;
+            background: btn.$btn-bg !important;
+            padding: 0 btn.$btn-padding !important;
+          }
+        }
+
+        .emoji-picker.light {
+          background: clr.$modal-bg-color !important;
+          border-radius: vars.$window-radius !important;
+          border: none !important;
+
+          .emoji-picker__preview {
+            border-top: 1px solid clr.$separator-color !important;
+          }
+        }
+      }
     }
   }
+
+  &::backdrop {
+    background: clr.$modal-backdrop-color !important;
+  }
+}
