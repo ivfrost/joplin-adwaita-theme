@@ -106,11 +106,24 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   @include mixBtn.buttonToolbar;
 }
 
-// New folder button styles
-.folder-and-tag-list > .item-list > .new-folder-button {
+// Notebook header button styles
+.folder-and-tag-list > .item-list > .sidebar-header-button {
   top: calc(sp.$spacing-xxs) !important;
   right: 0 !important;
-  padding-inline-end: 0 !important;
+
+  &.-newfolder {
+    background: transparent !important;
+    top: calc(sp.$spacing-xxs) !important;
+    right: 0 !important;
+    padding-inline-end: revert !important;
+    padding-top: revert !important;
+    height: revert !important;
+  }
+
+  // Hide "collapse all" button
+  &.-collapseall {
+    display: none;
+  }
 
   i {
     color: clr.$light-1 !important;
@@ -223,9 +236,13 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   border-radius: btn.$btn-radius-sm !important;
   height: btn.$btn-size !important;
   padding: 0 sp.$spacing-lg !important;
-  margin: 0 0 sp.$spacing-xxs
-    calc(var(--depth) * sp.$spacing-md - sp.$spacing-md);
+  margin: 0 0 2px calc(var(--depth)*10px - 20px) !important;
   opacity: 1 !important;
+
+  // Notebook sidebar tag section margin fix
+  &[style*="--depth: 1;"] {
+    margin: 0 0 2px calc(var(--depth)*10px - 10px) !important;
+  }
 
   .note-count-label {
     color: clr.$light-3 !important;
@@ -271,7 +288,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
    NOTES SIDEBAR
    ================== */
 
-.DnUmE .dWsUEN > div {
+.rli-noteList div[role="navigation"] > div {
   margin: sp.$spacing-lg sp.$spacing-md !important; // Set general spacing around containers
 
   &.note-list {
@@ -283,7 +300,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 }
 
-.dUXxSp {
+.cAxSyf {
   // Remove padding and background of note controls and force flex direction
   background: transparent !important;
   padding: 0 !important;
@@ -381,10 +398,8 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
    EDITOR
    ================== */
 
-.note-editor-wrapper {
-  > div {
-    background: clr.$window-bg-color !important;
-  }
+div.note-editor-wrapper[role="main"] {
+  background: clr.$window-bg-color !important;
 
   > div > div > div:nth-last-child(3) {
     padding-left: 0 !important;
