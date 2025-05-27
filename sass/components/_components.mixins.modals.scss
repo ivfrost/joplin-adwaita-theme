@@ -10,7 +10,8 @@
     position: absolute !important;
     transform: translate(-50%, -50%) !important;
     left: 50% !important;
-    top: 11% !important;
+    top: 10% !important;
+    margin: 0 !important;
 }
 
 @mixin headerBar() {

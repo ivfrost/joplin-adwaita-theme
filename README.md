@@ -9,10 +9,6 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/ivfrost/joplin-adwaita-theme/refs/heads/main/img/preview.png" alt="Preview Image"/>
 </p>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ivfrost/joplin-adwaita-theme/refs/heads/main/img/preview.gif" alt="Preview GIF"/>
-</p>
-
 
 ## Installation
 1. Download the latest release.
@@ -25,6 +21,13 @@
    - [Outline](https://joplinapp.org/plugins/plugin/outline/)
    - [Better Code Blocks](https://joplinapp.org/plugins/plugin/com.ckant.joplin-plugin-better-code-blocks/)
    - [Github Alerts](https://joplinapp.org/plugins/plugin/com.github.alan-null.joplin-plugin-github-alerts/) 
+
+## Notes
+- For development purposes, it's convenient creating hard links for the compiled stylesheets in the joplin config folder. From the root of the repository, run:
+	- `ln ./src/userchrome.css ~/.config/joplin-desktop/`
+	- `ln ./src/userstyle.css ~/.config/joplin-desktop/`
+- (Fedora) If the emojis appear to not be rendering properly, you can try running this command  to install missing dependencies: `sudo dnf group install -y input-methods`
+	-  Source: [Joplin's Github Repository - Issues](https://github.com/laurent22/joplin/issues/10683)
 
 ## Resources
 - [GNOME Human Interface Guidelines](https://developer.gnome.org/hig/index.html)

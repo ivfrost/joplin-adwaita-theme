@@ -60,3 +60,12 @@
         background: btn.$btn-bg-light !important;
     }
 }
+
+@mixin buttonModal() {
+    @include buttonDefault;
+    background-color: clr.$modal-row-bg-color !important;
+
+    &:hover {
+        background-color: clr.$modal-row-bg-color-hover !important;
+    }
+}

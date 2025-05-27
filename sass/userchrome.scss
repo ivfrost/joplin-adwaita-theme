@@ -113,11 +113,8 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 
   &.-newfolder {
     background: transparent !important;
-    top: calc(sp.$spacing-xxs) !important;
-    right: 0 !important;
-    padding-inline-end: revert !important;
-    padding-top: revert !important;
-    height: revert !important;
+    padding: unset !important;
+    height: unset !important;
   }
 
   // Hide "collapse all" button
@@ -137,11 +134,16 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 
 // New note and to-do button styles
 .new-note-todo-buttons {
+  bottom: sp.$spacing-lm !important;
+  direction: rtl !important;
   gap: sp.$spacing !important;
-  margin: 0 0 sp.$spacing 0 !important;
+  position: absolute !important;
+  width: calc(100% - sp.$spacing-lm) !important;
+  z-index: 1 !important;
 
   button.new-note-button,
   button.new-todo-button {
+    direction: ltr !important;
     min-width: min-content !important;
   }
 }
@@ -288,24 +290,15 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
    NOTES SIDEBAR
    ================== */
 
-.rli-noteList div[role="navigation"] > div {
-  margin: sp.$spacing-lg sp.$spacing-md !important; // Set general spacing around containers
-
-  &.note-list {
-    margin-top: 0 !important;
-
-    .notes {
-      margin: 0 10px 0 0 !important;
-    }
-  }
+.notes {
+  margin: 0 sp.$spacing 0 0 !important;
 }
 
 .cAxSyf {
-  // Remove padding and background of note controls and force flex direction
+  // Edit spacing and remove background of note controls
   background: transparent !important;
+  margin: sp.$spacing-lm sp.$spacing-sm 0 sp.$spacing !important;
   padding: 0 !important;
-  flex-direction: column !important;
-  gap: 0 !important;
 }
 
 // Notes search bar
@@ -321,14 +314,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
     flex-direction: row-reverse !important;
 
     input {
-      background: transparent !important;
-      border: none !important;
-      max-height: none !important;
-      height: 100% !important;
-      font-size: fnt.$font-size !important;
-      font-weight: fnt.$font-weight !important;
-      color: clr.$light-3 !important;
-      padding: 0 !important;
+      @include mixInput.input;
     }
 
     button {
@@ -354,6 +340,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 // Note list
 .note-list {
   background: transparent !important; // Remove background of note list
+  margin: sp.$spacing-lm sp.$spacing 60px !important;
 
   .emptylist {
     // Remove background of empty note list message
@@ -470,7 +457,6 @@ div.note-editor-wrapper[role="main"] {
     > span {
       font-size: 0.9em !important;
       line-height: 1 !important;
-      padding: 0 0 3px !important;
     }
 
     &.-has-title {
@@ -741,7 +727,7 @@ span.cm-image {
       background: transparent !important;
 
       > div {
-        border-bottom: none !important;
+        border-bottom: 0 !important;
 
         > div {
           color: clr.$light-3 !important;
@@ -787,13 +773,14 @@ span.cm-image {
       position: relative !important;
       background: transparent !important;
       border-radius: vars.$window-radius !important;
+      box-shadow: 0px 0px 18px 3px clr.$modal-backdrop-color !important;
       min-width: unset !important;
       max-width: unset !important;
       width: inherit !important;
       display: flex !important;
       flex-direction: column !important;
 
-      > .bXOgJJ {
+      > h1 {
         @include mixModal.positionModalTitle;
       }
 
@@ -805,8 +792,8 @@ span.cm-image {
         background: transparent !important;
 
         .form-input-group {
-          input {
-            @include mixInput.input;
+          > input {
+            @include mixInput.modalInput;
           }
 
           button:not(
@@ -820,13 +807,72 @@ span.cm-image {
           }
         }
 
-        .emoji-picker.light {
+        .foldericon {
+          background: transparent !important;
+          border: 0 !important;
+        }
+
+        .emoji-picker {
           background: clr.$modal-bg-color !important;
           border-radius: vars.$window-radius !important;
           border: none !important;
+          box-shadow: 0px 0px 18px 3px clr.$modal-backdrop-color !important;
 
-          .emoji-picker__preview {
-            border-top: 1px solid clr.$separator-color !important;
+          &__preview {
+            display: none !important;
+          }
+
+          &__category {
+            &-buttons {
+              border-top: 1px solid btn.$btn-separator !important;
+              height: sp.$spacing-xxl !important;
+              margin: sp.$spacing-xs sp.$spacing-xs 0 !important;
+            }
+            &-button {
+              height: 100% !important;
+              border: 0 !important;
+              box-sizing: border-box !important;
+              padding: 2px 0 0 !important;
+            }
+            &-button.active {
+              color: clr.$blue-1 !important;
+              border-bottom: 0 !important;
+              border-top: 3px solid btn.$btn-bg-primary !important;
+              padding: 0 !important;
+            }
+            &-name {
+              display: none !important
+            }
+          }
+
+          &__search-container {
+            margin: sp.$spacing-sm sp.$spacing-md !important;
+            .emoji-picker__search {
+              @include mixInput.modalInput;
+              padding: .5em 2.25em 0.5em 26px !important
+            }
+
+            .emoji-picker__search-icon {
+              left: 0 !important;
+              min-width: 28px !important;
+              right: unset !important;
+              text-align: center !important;
+              top: calc(50% - 0.4em) !important;
+            }
+          }
+
+          &__content {
+            height: unset !important;
+            padding: sp.$spacing-md 0 0 !important;
+          }
+
+          &__emoji {
+            @include mixBtn.buttonModal;
+
+            &-area {
+              display: flex !important;
+              flex-direction: column-reverse !important;
+            }
           }
         }
       }
