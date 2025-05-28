@@ -2,6 +2,7 @@
 
 @use '../fonts' as fnt;
 @use '../colors' as clr;
+@use "../spacing" as sp;
 @use 'components.buttons' as btn;
 
 @mixin buttonDefault() {
@@ -13,6 +14,8 @@
         height: btn.$btn-size !important;
         width: btn.$btn-size !important;
     }
+    padding: 0 sp.$spacing-lg !important;
+    transition: all ease-in-out 125ms !important;
 
     span {
         color: clr.$light-1 !important;
@@ -40,6 +43,7 @@
     min-width: btn.$btn-size-toolbar !important;
     opacity: 1 !important;
     padding: 0 !important;
+    transition: all ease-in-out 125ms !important;
 
     span {
         color: clr.$icon-color !important;
@@ -57,15 +61,27 @@
     }
 
     &:hover {
-        background: btn.$btn-bg-light !important;
+        background: btn.$btn-toolbar-bg-light !important;
     }
 }
 
 @mixin buttonModal() {
-    @include buttonDefault;
+    @include buttonToolbar;
     background-color: clr.$modal-row-bg-color !important;
 
     &:hover {
-        background-color: clr.$modal-row-bg-color-hover !important;
+        background-color: btn.$btn-toolbar-bg-light !important;
+    }
+}
+
+@mixin buttonTag() {
+    padding: 0 sp.$spacing-md !important;
+    border-radius: btn.$btn-radius-lg !important;
+    height: btn.$btn-size-toolbar !important;
+    min-width: btn.$btn-size-toolbar !important;
+    background: btn.$btn-toolbar-bg !important;
+
+    &:hover {
+      background: btn.$btn-toolbar-bg-light !important;
     }
 }

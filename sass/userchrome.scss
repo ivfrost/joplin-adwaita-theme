@@ -108,7 +108,8 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 
 // Notebook header button styles
 .folder-and-tag-list > .item-list > .sidebar-header-button {
-  top: calc(sp.$spacing-xxs) !important;
+  line-height: .7 !important;
+  top: 1px !important;
   right: 0 !important;
 
   &.-newfolder {
@@ -134,7 +135,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 
 // New note and to-do button styles
 .new-note-todo-buttons {
-  bottom: sp.$spacing-lm !important;
+  bottom: sp.$spacing-lg !important;
   direction: rtl !important;
   gap: sp.$spacing !important;
   position: absolute !important;
@@ -247,7 +248,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 
   .note-count-label {
-    color: clr.$light-3 !important;
+    color: clr.$dark-1 !important;
   }
 
   a.list-item {
@@ -324,6 +325,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
       min-height: 0 !important;
       min-width: 28px !important;
       background: transparent !important;
+      padding: 0 !important;
 
       span {
         display: block !important;
@@ -407,7 +409,7 @@ div.note-editor-wrapper[role="main"] {
 
   > .updated-time-label {
     margin: 0 sp.$spacing-xs !important;
-    color: clr.$light-4 !important;
+    color: clr.$dark-1 !important;
   }
 
   > .editor-toolbar {
@@ -421,6 +423,10 @@ div.note-editor-wrapper[role="main"] {
         font-size: fnt.$font-size !important;
       }
 
+      &.-has-title {
+        padding: 0 sp.$spacing-md !important;
+      }
+
       &.disabled {
         span,
         i {
@@ -431,6 +437,10 @@ div.note-editor-wrapper[role="main"] {
         &:hover {
           background: transparent !important;
         }
+      }
+
+      &:hover {
+        background: btn.$btn-toolbar-bg !important;
       }
     }
   }
@@ -461,6 +471,10 @@ div.note-editor-wrapper[role="main"] {
 
     &.-has-title {
       padding: 0 3px !important;
+    }
+
+    &:not(.disabled):hover {
+    background: btn.$btn-toolbar-bg-light !important;
     }
   }
 }
@@ -592,16 +606,7 @@ span.cm-image {
   padding: sp.$spacing-xs sp.$spacing-md !important;
 
   button {
-    color: clr.$light-3 !important;
-    padding: 0 sp.$spacing-md !important;
-    border-radius: btn.$btn-radius-lg !important;
-    height: btn.$btn-size-toolbar !important;
-    min-width: btn.$btn-size-toolbar !important;
-    background: btn.$btn-bg !important;
-
-    &:hover {
-      background: btn.$btn-bg-light !important;
-    }
+    @include mixBtn.buttonTag;
   }
 }
 
@@ -628,8 +633,11 @@ span.cm-image {
 
     #note-properties-dialog-title {
       @include mixModal.positionModalTitle;
-      margin-bottom: 0 !important;
-      top: 5% !important;
+      top: 20% !important;
+    }
+
+    .form {
+      margin: sp.$spacing-lg !important;
     }
 
     > div[role="table"] {
@@ -638,6 +646,7 @@ span.cm-image {
       overflow: hidden !important;
 
       .note-property-box {
+        color: clr.$icon-color !important;
         position: relative !important;
         flex-direction: column !important;
         justify-content: center;
@@ -773,7 +782,6 @@ span.cm-image {
       position: relative !important;
       background: transparent !important;
       border-radius: vars.$window-radius !important;
-      box-shadow: 0px 0px 18px 3px clr.$modal-backdrop-color !important;
       min-width: unset !important;
       max-width: unset !important;
       width: inherit !important;
@@ -790,6 +798,8 @@ span.cm-image {
 
       .dialog-content {
         background: transparent !important;
+        padding: 0 !important;
+        padding-bottom: 0 !important;
 
         .form-input-group {
           > input {
@@ -801,8 +811,7 @@ span.cm-image {
               .emoji-picker__category-buttons,
               .emoji-picker__category-button
             ) {
-            @include mixBtn.buttonToolbar;
-            background: btn.$btn-bg !important;
+            @include mixBtn.buttonModal;
             padding: 0 btn.$btn-padding !important;
           }
         }
@@ -812,62 +821,86 @@ span.cm-image {
           border: 0 !important;
         }
 
+        // Emoji picker
         .emoji-picker {
           background: clr.$modal-bg-color !important;
           border-radius: vars.$window-radius !important;
           border: none !important;
-          box-shadow: 0px 0px 18px 3px clr.$modal-backdrop-color !important;
+          --emoji-size: 31px !important;
+          --emoji-per-row: 7 !important;
 
           &__preview {
             display: none !important;
+          }
+
+          &__container {
+            grid-auto-rows: calc(var(--emoji-size) * var(--emoji-size-multiplier) -  10px) !important;
+            grid-template-columns: repeat(var(--emoji-per-row), calc(var(--emoji-size) * var(--emoji-size-multiplier) + 2.9px)) !important;
           }
 
           &__category {
             &-buttons {
               border-top: 1px solid btn.$btn-separator !important;
               height: sp.$spacing-xxl !important;
-              margin: sp.$spacing-xs sp.$spacing-xs 0 !important;
+              margin: sp.$spacing-sm sp.$spacing-xs 0 !important;
             }
+
+            &-name {
+              color: clr.$dark-1 !important;
+              font-weight: fnt.$font-weight-bold !important;
+              margin: sp.$spacing-lm 0 sp.$spacing-md !important;
+              text-transform: capitalize !important;
+            }
+
             &-button {
               height: 100% !important;
               border: 0 !important;
               box-sizing: border-box !important;
+              color: clr.$light-1 !important;
               padding: 2px 0 0 !important;
-            }
-            &-button.active {
-              color: clr.$blue-1 !important;
-              border-bottom: 0 !important;
-              border-top: 3px solid btn.$btn-bg-primary !important;
-              padding: 0 !important;
-            }
-            &-name {
-              display: none !important
+
+              &-name {
+                display: none !important;
+              }
+              
+              &.active {
+                color: clr.$blue-1 !important;
+                border-bottom: 0 !important;
+                border-top: 3px solid btn.$btn-bg-primary !important;
+                padding: 0 !important;
+              }
             }
           }
 
           &__search-container {
-            margin: sp.$spacing-sm sp.$spacing-md !important;
+            margin: sp.$spacing sp.$spacing sp.$spacing-md !important;
             .emoji-picker__search {
               @include mixInput.modalInput;
-              padding: .5em 2.25em 0.5em 26px !important
-            }
+              padding: .5em 2.25em 0.5em 26px !important;
 
-            .emoji-picker__search-icon {
-              left: 0 !important;
-              min-width: 28px !important;
-              right: unset !important;
-              text-align: center !important;
-              top: calc(50% - 0.4em) !important;
+              &-icon {
+                left: 0 !important;
+                min-width: 28px !important;
+                right: unset !important;
+                text-align: center !important;
+                top: calc(50% - 0.4em) !important;
+              }
             }
           }
 
           &__content {
             height: unset !important;
-            padding: sp.$spacing-md 0 0 !important;
+            padding: sp.$spacing-xxs 0 0 !important;
+          }
+
+          &__emojis {
+            margin: 0 0 0 sp.$spacing-md !important
           }
 
           &__emoji {
             @include mixBtn.buttonModal;
+            border-radius: btn.$btn-radius-sm !important;
+            width: 46px !important;
 
             &-area {
               display: flex !important;
@@ -876,6 +909,50 @@ span.cm-image {
           }
         }
       }
+    }
+
+    > label {
+      @include mixModal.positionModalTitle;
+      top: 19.4% !important;
+    }
+    
+    .css-6tflte-control,.css-8s6j39-control {
+      background: clr.$headerbar-bg-color !important;
+      border: 0 !important;
+      border-radius: btn.$btn-radius-md !important;
+      box-shadow: unset !important;
+      margin: sp.$spacing-lg !important;
+
+      .css-1vbpao6-multiValue {
+        @include mixBtn.buttonTag;
+        background: btn.$btn-toolbar-bg-light !important;
+        height: btn.$btn-size-tag-modal !important;
+        padding: 0 sp.$spacing-md !important;
+
+        .css-17tafsy-MultiValueGeneric {
+          line-height: 1.5 !important;
+        }
+
+        .css-13htnhl-MultiValueRemove:hover {
+          color: clr.$red-1 !important;
+        }
+
+        &:hover {
+          background: btn.$btn-toolbar-bg-light !important;
+        }
+      }
+      
+      &:hover {
+        background: clr.$headerbar-bg-color !important;
+        border: 0 !important;
+        border-radius: btn.$btn-radius-md !important;
+        box-shadow: unset !important;
+        margin: sp.$spacing-lg !important;
+      }
+    }
+
+    div {
+      background: transparent !important;
     }
   }
 

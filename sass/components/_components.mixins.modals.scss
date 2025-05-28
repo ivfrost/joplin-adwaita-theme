@@ -7,11 +7,13 @@
 @use 'components.buttons' as btn;
 
 @mixin positionModalTitle() {
+    font-weight: fnt.$font-weight-boldest !important;
     position: absolute !important;
     transform: translate(-50%, -50%) !important;
     left: 50% !important;
-    top: 10% !important;
+    top: 10.4% !important;
     margin: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 @mixin headerBar() {
