@@ -1,11 +1,15 @@
 // _components.mixins.buttons.scss
 
-@use '../fonts' as fnt;
-@use '../colors' as clr;
+@use "sass:map";
+
+@use "../theme" as thm;
+@use "../fonts" as fnt;
+@use "../colors" as clr;
 @use "../spacing" as sp;
-@use 'components.buttons' as btn;
+@use "components.buttons" as btn;
 
 @mixin buttonDefault() {
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-1);
     background: btn.$btn-bg !important;
     border: none !important;
     border-radius: btn.$btn-radius !important;
@@ -18,7 +22,7 @@
     transition: all ease-in-out 125ms !important;
 
     span {
-        color: clr.$light-1 !important;
+        color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
     }
 
     &:hover {
@@ -29,6 +33,11 @@
 
 @mixin buttonPrimary() {
     @include buttonDefault();
+    @if (thm.$theme == "dark") {
+        color: map.get(map.get(clr.$colors, thm.$theme), fg-1);
+    } @else {
+        color: map.get(map.get(clr.$colors, thm.$theme), bg-1);
+    }
     background: btn.$btn-bg-primary !important;
 
     &:hover {
@@ -46,12 +55,12 @@
     transition: all ease-in-out 125ms !important;
 
     span {
-        color: clr.$icon-color !important;
+        color: map.get(map.get(clr.$colors, thm.$theme), icon-color) !important;
     }
 
     &.disabled {
         span, i {
-        color: clr.$icon-color !important;
+        color: map.get(map.get(clr.$colors, thm.$theme), icon-color) !important;
         opacity: .4 !important;
         }
 

@@ -1,16 +1,30 @@
 {
   "name": "joplin-adwaita-sass",
-  "version": "0.2.0",
+  "version": "1.3.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "sass sass/userchrome.scss src/userchrome.css -w --style compressed & sass sass/userstyle.scss src/userstyle.css -w --style compressed"
+    "compile:userstyle": "postcss ./sass/userstyle.scss -o ./src/userstyle.css --no-map",
+    "compile:userchrome": "postcss ./sass/userchrome.scss -o ./src/userchrome.css --no-map",
+    "compile:postcss": "npm run compile:userstyle && npm run compile:userchrome",
+    "watch:postcss": "chokidar './sass/**/*.scss' -c 'npm run compile:postcss' --initial"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "type": "commonjs",
   "devDependencies": {
-    "sass": "^1.86.3"
+    "@csstools/postcss-sass": "^5.1.1",
+    "chokidar-cli": "^3.0.0",
+    "css-declaration-sorter": "^7.2.0",
+    "cssnano": "^7.0.7",
+    "postcss": "^8.5.4",
+    "postcss-cli": "^11.0.1",
+    "postcss-discard-comments": "^7.0.4",
+    "postcss-scss": "^4.0.9",
+    "sass": "^1.89.1"
+  },
+  "dependencies": {
+    "postcss-sass": "^0.5.0"
   }
 }

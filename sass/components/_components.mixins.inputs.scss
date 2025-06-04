@@ -1,8 +1,11 @@
 // _components.mixins.inputs.scss
 
-@use '../fonts' as fnt;
-@use '../colors' as clr;
-@use 'components.buttons' as btn;
+@use "sass:map";
+
+@use "../theme" as thm;
+@use "../fonts" as fnt;
+@use "../colors" as clr;
+@use "components.buttons" as btn;
 
 
 @mixin input {
@@ -12,7 +15,7 @@
     height: 100% !important;
     font-size: fnt.$font-size !important;
     font-weight: fnt.$font-weight !important;
-    color: clr.$light-3 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
     padding: 0 !important;
 }
 

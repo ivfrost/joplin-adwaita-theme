@@ -1,9 +1,12 @@
 // _components.mixins.modals
 
-@use '../variables' as vars;
+@use "sass:map";
+
+@use '../theme' as thm;
 @use '../fonts' as fnt;
 @use '../colors' as clr;
 @use '../spacing' as sp;
+@use '../borders' as brd;
 @use 'components.buttons' as btn;
 
 @mixin positionModalTitle() {
@@ -24,11 +27,15 @@
     padding: sp.$spacing-sm !important;
     margin-top: 0 !important;
     background: clr.$headerbar-bg-color !important;
-    border-top-left-radius: vars.$window-radius !important;
-    border-top-right-radius: vars.$window-radius !important;
+    border-top-left-radius: brd.$window-radius !important;
+    border-top-right-radius: brd.$window-radius !important;
 
     button {
-    color: clr.$light-1 !important;
+    @if (thm.$theme == "dark") {
+        color: map.get(map.get(clr.$colors, thm.$theme), fg-1);
+    } @else {
+        color: map.get(map.get(clr.$colors, thm.$theme), bg-1);
+    }
     margin-left: 0 !important;
 
     &:first-of-type {

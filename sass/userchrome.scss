@@ -1,13 +1,16 @@
 // userchrome.scss
 
+@use "sass:map";
+
 @use "./components/components.mixins.buttons" as mixBtn;
 @use "./components/components.mixins.inputs" as mixInput;
 @use "./components/components.mixins.modals" as mixModal;
 
-@use "variables" as vars;
+@use "theme" as thm;
 @use "fonts" as fnt;
 @use "colors" as clr;
 @use "spacing" as sp;
+@use "borders" as brd;
 @use "./components/components.buttons" as btn;
 
 // Global styles
@@ -18,7 +21,7 @@
 
 html,
 body {
-  color: clr.$light-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
   font-family: fnt.$font-family !important;
   font-size: fnt.$font-size !important;
   font-weight: fnt.$font-weight !important;
@@ -31,7 +34,7 @@ body {
     height: 100vh !important;
   }
 
-  background: clr.$secondary-sidebar-bg-color !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), secondary-sidebar-bg-color) !important;
   height: 100vh !important; // Remove empty space at the bottom of the window
 }
 
@@ -51,7 +54,7 @@ body {
 [class^=" fas-"],
 [class*=" fas-"],
 .emoji-box {
-  color: clr.$icon-color !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), icon-color) !important;
   font-size: fnt.$icon-size !important;
   font-family: "awesome-adwaita-icons", "icomoon", "Font Awesome 5 Free" !important;
   font-weight: fnt.$font-weight !important;
@@ -94,7 +97,7 @@ button:not(
 
 div > .bLqnaV > .UdFVY {
   // Synchronization message
-  color: clr.$light-3 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
 }
 
 // Toolbar button styles
@@ -124,12 +127,12 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 
   i {
-    color: clr.$light-1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
   }
 
   &:hover {
     background: btn.$btn-bg-light !important;
-    color: clr.$light-1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
   }
 }
 
@@ -156,7 +159,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   min-height: btn.$btn-size-toolbar !important;
 
   > span {
-    color: clr.$light-1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
   }
 }
 
@@ -172,7 +175,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
     right: 0px;
     height: 100%;
     width: 1px;
-    background: clr.$separator-color !important;
+    background: map.get(map.get(clr.$colors, thm.$theme), separator-color) !important;
   }
 }
 
@@ -187,7 +190,8 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
    ================== */
 
 .sidebar {
-  background: clr.$sidebar-bg-color !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), sidebar-bg-color) !important;
+  border-left: 1px solid map.get(map.get(clr.$colors, thm.$theme), sidebar-border-color) !important;
 
   > div {
     padding: sp.$spacing-sm !important; // Set general spacing around containers
@@ -212,7 +216,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 
     span,
     i {
-      color: clr.$light-1 !important;
+      color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
       font-weight: fnt.$font-weight !important;
       text-transform: capitalize !important;
     }
@@ -248,17 +252,18 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 
   .note-count-label {
-    color: clr.$dark-1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
   }
 
   a.list-item {
-    padding: 0 !important;
-    order: -1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
     opacity: 1 !important;
+    order: -1 !important;
+    padding: 0 !important;
   }
 
   i {
-    color: clr.$icon-color !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), icon-color) !important;
     opacity: 1 !important;
   }
 
@@ -283,7 +288,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 // Tags section
 .sidebar-list-items-wrapper .sidebar-spacer-item {
   height: 1px !important;
-  background: clr.$separator-color !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), separator-color) !important;
   margin: sp.$spacing-md 0 !important;
 }
 
@@ -291,11 +296,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
    NOTES SIDEBAR
    ================== */
 
-.notes {
-  margin: 0 sp.$spacing 0 0 !important;
-}
-
-.cAxSyf {
+.cAxSyf, .dKIlJE {
   // Edit spacing and remove background of note controls
   background: transparent !important;
   margin: sp.$spacing-lm sp.$spacing-sm 0 sp.$spacing !important;
@@ -329,14 +330,20 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 
       span {
         display: block !important;
-        color: clr.$icon-color !important;
+        color: map.get(map.get(clr.$colors, thm.$theme), icon-color) !important;
       }
     }
   }
 
   &:focus-within {
-    border: 3px solid clr.$blue-2 !important;
+    border: 3px solid map.get(map.get(clr.$colors, thm.$theme), blue-2) !important;
   }
+}
+
+.notes {
+  margin: 0 sp.$spacing 0 0 !important;
+
+
 }
 
 // Note list
@@ -359,9 +366,14 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
       height: btn.$btn-size-toolbar !important;
       border-radius: btn.$btn-radius-sm !important;
       padding: 0 sp.$spacing !important;
+      color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
+
+      .title {
+        color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
+      }
 
       &.-selected {
-        background: clr.$note-bg-selected !important;
+        background: map.get(map.get(clr.$colors, thm.$theme), note-bg-selected)  !important;
       }
     }
 
@@ -369,10 +381,10 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
       background: transparent !important; // Remove default hover note background
 
       .content {
-        background: clr.$note-bg-hover !important;
+        background: map.get(map.get(clr.$colors, thm.$theme), note-bg-hover)  !important;
 
         &.-selected {
-          background: clr.$note-bg-selected-hover !important;
+          background: map.get(map.get(clr.$colors, thm.$theme), note-bg-selected-hover) !important;
         }
       }
     }
@@ -388,7 +400,8 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
    ================== */
 
 div.note-editor-wrapper[role="main"] {
-  background: clr.$window-bg-color !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), window-bg-color) !important; 
+  border-left: 1px solid map.get(map.get(clr.$colors, thm.$theme), secondary-sidebar-bg-color) !important;;
 
   > div > div > div:nth-last-child(3) {
     padding-left: 0 !important;
@@ -399,8 +412,8 @@ div.note-editor-wrapper[role="main"] {
   padding: sp.$spacing-xxs sp.$spacing-lg 0 sp.$spacing-lg !important;
 
   .title-input {
-    background: clr.$window-bg-color !important;
-    color: clr.$light-3 !important;
+    background: map.get(map.get(clr.$colors, thm.$theme), window-bg-color) !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
   }
 }
 
@@ -409,11 +422,11 @@ div.note-editor-wrapper[role="main"] {
 
   > .updated-time-label {
     margin: 0 sp.$spacing-xs !important;
-    color: clr.$dark-1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), bg-1) !important;
   }
 
   > .editor-toolbar {
-    background: clr.$window-bg-color !important;
+    background: map.get(map.get(clr.$colors, thm.$theme), window-bg-color) !important;
     margin: 0 !important;
     padding: 0 sp.$spacing-xxs !important;
     height: btn.$btn-size-toolbar !important;
@@ -430,7 +443,7 @@ div.note-editor-wrapper[role="main"] {
       &.disabled {
         span,
         i {
-          color: clr.$icon-color !important;
+          color: map.get(map.get(clr.$colors, thm.$theme), icon-color) !important;
           opacity: 0.3 !important;
         }
 
@@ -449,16 +462,16 @@ div.note-editor-wrapper[role="main"] {
 // Notebook indicator on tag press
 .sc-gEvEer.sc-dcJsrY.jiwcuV.dtFiFQ.sc-jXbUNg {
   margin: 0 sp.$spacing !important;
-  background: clr.$charcoal-blue-1 !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), charcoal-blue-1) !important;
   border-radius: btn.$btn-radius-sm !important;
 
   > span {
-    color: clr.$blue-2 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), blue-2) !important;
   }
 }
 
 .editor-toolbar {
-  background: clr.$editor-bg-toolbar !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), editor-bg-toolbar) !important;
   border-radius: btn.$btn-radius !important;
   height: sp.$toolbar-height !important;
   margin: sp.$spacing-xxs sp.$spacing-lg !important;
@@ -485,11 +498,11 @@ div.note-editor-wrapper[role="main"] {
 }
 
 .CodeMirror {
-  background: clr.$window-bg-color !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), window-bg-color) !important;
 }
 
 .CodeMirror-scroll {
-  background: clr.$window-bg-color !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), window-bg-color) !important;
 }
 
 .CodeMirror-sizer {
@@ -500,104 +513,108 @@ div.note-editor-wrapper[role="main"] {
 
 // Header
 .cm-header {
-  color: clr.$blue-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
 }
 
 // Italics/Emphasis, Bold, BoldItalics
 .cm-em,
 .cm-strong,
 .cm-strong.cm-em {
-  color: clr.$green-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), green-1) !important;
 }
 
 // Lists (Bullet/number/todo)
 .cm-variable-2,
 .cm-variable-3,
 .cm-keyword {
-  color: clr.$light-4 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-4) !important;
 }
 
 // Links (link)
 div.CodeMirror span.cm-url {
-  color: clr.$blue-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
   opacity: 0.7 !important;
   text-decoration: underline !important;
 }
 
 // Links (text)
 .cm-link-text {
-  color: clr.$blue-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
 }
 
 pre.CodeMirror-line {
-  color: clr.$light-2 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-2) !important;
   background: none !important;
 }
 // Image links in the editor
 span.cm-image {
-  color: clr.$light-5 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
 }
 
 // Horizontal line
 .cm-hr {
-  color: clr.$separator-color !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), separator-color) !important;
 }
 
 .cm-variable-2.cm-strong {
-  color: clr.$green-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), green-1) !important;
 }
 
 .cm-s-material-darker .cm-variable-2.cm-rm-list-token {
-  color: clr.$purple-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), purple-1) !important;
 }
 
 // Code blocks
 .CodeMirror .cm-jn-code-block-background {
-  background: clr.$view-bg-color !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), view-bg-color) !important;
 }
 
 .cm-comment:not(.cm-jn-inline-code) {
-  color: clr.$dark-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), bg-5) !important;
   background: transparent !important;
 }
 
 // Apply colors to elements in code blocks
 .cm-keyword,
 .cm-atom {
-  color: clr.$lavender-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), lavender-1) !important;
 }
 
 .cm-operator {
-  color: clr.$red-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), red-1) !important;
 }
 
 .cm-number,
 .cm-string {
-  color: clr.$green-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), green-1) !important;
 }
 
 .cm-type {
-  color: clr.$blue-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
 }
 
 .cm-variable {
-  color: clr.$light-4 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-4) !important;
 }
 
 .cm-def,
 .cm-type {
-  color: clr.$blue-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
 }
 
 .cm-meta {
-  color: clr.$teal-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), teal-1) !important;
+}
+
+.code-perfect-container pre.hljs ul.hljs-line-num li {
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
 }
 
 // Inline code
 .cm-comment.cm-jn-inline-code {
-  background: clr.$view-bg-color !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), view-bg-color) !important;
   border: none !important;
-  color: clr.$purple-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), purple-1) !important;
   font-family: fnt.$font-family-monospace !important;
 }
 
@@ -627,7 +644,7 @@ span.cm-image {
     display: flex !important;
     flex-direction: column !important;
     background: clr.$modal-bg-color !important;
-    border-radius: vars.$window-radius !important;
+    border-radius: brd.$window-radius !important;
     padding: 0 !important;
     min-width: 400px !important;
 
@@ -646,7 +663,7 @@ span.cm-image {
       overflow: hidden !important;
 
       .note-property-box {
-        color: clr.$icon-color !important;
+        color: map.get(map.get(clr.$colors, thm.$theme), icon-color) !important;
         position: relative !important;
         flex-direction: column !important;
         justify-content: center;
@@ -662,7 +679,7 @@ span.cm-image {
         label[role="rowheader"] {
           font-weight: fnt.$font-weight !important;
           font-size: fnt.$font-size-sm !important;
-          color: clr.$light-5 !important;
+          color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
         }
 
         span[role="cell"] {
@@ -672,7 +689,7 @@ span.cm-image {
           overflow: hidden !important;
 
           > div {
-            color: clr.$light-1 !important;
+            color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
           }
 
           a {
@@ -680,7 +697,7 @@ span.cm-image {
           }
 
           a[style*="text-decoration: underline"] {
-            color: clr.$blue-1 !important;
+            color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
             text-decoration: underline !important;
           }
 
@@ -713,7 +730,7 @@ span.cm-image {
         }
 
         &:focus-within {
-          border: 3px solid clr.$blue-2 !important;
+          border: 3px solid map.get(map.get(clr.$colors, thm.$theme), blue-2) !important;
         }
 
         &:first-of-type {
@@ -739,15 +756,15 @@ span.cm-image {
         border-bottom: 0 !important;
 
         > div {
-          color: clr.$light-3 !important;
+          color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
         }
 
         &.selected {
-          background: clr.$dark-2 !important;
+          background: map.get(map.get(clr.$colors, thm.$theme), bg-2) !important;
           border-radius: btn.$btn-radius !important;
 
           > div {
-            color: clr.$light-1 !important;
+            color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
           }
         }
       }
@@ -761,11 +778,11 @@ span.cm-image {
       padding: sp.$spacing-sm !important;
       margin-top: 0 !important;
       background: clr.$headerbar-bg-color !important;
-      border-top-left-radius: vars.$window-radius !important;
-      border-top-right-radius: vars.$window-radius !important;
+      border-top-left-radius: brd.$window-radius !important;
+      border-top-right-radius: brd.$window-radius !important;
 
       button {
-        color: clr.$light-1 !important;
+        color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
         margin-left: 0 !important;
 
         &:first-of-type {
@@ -781,7 +798,7 @@ span.cm-image {
     .dialog-root {
       position: relative !important;
       background: transparent !important;
-      border-radius: vars.$window-radius !important;
+      border-radius: brd.$window-radius !important;
       min-width: unset !important;
       max-width: unset !important;
       width: inherit !important;
@@ -824,7 +841,7 @@ span.cm-image {
         // Emoji picker
         .emoji-picker {
           background: clr.$modal-bg-color !important;
-          border-radius: vars.$window-radius !important;
+          border-radius: brd.$window-radius !important;
           border: none !important;
           --emoji-size: 31px !important;
           --emoji-per-row: 7 !important;
@@ -846,7 +863,7 @@ span.cm-image {
             }
 
             &-name {
-              color: clr.$dark-1 !important;
+              color: map.get(map.get(clr.$colors, thm.$theme), bg-1) !important;
               font-weight: fnt.$font-weight-bold !important;
               margin: sp.$spacing-lm 0 sp.$spacing-md !important;
               text-transform: capitalize !important;
@@ -856,7 +873,7 @@ span.cm-image {
               height: 100% !important;
               border: 0 !important;
               box-sizing: border-box !important;
-              color: clr.$light-1 !important;
+              color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
               padding: 2px 0 0 !important;
 
               &-name {
@@ -864,7 +881,7 @@ span.cm-image {
               }
               
               &.active {
-                color: clr.$blue-1 !important;
+                color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
                 border-bottom: 0 !important;
                 border-top: 3px solid btn.$btn-bg-primary !important;
                 padding: 0 !important;
@@ -934,7 +951,7 @@ span.cm-image {
         }
 
         .css-13htnhl-MultiValueRemove:hover {
-          color: clr.$red-1 !important;
+          color: map.get(map.get(clr.$colors, thm.$theme), red-1) !important;
         }
 
         &:hover {

@@ -1,53 +1,100 @@
 // _colors.scss
 
-@use "sass:color";
+$colors: (
+    dark: (
+        blue-1: #81d0ff,
+        blue-2: #4a90e2,
+        charcoal-blue-1: #2a3439,
+        teal-1: #7bdff4,
+        green-1: #8de698,
+        yellow-1: #ffc057,
+        orange-1: #ff9c5b,
+        red-1: #ff888c,
+        purple-1: #fba7ff,
+        lavender-1: #b39cd8,
 
-$blue-1: #99c1f1;
-$blue-2: #62a0ea;
-$charcoal-blue-1: #2a3439;
-$teal-1: #94d9cb;
-$green-1: #8ff0a4;
-$yellow-1: #f9f06b;
-$orange-1: #ffbe6f;
-$red-1: #f66151;
-$purple-1: #dc8add;
-$lavender-1: #a18ee0;
+        fg-1: #ffffff,
+        fg-2: #f6f5f4,
+        fg-3: #deddda,
+        fg-4: #c0bfbc,
+        fg-5: #9a9996,
+        
+        bg-1: #7b7578,
+        bg-2: #64605a,
+        bg-3: #4a4448,
+        bg-4: #323232,
+        bg-5: #070606,
 
-$light-1: #ffffff;
-$light-2: #f6f5f4;
-$light-3: #deddda;
-$light-4: #c0bfbc;
-$light-5: #9a9996;
+        window-bg-color: #242424,
+        view-bg-color: #1e1e1e,
 
-$dark-1: #7b7578;
-$dark-2: #64605a;
-$dark-3: #4a4448;
-$dark-4: #2e282e;
-$dark-5: #1a1518;
+        sidebar-bg-color: #303030,
+        sidebar-border-color: #303030,
+        secondary-sidebar-bg-color: #2a2a2a,
+        secondary-sidebar-border-color: #2a2a2a,
+        editor-bg-toolbar: #2a2a2a,
 
-$window-bg-color: #242424;
-$view-bg-color: #1e1e1e;
+        note-bg-hover: #37373c,
+        note-bg-selected: #253e5d,
+        note-bg-selected-hover: #294568,
+
+        icon-color: #c0c0c0,
+        icon-color-disabled: #4d4d4d,
+        icon-color-disabled-lighter: #737373,
+
+        separator-color: #4f4f4f
+    ),
+    light: (
+        blue-1: #0461be,
+        blue-2: #8ab8f1,
+        charcoal-blue-1: #4a6a74,
+        teal-1: #007184,
+        green-1: #15772e,
+        yellow-1: #905300,
+        orange-1: #b62200,
+        red-1: #c00023,
+        purple-1: #8939a4,
+        lavender-1: #7a6bbf,
+
+        fg-1: #2f2f2f,
+        fg-2: #4a4a4a,
+        fg-3: #666666,
+        fg-4: #808080,
+        fg-5: #b0b0b0,
+        
+        bg-1: #ffffff,
+        bg-2: #edece9,
+        bg-3: #deddda,
+        bg-4: #c0bfbc,
+        bg-5: #9a9996,
+
+        window-bg-color: #fafafb,
+        view-bg-color: #f6f6f6,
+
+        sidebar-bg-color: #ebebeb,
+        sidebar-border-color: #e1e1e1,
+        secondary-sidebar-bg-color: #f3f3f5,
+        secondary-sidebar-border-color: #c1c1c1,
+        editor-bg-toolbar: #f3f3f5,
+
+        note-bg-hover: #e6e6e6,
+        note-bg-selected: #a3c4e0,
+        note-bg-selected-hover: #9bb8e0,
+
+        icon-color: #676767,
+        icon-color-disabled: #292929,
+        icon-color-disabled-lighter: #3e3e3e,
+
+        separator-color: #cecece
+    )
+);
+
 
 $headerbar-bg-color: #303030;
 $modal-row-bg-color: #353535;
 $modal-row-bg-color-hover: #3b3b3b;
 
-$sidebar-bg-color: $headerbar-bg-color;
-$secondary-sidebar-bg-color: #2a2a2a;
-$editor-bg-toolbar: $secondary-sidebar-bg-color;
-
-$note-bg-hover: hsl(240, 4.76%, 22.47%);
-$note-bg-selected: hsl(213.21, 43.08%, 25.49%);
-$note-bg-selected-hover: hsl(213.21, 43.08%, 28.49%);
-
 $blockquote-bg-color: #292929;
 
-$modal-bg-color: $window-bg-color;
+$modal-bg-color: #242424;
 $modal-backdrop-color: rgba(0, 0, 0, .3);
-
-$separator-color: #4f4f4f;
-
-$icon-color: $light-4;
-$icon-color-disabled: color.adjust($icon-color, $lightness: -60%);
-
-$icon-color-disabled-lighter: color.adjust($icon-color, $lightness: -40%);

@@ -1,23 +1,26 @@
 // userstyle.scss
 
-@use 'fonts' as fnt;
-@use 'colors' as clr;
-@use 'spacing' as sp;
+@use "sass:map";
+
+@use 'theme' as thm;
+@use "fonts" as fnt;
+@use "colors" as clr;
+@use "spacing" as sp;
 @use './components/components.buttons' as btn;
 
 #rendered-md, body, th, td {
-  background: clr.$window-bg-color !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), window-bg-color) !important;
   font-family: fnt.$font-family !important;
   font-size: fnt.$font-size !important;
 }
 
 p, ul, ol, li, em, strong {
-  color: clr.$light-3 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
 }
 
 hr {
   border: none;
-  border-bottom: 1px solid clr.$light-5!important;
+  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
   margin: 2.5em 0 !important;
 }
 
@@ -26,21 +29,21 @@ hr {
    ================== */
 
 h1 {
-  color: clr.$light-1 !important;
-  border-bottom: 1px solid clr.$separator-color !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
+  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color)  !important;
   font-size:fnt.$font-size-lg;
   font-weight:fnt.$font-weight-boldest !important;
 }
 
 h2 {
-  color: clr.$light-2 !important;
-  border-bottom: 1px solid clr.$separator-color!important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-2) !important;
+  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color) !important;
   font-size: fnt.$font-size-md;
   font-weight: fnt.$font-weight-bold!important;
 }
 
 h3, h4, h5, h6 {
-  color: clr.$light-2 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-2) !important;
   border-bottom: 0 !important;
   font-size: fnt.$font-size;
   font-weight: fnt.$font-weight-bold!important;
@@ -51,7 +54,7 @@ h3, h4, h5, h6 {
    ================== */
 
 a {
-  color: clr.$blue-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
   text-decoration: underline !important;
 }
 
@@ -61,7 +64,7 @@ a:hover {
 
 /* Joplin icon in Joplin link */
 .resource-icon {
-  background: clr.$purple-1 !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), purple-1) !important;
 }
 
 /* ==================
@@ -75,10 +78,10 @@ pre, .hljs {
 
 /* Inline code */
 .inline-code {
-  background: btn.$btn-bg-light !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), bg-3) !important;
   border: none !important;
-  border-radius: 4px;
-  color: clr.$light-3 !important;
+  border-radius: sp.$spacing-xs !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-2) !important;
   font-family: fnt.$font-family-monospace!important;
   font-size: .95em !important;
   padding: .16em .4em .2em !important;
@@ -93,11 +96,11 @@ blockquote {
   padding: sp.$spacing-lg !important;
   font-style: italic !important;
   border: 0 !important;
-  border-left: 5px solid clr.$dark-2 !important;
+  border-left: 5px solid map.get(map.get(clr.$colors, thm.$theme), bg-2) !important;
   opacity: 1 !important;
 
   p {
-    color: clr.$light-4 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-4) !important;
   }
 }
 
@@ -106,15 +109,15 @@ blockquote {
    ================== */
 
 th {
-  border: 1px solid clr.$separator-color !important;
-  color: clr.$light-1 !important;
-  border-bottom: 1px solid clr.$separator-color !important;
+  border: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color)  !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
+  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color)  !important;
 }
 
 td {
-  border: 1px solid clr.$separator-color !important;
-  color: clr.$light-1 !important;
-  border-bottom: 1px solid clr.$separator-color !important;
+  border: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color)  !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
+  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color)  !important;
 }
 
 /* ==================
@@ -122,18 +125,18 @@ td {
    ================== */
 
 ::selection {
-  background: clr.$note-bg-selected !important;
-  color: clr.$light-1 !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), note-bg-selected)  !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
 }
 
 mark, mark strong {
-  background: clr.$yellow-1 !important;
-  color: clr.$light-1 !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), yellow-1) !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
 }
 
 /* Highlighted searched item */
 mark[data-markjs] {
-  background: clr.$purple-1 !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), purple-1) !important;
 }
 
 /* ==================
@@ -144,67 +147,69 @@ mark[data-markjs] {
 
 // Set code block background, border radius, font style and spacing
 .code-perfect-container pre.hljs {
-  background: clr.$view-bg-color !important;
-  border-radius: btn.$btn-radius !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), view-bg-color) !important;
   padding: 0 0 0 32px !important;
 }
 
-.code-perfect-container pre.hljs code.hljs,
-.code-perfect-container pre.hljs ul.hljs-line-num {
-  background: clr.$view-bg-color !important;
-  font-family: fnt.$font-family-monospace!important;
-  font-size: fnt.$font-size !important;
-}
-
 .code-perfect-container pre.hljs code {
+  border-radius: btn.$btn-radius !important;
   margin: 0 0 0 8px !important;
   padding: .5em .5em .17em !important;
 }
 
+.code-perfect-container pre.hljs code.hljs,
 .code-perfect-container pre.hljs ul.hljs-line-num {
-  border-radius: 0 !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), view-bg-color) !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
+  font-family: fnt.$font-family-monospace !important;
+  font-size: fnt.$font-size !important;
 }
 
 // Apply colors to elements in code block
 .code-perfect-container pre.hljs span {
-  color: clr.$light-5!important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
 }
 
 .code-perfect-container pre.hljs code.hljs .hljs-keyword,
 .code-perfect-container pre.hljs code.hljs .hljs-literal {
-  color: clr.$lavender-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), lavender-1) !important;
 }
 
 .code-perfect-container pre.hljs code.hljs .hljs-built_in,
 .code-perfect-container pre.hljs code.hljs .hljs-title.function_ {
-  color: clr.$light-4 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-4) !important;
 }
 
 .code-perfect-container pre.hljs code.hljs .hljs-operator {
-  color: clr.$red-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), red-1) !important;
 }
 
 .code-perfect-container pre.hljs code.hljs .hljs-string,
 .code-perfect-container pre.hljs code.hljs .hljs-number{
-  color: clr.$green-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), green-1) !important;
 }
 
 .code-perfect-container pre.hljs code.hljs .hljs-type,
 .code-perfect-container pre.hljs code.hljs .hljs-title.class_ {
-  color: clr.$blue-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
 }
 
 .code-perfect-container pre.hljs code.hljs .hljs-variable,
 .code-perfect-container pre.hljs code.hljs .hljs-params {
-  color: clr.$light-4 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-4) !important;
 }
 
 .code-perfect-container pre.hljs code.hljs .hljs-meta {
-  color: clr.$teal-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), teal-1) !important;
 }
 
 .code-perfect-container pre.hljs code.hljs .hljs-comment {
-  color: clr.$dark-1 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), bg-1) !important;
+}
+
+// Color for the code not covered above
+.code-perfect-container pre.hljs code.hljs {
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
 }
 
 // Adjust line number position and set color 
@@ -214,44 +219,44 @@ mark[data-markjs] {
 }
 
 .code-perfect-container pre.hljs ul.hljs-line-num li {
-  color: clr.$dark-2 !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
 }
 
 // Github Alerts (https://discourse.joplinapp.org/t/plugin-github-alerts/42902)
 
 // Apply colors to callouts
 .markdown-alert.markdown-alert-warning {
-  border-left-color: clr.$yellow-1 !important;
+  border-left-color: map.get(map.get(clr.$colors, thm.$theme), yellow-1) !important;
   > .markdown-alert-title {
-    color: clr.$yellow-1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), yellow-1) !important;
   }
 }
 
 .markdown-alert.markdown-alert-important {
-  border-left-color: clr.$purple-1 !important;
+  border-left-color: map.get(map.get(clr.$colors, thm.$theme), purple-1) !important;
   > .markdown-alert-title {
-    color: clr.$purple-1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), purple-1) !important;
   }
 }
 
 .markdown-alert.markdown-alert-tip {
-  border-left-color: clr.$red-1 !important;
+  border-left-color: map.get(map.get(clr.$colors, thm.$theme), red-1) !important;
   > .markdown-alert-title {
-    color: clr.$red-1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), red-1) !important;
   }
 }
 
 .markdown-alert.markdown-alert-note {
-  border-left-color: clr.$blue-1 !important;
+  border-left-color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
   > .markdown-alert-title {
-    color: clr.$blue-1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
   }
 }
 
 .markdown-alert.markdown-alert-caution {
-  border-left-color: clr.$red-1 !important;
+  border-left-color: map.get(map.get(clr.$colors, thm.$theme), red-1) !important;
   > .markdown-alert-title {
-    color: clr.$red-1 !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), red-1) !important;
   }
 }
 
@@ -261,82 +266,81 @@ mark[data-markjs] {
 
 @media print {
   #rendered-md, body, th, td {
-    /* background: var(--white) !important; */
-    background: clr.$light-1 !important;
+    background: map.get(map.get(clr.$colors, light), bg-1) !important;
     font-family: fnt.$font-family !important;
   }
 
   p, ul, ol, li {
-    color: clr.$dark-3 !important;
+    color: map.get(map.get(clr.$colors, light), fg-2) !important;
   }
 
   strong {
-    color: clr.$dark-3 !important;
+    color: map.get(map.get(clr.$colors, light), fg-2) !important;
     }
 
   th {
-    border: 1px solid clr.$light-3 !important;
-    color: clr.$dark-2 !important;
-    border-bottom: 1px solid clr.$light-3 !important;
+    border: 1px solid map.get(map.get(clr.$colors, light), fg-3) !important;
+    color: map.get(map.get(clr.$colors, light), bg-2) !important;
+    border-bottom: 1px solid map.get(map.get(clr.$colors, light), fg-3) !important;
   }
 
   td {
-    border: 1px solid clr.$light-3 !important;
-    color: clr.$dark-2 !important;
-    border-bottom: 1px solid clr.$light-3 !important;
+    border: 1px solid map.get(map.get(clr.$colors, light), fg-3) !important;
+    color: map.get(map.get(clr.$colors, light), bg-2) !important;
+    border-bottom: 1px solid map.get(map.get(clr.$colors, light), fg-3) !important;
   }
 
   h1 {
-    border-bottom: 1px solid clr.$light-3 !important;
-    color: clr.$dark-3 !important;
+    border-bottom: 1px solid map.get(map.get(clr.$colors, light), separator-color) !important;
+    color: map.get(map.get(clr.$colors, light), fg-1) !important;
     font-weight: fnt.$font-weight-bold!important;
   }
 
   h2 {
-    border-bottom: 1px solid clr.$light-2 !important;
-    color: clr.$dark-3 !important;
+    border-bottom: 1px solid map.get(map.get(clr.$colors, light), separator-color) !important;
+    color: map.get(map.get(clr.$colors, light), fg-1) !important;
   }
 
   h2, h3, h4, h5, h6 {
     border-bottom: 0 !important;
     font-weight: fnt.$font-weight-bold!important;
-    color: clr.$dark-3 !important;
+    color: map.get(map.get(clr.$colors, light), fg-2) !important;
   }
 
   hr {
     border: none;
-    border-bottom: 1px solid clr.$light-2 !important;
+    border-bottom: 1px solid map.get(map.get(clr.$colors, light), separator-color) !important;
     margin: 2.5em 0 !important;
   }
 
   a {
-    color: clr.$blue-1 !important;
+    color: map.get(map.get(clr.$colors, light), blue-1) !important;
     text-decoration: underline !important;
   }
 
   pre, .hljs {
-    background: clr.$light-2 !important;
-    color: clr.$dark-2 !important;
+    background: map.get(map.get(clr.$colors, light), view-bg-color) !important;
+    color: map.get(map.get(clr.$colors, light), fg-2) !important;
     font-family: fnt.$font-family-monospace!important;
     padding: 10px !important;
-    font-size: 14px !important;
+    font-size: sp.$spacing-lm !important;
     overflow: scroll !important;
   }
 
   blockquote {
-    background: clr.$light-2 !important;
+    background: map.get(map.get(clr.$colors, light), bg-1) !important;
     padding: 10px !important;
-    color: clr.$dark-2 !important;
+    color: map.get(map.get(clr.$colors, light), fg-2) !important;
     font-style: italic !important;
     border: 0 !important;
-    border-left: 5px solid clr.$dark-3 !important;
+    border-left: 5px solid map.get(map.get(clr.$colors, light), charcoal-blue-1) !important;
   }
 
   .inline-code {
-    background: clr.$light-2 !important;
+    background: map.get(map.get(clr.$colors, thm.$theme), bg-3) !important;
     border: none !important;
-    border-radius: 4px;
-    color: clr.$dark-3 !important;
+    border-radius: sp.$spacing-xs !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-2) !important;
     font-family: fnt.$font-family-monospace!important;
     font-size: .95em !important;
     padding: .16em .4em .2em !important;
@@ -344,10 +348,10 @@ mark[data-markjs] {
 
   .code-perfect-container pre.hljs code.hljs,
   .code-perfect-container pre.hljs ul.hljs-line-num {
-    background: clr.$light-2 !important;
+    background: map.get(map.get(clr.$colors, light), view-bg-color) !important;
   }
 
   .code-perfect-container pre.hljs ul.hljs-line-num li {
-    color: clr.$dark-1 !important;
+    color: map.get(map.get(clr.$colors, light), fg-5) !important;
   }
 }
