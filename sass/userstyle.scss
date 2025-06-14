@@ -92,15 +92,15 @@ pre, .hljs {
    ================== */
 
 blockquote {
-  background: clr.$blockquote-bg-color !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), blockquote-bg-color) !important;
   padding: sp.$spacing-lg !important;
   font-style: italic !important;
   border: 0 !important;
-  border-left: 5px solid map.get(map.get(clr.$colors, thm.$theme), bg-2) !important;
+  border-left: sp.$spacing-sm solid map.get(map.get(clr.$colors, thm.$theme), bg-2) !important;
   opacity: 1 !important;
 
   p {
-    color: map.get(map.get(clr.$colors, thm.$theme), fg-4) !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
   }
 }
 
@@ -167,7 +167,7 @@ mark[data-markjs] {
 
 // Apply colors to elements in code block
 .code-perfect-container pre.hljs span {
-  color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
 }
 
 .code-perfect-container pre.hljs code.hljs .hljs-keyword,
@@ -204,7 +204,7 @@ mark[data-markjs] {
 }
 
 .code-perfect-container pre.hljs code.hljs .hljs-comment {
-  color: map.get(map.get(clr.$colors, thm.$theme), bg-1) !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-4) !important;
 }
 
 // Color for the code not covered above

@@ -42,7 +42,13 @@ $colors: (
         icon-color-disabled: #4d4d4d,
         icon-color-disabled-lighter: #737373,
 
-        separator-color: #4f4f4f
+        separator-color: #4f4f4f,
+
+        blockquote-bg-color: #2a2a2a,
+
+        headerbar-bg-color: #303030,
+        modal-bg-color: #242424,
+        modal-row-bg-color: #353535
     ),
     light: (
         blue-1: #0461be,
@@ -85,16 +91,14 @@ $colors: (
         icon-color-disabled: #292929,
         icon-color-disabled-lighter: #3e3e3e,
 
-        separator-color: #cecece
+        separator-color: #cecece,
+
+        blockquote-bg-color: #f3f3f5,
+
+        headerbar-bg-color: #ffffff,
+        modal-bg-color: #fafafb,
+        modal-row-bg-color: #ffffff
     )
 );
 
-
-$headerbar-bg-color: #303030;
-$modal-row-bg-color: #353535;
-$modal-row-bg-color-hover: #3b3b3b;
-
-$blockquote-bg-color: #292929;
-
-$modal-bg-color: #242424;
 $modal-backdrop-color: rgba(0, 0, 0, .3);

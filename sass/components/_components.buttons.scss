@@ -9,15 +9,15 @@ $btn-bg: if(thm.$theme == "dark", #444444, #dfdfdf);
 $btn-bg-light: if(thm.$theme == "dark", #4f4f4f, #d3d3d3);
 $btn-bg-lighter: if(thm.$theme == "dark", #494949, #cdcdcd);
 
-$btn-bg-tag: if (thm.$theme == "dark", #2c2c2c, #e8e8e8);
+$btn-bg-tag: if(thm.$theme == "dark", #2c2c2c, #e8e8e8);
 
-$btn-toolbar-bg: if (thm.$theme == "dark", #343434, #f1f1f1);
-$btn-toolbar-bg-light: if (thm.$theme == "dark", #434343, #dedede);
+$btn-toolbar-bg: if(thm.$theme == "dark", #343434, #f1f1f1);
+$btn-toolbar-bg-light: if(thm.$theme == "dark", #434343, #dedede);
 
 $btn-bg-primary: #3584e4;
-$btn-bg-primary-light: if (thm.$theme == "dark", #4990e7, #c8dcf4);
+$btn-bg-primary-light: #4990e7;
 
-$btn-separator: if (thm.$theme == "dark", #363636, #c2c2c2);
+$btn-separator: if(thm.$theme == "dark", #363636, #c2c2c2);
 
 $btn-size: 35px;
 $btn-size-toolbar: 33px;

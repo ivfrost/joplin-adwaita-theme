@@ -26,24 +26,22 @@
     order: -1 !important;
     padding: sp.$spacing-sm !important;
     margin-top: 0 !important;
-    background: clr.$headerbar-bg-color !important;
+    background: map.get(map.get(clr.$colors, thm.$theme), headerbar-bg-color) !important;
     border-top-left-radius: brd.$window-radius !important;
     border-top-right-radius: brd.$window-radius !important;
 
     button {
-    @if (thm.$theme == "dark") {
-        color: map.get(map.get(clr.$colors, thm.$theme), fg-1);
-    } @else {
-        color: map.get(map.get(clr.$colors, thm.$theme), bg-1);
-    }
-    margin-left: 0 !important;
+        color: map.get(map.get(clr.$colors, thm.$theme), bg-1 !important);
+        background: btn.$btn-bg !important;
+        margin-left: 0 !important;
 
-    &:first-of-type {
-        background: btn.$btn-bg-primary !important;
+        &:first-of-type {
+            background: btn.$btn-bg-primary !important;
+            color: map.get(map.get(clr.$colors, thm.$theme), bg-1) !important;
 
-        &:hover {
-        background: btn.$btn-bg-primary-light !important;
+            &:hover {
+            background: btn.$btn-bg-primary-light !important;
+            }
         }
-    }
     }
 }

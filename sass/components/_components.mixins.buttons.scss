@@ -76,7 +76,7 @@
 
 @mixin buttonModal() {
     @include buttonToolbar;
-    background-color: clr.$modal-row-bg-color !important;
+    background-color: map.get(map.get(clr.$colors, thm.$theme), modal-row-bg-color) !important;
 
     &:hover {
         background-color: btn.$btn-toolbar-bg-light !important;
