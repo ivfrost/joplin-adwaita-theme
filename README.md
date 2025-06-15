@@ -18,8 +18,7 @@
     chmod +x ./install.sh
     ./install.sh
     ```
-3. Enable the dark theme from the Appearance settings.
-4. (Optional but recommended) Install the following plugins:
+3. (Optional but recommended) Install the following plugins:
    - [CodePerfect](https://joplinapp.org/plugins/plugin/jl15988.JoplinCodePerfectPlugin/) (Required for showing code lines)
    - [Outline](https://joplinapp.org/plugins/plugin/outline/)
    - [Better Code Blocks](https://joplinapp.org/plugins/plugin/com.ckant.joplin-plugin-better-code-blocks/)
