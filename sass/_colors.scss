@@ -28,28 +28,35 @@ $colors: (
         window-bg-color: #242424,
         view-bg-color: #1e1e1e,
 
-        sidebar-bg-color: #303030,
-        sidebar-border-color: #303030,
+        primary-sidebar-bg-color: #303030,
+        primary-sidebar-border-color: #303030,
+        primary-sidebar-separator-color: #4f4f4f,
         secondary-sidebar-bg-color: #2a2a2a,
-        secondary-sidebar-border-color: #2a2a2a,
+        secondary-sidebar-input-bg-color: #444444,
+        secondary-sidebar-input-border-color-active: #567190,
         editor-bg-toolbar: #2a2a2a,
 
         note-bg-hover: #37373c,
         note-bg-selected: #253e5d,
         note-bg-selected-hover: #294568,
+        note-border-color-active: #4e739e,
 
         icon-color: #c0c0c0,
         icon-color-disabled: #4d4d4d,
         icon-color-disabled-lighter: #737373,
 
-        separator-color: #4f4f4f,
-
         blockquote-bg-color: #2a2a2a,
 
+        headerbar-fg-color: #ffffff,
         headerbar-bg-color: #303030,
+        headerbar-border-color: #1f1f1f,
         modal-bg-color: #242424,
-        modal-row-bg-color: #353535
-    ),
+        modal-row-bg-color: #353535,
+        modal-input-bg-color: #393939,
+        modal-input-border-color-active: #597493,
+
+        rendered-hr-color: #4a4448
+        ),
     light: (
         blue-1: #0461be,
         blue-2: #8ab8f1,
@@ -73,31 +80,38 @@ $colors: (
         bg-3: #deddda,
         bg-4: #c0bfbc,
         bg-5: #9a9996,
-
+        
         window-bg-color: #fafafb,
         view-bg-color: #f6f6f6,
 
-        sidebar-bg-color: #ebebeb,
-        sidebar-border-color: #e1e1e1,
+        primary-sidebar-bg-color: #ebebeb,
+        primary-sidebar-border-color: #e1e1e1,
+        primary-sidebar-separator-color: #c2c2c2,
         secondary-sidebar-bg-color: #f3f3f5,
-        secondary-sidebar-border-color: #c1c1c1,
+        secondary-sidebar-input-bg-color: #e6e6e6,
+        secondary-sidebar-input-border-color-active: #84aee2,
         editor-bg-toolbar: #f3f3f5,
-
-        note-bg-hover: #e6e6e6,
-        note-bg-selected: #a3c4e0,
-        note-bg-selected-hover: #9bb8e0,
-
+        
+        note-bg-hover: #f7f7f7,
+        note-bg-selected: #cce0f8,
+        note-bg-selected-hover: #bed7f6,
+        note-border-color-active: #6da4e7,
+        
         icon-color: #676767,
         icon-color-disabled: #292929,
         icon-color-disabled-lighter: #3e3e3e,
 
-        separator-color: #cecece,
-
         blockquote-bg-color: #f3f3f5,
 
+        headerbar-fg-color: #333333,
         headerbar-bg-color: #ffffff,
-        modal-bg-color: #fafafb,
-        modal-row-bg-color: #ffffff
+        headerbar-border-color: #e0e0e0,
+        modal-bg-color: #fafafa,
+        modal-row-bg-color: #ffffff,
+        modal-input-bg-color: #e6e6e6,
+        modal-input-border-color-active: #81abdf,
+
+        rendered-hr-color: #deddda
     )
 );
 

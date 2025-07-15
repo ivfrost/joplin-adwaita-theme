@@ -19,8 +19,12 @@
   font-size: fnt.$font-size !important;
 }
 
-::placeholder {
+*::placeholder {
   color: map.get(map.get(clr.$colors, thm.$theme), fg-4) !important;
+}
+
+*:focus-visible {
+  outline: 3px solid map.get(map.get(clr.$colors, thm.$theme), modal-input-border-color-active) !important;
 }
 
 html,
@@ -31,19 +35,17 @@ body {
   font-weight: fnt.$font-weight !important;
 }
 
-// General panel styles
 
-.resizableLayoutItem {
-  > div:first-of-type {
-    height: 100vh !important;
-  }
 
-  background: map.get(map.get(clr.$colors, thm.$theme), secondary-sidebar-bg-color) !important;
-  height: 100vh !important; // Remove empty space at the bottom of the window
-}
-
+// Use all window height when menu bar is disabled
 .profile-default {
   height: 100vh !important;
+  
+  // Set background color for secondary sidebar
+  > div:first-of-type {
+    background: map.get(map.get(clr.$colors, thm.$theme), secondary-sidebar-bg-color) !important;
+    height: 100vh !important;
+  }
 }
 
 /* ==================
@@ -84,16 +86,20 @@ button:not(
     .tag-list > button,
     .config-screen button,
     .emoji-picker button,
-    .icon-selector-row > button
+    .icon-selector-row > button,
+    .search-bar > button,
+    .sort-order-field-button,
+    .sort-order-reverse-button
   ) {
   @include mixBtn.buttonDefault;
 }
 
+// Synchronization section
 .sidebar > div:last-of-type {
-  // Synchronization button
   background: transparent !important;
   margin-bottom: 3px !important;
 
+  // Synchronization button
   button {
     @include mixBtn.buttonDefault;
   }
@@ -115,8 +121,8 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 // Notebook header button styles
 .folder-and-tag-list > .item-list > .sidebar-header-button {
   line-height: .7 !important;
-  top: 1px !important;
-  right: 0 !important;
+  top: 2px !important;
+  right: 2px !important;
 
   &.-newfolder {
     background: transparent !important;
@@ -134,7 +140,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 
   &:hover {
-    background: btn.$btn-bg-light !important;
+    background: btn.$btn-bg-4 !important;
     color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
   }
 }
@@ -156,29 +162,44 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 }
 
 // Sort order button styles
+.search-and-sort > div:nth-of-type(2) {
+  border-radius: btn.$btn-radius !important;
+
+  &:hover {
+    background: btn.$btn-bg-1 !important;
+  }
+}
+
 .search-and-sort button.sort-order-field-button,
 .search-and-sort button.sort-order-reverse-button {
+  background: transparent !important;
+  border: none !important;
   border-radius: 0 !important;
   min-height: btn.$btn-size-toolbar !important;
+  overflow: hidden !important;
 
   > span {
     color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
   }
+
+  &:hover {
+    background: btn.$btn-bg-4 !important;
+  }
 }
 
 .search-and-sort button.sort-order-field-button {
-  position: relative;
   border-top-left-radius: btn.$btn-radius !important;
   border-bottom-left-radius: btn.$btn-radius !important;
   min-width: btn.$btn-size-toolbar + 1px !important; // Compensate separator size
+  position: relative !important;
 
   &::after {
     content: "";
     position: absolute;
     right: 0px;
-    height: 100%;
+    height: 86%;
     width: 1px;
-    background: map.get(map.get(clr.$colors, thm.$theme), separator-color) !important;
+    background: btn.$btn-separator !important;
   }
 }
 
@@ -188,13 +209,13 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   min-width: btn.$btn-size-toolbar !important;
 }
 
-/* ==================
-   NOTEBOOKS SIDEBAR
-   ================== */
+/* ===========================
+   PRIMARY SIDEBAR (NOTEBOOKS)
+   =========================== */
 
 .sidebar {
-  background: map.get(map.get(clr.$colors, thm.$theme), sidebar-bg-color) !important;
-  border-left: 1px solid map.get(map.get(clr.$colors, thm.$theme), sidebar-border-color) !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), primary-sidebar-bg-color) !important;
+  border-left: 1px solid map.get(map.get(clr.$colors, thm.$theme), primary-sidebar-border-color) !important;
 
   > div {
     padding: sp.$spacing-sm !important; // Set general spacing around containers
@@ -216,7 +237,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 // Headers ("Notebooks" and "Tags")
 .sidebar-list-items-wrapper {
   .sidebar-header-container {
-    margin: sp.$spacing-xxs sp.$spacing sp.$spacing-lg sp.$spacing !important;
+    margin: sp.$spacing-xs sp.$spacing sp.$spacing-lg sp.$spacing !important;
 
     > div {
       align-items: center !important;
@@ -277,7 +298,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 
   &:hover {
-    background: btn.$btn-bg !important;
+    background: btn.$btn-bg-4 !important;
 
     a,
     i {
@@ -286,10 +307,10 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 
   &.-selected {
-    background: btn.$btn-bg !important;
+    background: btn.$btn-bg-4 !important;
 
     &:hover {
-      background: btn.$btn-bg-lighter !important;
+      background: btn.$btn-bg-5 !important;
     }
   }
 }
@@ -297,13 +318,18 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 // Tags section
 .sidebar-list-items-wrapper .sidebar-spacer-item {
   height: 1px !important;
-  background: map.get(map.get(clr.$colors, thm.$theme), separator-color) !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), primary-sidebar-separator-color) !important;
   margin: sp.$spacing-md 0 !important;
 }
 
-/* ==================
-   NOTES SIDEBAR
-   ================== */
+/* =========================
+   SECONDARY SIDEBAR (NOTES)
+   ========================= */
+
+// Set background color for notes sidebar
+.profile-default > div:first-of-type {
+    background: map.get(map.get(clr.$colors, thm.$theme), secondary-sidebar-bg-color) !important;
+}
 
 .cAxSyf, .dKIlJE {
   // Edit spacing and remove background of note controls
@@ -314,8 +340,8 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 
 // Notes search bar
 .search-bar {
-  background: btn.$btn-bg !important;
-  border: 3px solid btn.$btn-bg !important;
+  background: map.get(map.get(clr.$colors, thm.$theme), secondary-sidebar-input-bg-color) !important;
+  border: 3px solid map.get(map.get(clr.$colors, thm.$theme), secondary-sidebar-input-bg-color) !important;
   border-radius: btn.$btn-radius !important;
   height: btn.$btn-size-toolbar !important;
   min-width: 120px !important;
@@ -326,6 +352,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 
     input {
       @include mixInput.input;
+      outline: none !important;
     }
 
     button {
@@ -335,6 +362,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
       min-height: 0 !important;
       min-width: 28px !important;
       background: transparent !important;
+      outline: none !important;
       padding: 0 !important;
 
       span {
@@ -345,14 +373,12 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 
   &:focus-within {
-    border: 3px solid map.get(map.get(clr.$colors, thm.$theme), blue-2) !important;
+    border: 3px solid map.get(map.get(clr.$colors, thm.$theme), secondary-sidebar-input-border-color-active) !important;
   }
 }
 
 .notes {
   margin: 0 sp.$spacing 0 0 !important;
-
-
 }
 
 // Note list
@@ -363,6 +389,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   .emptylist {
     // Remove background of empty note list message
     background: transparent !important;
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
   }
 }
 
@@ -372,6 +399,8 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   .note-list-item {
     .content {
       background: transparent !important; // Remove default note background
+      border: 3px solid transparent !important;
+      box-sizing: border-box;
       height: btn.$btn-size-toolbar !important;
       border-radius: btn.$btn-radius-sm !important;
       padding: 0 sp.$spacing !important;
@@ -383,6 +412,10 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 
       &.-selected {
         background: map.get(map.get(clr.$colors, thm.$theme), note-bg-selected)  !important;
+      }
+
+      &:active {
+      border: 3px solid map.get(map.get(clr.$colors, thm.$theme), note-border-color-active) !important;
       }
     }
 
@@ -411,6 +444,11 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 div.note-editor-wrapper[role="main"] {
   background: map.get(map.get(clr.$colors, thm.$theme), window-bg-color) !important; 
   border-left: 1px solid map.get(map.get(clr.$colors, thm.$theme), secondary-sidebar-bg-color) !important;;
+
+  // Set editor background for when no note is selected / notebook has no notes
+  > div:first-of-type {
+    background: map.get(map.get(clr.$colors, thm.$theme), window-bg-color) !important;
+  }
 
   > div > div > div:nth-last-child(3) {
     padding-left: 0 !important;
@@ -461,8 +499,12 @@ div.note-editor-wrapper[role="main"] {
         }
       }
 
+      &:not(.disabled):hover {
+        background: btn.$btn-bg-0 !important;
+      }
+
       &:hover {
-        background: btn.$btn-toolbar-bg !important;
+        background: btn.$btn-bg-0 !important;
       }
     }
   }
@@ -496,7 +538,7 @@ div.note-editor-wrapper[role="main"] {
     }
 
     &:not(.disabled):hover {
-    background: btn.$btn-toolbar-bg-light !important;
+    background: btn.$btn-bg-3 !important;
     }
   }
 }
@@ -562,7 +604,7 @@ span.cm-image {
 
 // Horizontal line
 .cm-hr {
-  color: map.get(map.get(clr.$colors, thm.$theme), separator-color) !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), primary-sidebar-separator-color) !important;
 }
 
 .cm-variable-2.cm-strong {
@@ -579,7 +621,7 @@ span.cm-image {
 }
 
 .cm-comment:not(.cm-jn-inline-code) {
-  color: map.get(map.get(clr.$colors, thm.$theme), bg-5) !important;
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
   background: transparent !important;
 }
 
@@ -665,7 +707,6 @@ span.cm-image {
     position: relative !important;
     display: flex !important;
     flex-direction: column !important;
-    background: map.get(map.get(clr.$colors, thm.$theme), modal-bg-color) !important;
     border-radius: brd.$window-radius !important;
     padding: 0 !important;
     min-width: 400px !important;
@@ -680,8 +721,10 @@ span.cm-image {
     }
 
     > div[role="table"] {
-      border-radius: btn.$btn-radius-md !important;
-      margin: sp.$spacing-lg sp.$spacing-lg !important;
+      background: map.get(map.get(clr.$colors, thm.$theme), modal-bg-color) !important;
+      border-bottom-left-radius: btn.$btn-radius-md !important;
+      border-bottom-right-radius: btn.$btn-radius-md !important;
+      padding: sp.$spacing-lg sp.$spacing-lg !important;
       overflow: hidden !important;
 
       .note-property-box {
@@ -729,7 +772,7 @@ span.cm-image {
             top: 15% !important;
 
             &:hover {
-              background: btn.$btn-bg-lighter !important;
+              background: btn.$btn-bg-2 !important;
             }
           }
 
@@ -741,7 +784,8 @@ span.cm-image {
         }
 
         input {
-          background: transparent !important;
+          color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
+          background: map.get(map.get(clr.$colors, thm.$theme), modal-input-border-color-active) !important;
           border: none !important;
         }
 
@@ -756,17 +800,13 @@ span.cm-image {
         }
 
         &:first-of-type {
-          &:focus-within {
-            border-top-left-radius: btn.$btn-radius-md !important;
-            border-top-right-radius: btn.$btn-radius-md !important;
-          }
+          border-top-left-radius: btn.$btn-radius-md !important;
+          border-top-right-radius: btn.$btn-radius-md !important;
         }
 
         &:last-of-type {
-          &:focus-within {
-            border-bottom-left-radius: btn.$btn-radius-md !important;
-            border-bottom-right-radius: btn.$btn-radius-md !important;
-          }
+          border-bottom-left-radius: btn.$btn-radius-md !important;
+          border-bottom-right-radius: btn.$btn-radius-md !important;
         }
       }
     }
@@ -792,35 +832,34 @@ span.cm-image {
       }
     }
 
-    > div:last-of-type:not(.dialog-root) {
-      display: flex !important;
-      flex-direction: row-reverse !important;
-      justify-content: space-between !important;
-      order: -1 !important;
-      padding: sp.$spacing-sm !important;
-      margin-top: 0 !important;
-      background: map.get(map.get(clr.$colors, thm.$theme), headerbar-bg-color) !important;
-      border-top-left-radius: brd.$window-radius !important;
-      border-top-right-radius: brd.$window-radius !important;
+    // Tags modal headerbar selector
+    > div[style*="text-align: right; margin-top: 10px;"] {
+      @include mixModal.headerBar;
 
-      button {
-        color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
-        margin-left: 0 !important;
-
-        &:first-of-type {
-          background: btn.$btn-bg-primary !important;
-          color: map.get(map.get(clr.$colors, thm.$theme), bg-1) !important;
-
-          &:hover {
-            background: btn.$btn-bg-primary-light !important;
-          }
+        button {
+          @include mixBtn.buttonModalHeaderbar;
         }
-      }
+    }
+
+    // Tags modal background selector
+     div[style*="display: inline-block; color: black; background-color: rgb(29, 32, 36);"] {
+      background: map.get(map.get(clr.$colors, thm.$theme), modal-bg-color) !important;
+      border-bottom-left-radius: brd.$window-radius !important;
+      border-bottom-right-radius: brd.$window-radius !important;
+     }
+
+    // Note properties headerbar selector
+    > div:nth-of-type(3):not(.dialog-root) {
+      @include mixModal.headerBar;
+
+        button {
+          @include mixBtn.buttonModalHeaderbar;
+        }
     }
 
     .dialog-root {
       position: relative !important;
-      background: transparent !important;
+      background: map.get(map.get(clr.$colors, thm.$theme), modal-bg-color) !important;
       border-radius: brd.$window-radius !important;
       min-width: unset !important;
       max-width: unset !important;
@@ -830,11 +869,16 @@ span.cm-image {
 
       > h1 {
         @include mixModal.positionModalTitle;
-        color: map.get(map.get(clr.$colors, thm.$theme), fg-2) !important;
+        color: map.get(map.get(clr.$colors, thm.$theme), headerbar-fg-color) !important;
       }
 
+      // New notebook headerbar selector
       > div:last-of-type {
         @include mixModal.headerBar;
+
+        button {
+          @include mixBtn.buttonModalHeaderbar;
+        }
       }
 
       .dialog-content {
@@ -891,7 +935,7 @@ span.cm-image {
             }
 
             &-name {
-              color: map.get(map.get(clr.$colors, thm.$theme), bg-1) !important;
+              color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
               font-weight: fnt.$font-weight-bold !important;
               margin: sp.$spacing-lm 0 sp.$spacing-md !important;
               text-transform: capitalize !important;
@@ -911,7 +955,7 @@ span.cm-image {
               &.active {
                 color: map.get(map.get(clr.$colors, thm.$theme), blue-1) !important;
                 border-bottom: 0 !important;
-                border-top: 3px solid btn.$btn-bg-primary !important;
+                border-top: 3px solid btn.$btn-bg-primary-0 !important;
                 padding: 0 !important;
               }
             }
@@ -958,6 +1002,7 @@ span.cm-image {
 
     > label {
       @include mixModal.positionModalTitle;
+      color: map.get(map.get(clr.$colors, thm.$theme), headerbar-fg-color) !important;
       top: 19.4% !important;
     }
     
@@ -970,7 +1015,7 @@ span.cm-image {
 
       .css-1vbpao6-multiValue {
         @include mixBtn.buttonTag;
-        background: btn.$btn-toolbar-bg-light !important;
+        background: btn.$btn-bg-4 !important;
         height: btn.$btn-size-tag-modal !important;
         padding: 0 sp.$spacing-md !important;
 
@@ -983,7 +1028,7 @@ span.cm-image {
         }
 
         &:hover {
-          background: btn.$btn-toolbar-bg-light !important;
+          background: btn.$btn-bg-4 !important;
         }
       }
       
@@ -997,11 +1042,17 @@ span.cm-image {
     }
 
     div {
-      background: transparent !important;
-
       button {
         color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
       }
+    }
+
+    // Layout editor text
+    .vhhBH {
+      background: map.get(map.get(clr.$colors, thm.$theme), view-bg-color) !important;
+      border: 1px solid map.get(map.get(clr.$colors, thm.$theme), primary-sidebar-separator-color) !important;
+      border-radius: brd.$border-radius !important;
+      color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
     }
   }
 

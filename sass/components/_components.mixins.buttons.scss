@@ -9,8 +9,8 @@
 @use "components.buttons" as btn;
 
 @mixin buttonDefault() {
-    color: map.get(map.get(clr.$colors, thm.$theme), fg-1);
-    background: btn.$btn-bg !important;
+    color: if(thm.$theme == "dark", map.get(map.get(clr.$colors, thm.$theme), fg-1), map.get(map.get(clr.$colors, thm.$theme), bg-3));
+    background: btn.$btn-bg-2 !important;
     border: none !important;
     border-radius: btn.$btn-radius !important;
     font-weight: fnt.$font-weight-boldest !important;
@@ -26,22 +26,18 @@
     }
 
     &:hover {
-        background: btn.$btn-bg-light !important;
+        background: btn.$btn-bg-4 !important;
         opacity: 1 !important;
     }
 }
 
 @mixin buttonPrimary() {
     @include buttonDefault();
-    @if (thm.$theme == "dark") {
-        color: map.get(map.get(clr.$colors, thm.$theme), fg-1);
-    } @else {
-        color: map.get(map.get(clr.$colors, thm.$theme), bg-1);
-    }
-    background: btn.$btn-bg-primary !important;
+    color: #ffffff !important;
+    background: btn.$btn-bg-primary-0 !important;
 
     &:hover {
-        background: btn.$btn-bg-primary-light !important;
+        background: btn.$btn-bg-primary-1 !important;
     }
 }
 
@@ -70,17 +66,37 @@
     }
 
     &:hover {
-        background: btn.$btn-toolbar-bg-light !important;
+        background: btn.$btn-bg-0 !important;
     }
 }
 
 @mixin buttonModal() {
     @include buttonToolbar;
-    background-color: map.get(map.get(clr.$colors, thm.$theme), modal-row-bg-color) !important;
+    background-color: btn.$btn-bg-1 !important;
 
     &:hover {
-        background-color: btn.$btn-toolbar-bg-light !important;
+        background-color: btn.$btn-bg-3 !important;
     }
+}
+
+@mixin buttonModalHeaderbar() {
+    color: if(thm.$theme == "dark", map.get(map.get(clr.$colors, thm.$theme), fg-1 !important),
+    map.get(map.get(clr.$colors, thm.$theme), bg-1 !important));
+    background: btn.$btn-bg-1 !important;
+    margin-left: 0 !important;
+
+    &:first-of-type {
+        background: btn.$btn-bg-primary-0 !important;
+        color: #ffffff !important;
+
+        &:hover {
+        background: btn.$btn-bg-primary-1 !important;
+        }
+    }
+
+    &:hover {
+        background: btn.$btn-bg-3 !important;
+    } 
 }
 
 @mixin buttonTag() {
@@ -88,9 +104,9 @@
     border-radius: btn.$btn-radius-lg !important;
     height: btn.$btn-size-toolbar !important;
     min-width: btn.$btn-size-toolbar !important;
-    background: btn.$btn-toolbar-bg !important;
+    background: btn.$btn-bg-0 !important;
 
     &:hover {
-      background: btn.$btn-toolbar-bg-light !important;
+      background: btn.$btn-bg-2 !important;
     }
 }

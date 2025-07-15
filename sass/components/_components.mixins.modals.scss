@@ -14,7 +14,7 @@
     position: absolute !important;
     transform: translate(-50%, -50%) !important;
     left: 50% !important;
-    top: 10.4% !important;
+    top: 10.5% !important;
     margin: 0 !important;
     margin-bottom: 0 !important;
 }
@@ -27,21 +27,7 @@
     padding: sp.$spacing-sm !important;
     margin-top: 0 !important;
     background: map.get(map.get(clr.$colors, thm.$theme), headerbar-bg-color) !important;
+    border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), headerbar-border-color) !important;
     border-top-left-radius: brd.$window-radius !important;
     border-top-right-radius: brd.$window-radius !important;
-
-    button {
-        color: map.get(map.get(clr.$colors, thm.$theme), bg-1 !important);
-        background: btn.$btn-bg !important;
-        margin-left: 0 !important;
-
-        &:first-of-type {
-            background: btn.$btn-bg-primary !important;
-            color: map.get(map.get(clr.$colors, thm.$theme), bg-1) !important;
-
-            &:hover {
-            background: btn.$btn-bg-primary-light !important;
-            }
-        }
-    }
 }

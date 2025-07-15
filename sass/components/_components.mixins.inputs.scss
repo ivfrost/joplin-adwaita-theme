@@ -21,8 +21,8 @@
 
 @mixin modalInput {
     @include input;
-    background: map.get(map.get(clr.$colors, thm.$theme), headerbar-bg-color) !important;
-    border: 3px solid map.get(map.get(clr.$colors, thm.$theme), headerbar-bg-color) !important;
+    background: map.get(map.get(clr.$colors, thm.$theme), modal-input-bg-color) !important;
+    border: 3px solid map.get(map.get(clr.$colors, thm.$theme), modal-input-bg-color) !important;
     border-radius: btn.$btn-radius !important;
     box-sizing: border-box !important;
     height: btn.$btn-size !important;

@@ -30,14 +30,14 @@ hr {
 
 h1 {
   color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
-  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color)  !important;
+  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), rendered-hr-color)  !important;
   font-size:fnt.$font-size-lg;
   font-weight:fnt.$font-weight-boldest !important;
 }
 
 h2 {
   color: map.get(map.get(clr.$colors, thm.$theme), fg-2) !important;
-  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color) !important;
+  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), rendered-hr-color) !important;
   font-size: fnt.$font-size-md;
   font-weight: fnt.$font-weight-bold!important;
 }
@@ -109,15 +109,15 @@ blockquote {
    ================== */
 
 th {
-  border: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color)  !important;
+  border: 1px solid map.get(map.get(clr.$colors, thm.$theme), rendered-hr-color)  !important;
   color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
-  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color)  !important;
+  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), rendered-hr-color)  !important;
 }
 
 td {
-  border: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color)  !important;
+  border: 1px solid map.get(map.get(clr.$colors, thm.$theme), rendered-hr-color)  !important;
   color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
-  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), separator-color)  !important;
+  border-bottom: 1px solid map.get(map.get(clr.$colors, thm.$theme), rendered-hr-color)  !important;
 }
 
 /* ==================
@@ -291,13 +291,13 @@ mark[data-markjs] {
   }
 
   h1 {
-    border-bottom: 1px solid map.get(map.get(clr.$colors, light), separator-color) !important;
+    border-bottom: 1px solid map.get(map.get(clr.$colors, light), rendered-hr-color) !important;
     color: map.get(map.get(clr.$colors, light), fg-1) !important;
     font-weight: fnt.$font-weight-bold!important;
   }
 
   h2 {
-    border-bottom: 1px solid map.get(map.get(clr.$colors, light), separator-color) !important;
+    border-bottom: 1px solid map.get(map.get(clr.$colors, light), rendered-hr-color) !important;
     color: map.get(map.get(clr.$colors, light), fg-1) !important;
   }
 
@@ -309,7 +309,7 @@ mark[data-markjs] {
 
   hr {
     border: none;
-    border-bottom: 1px solid map.get(map.get(clr.$colors, light), separator-color) !important;
+    border-bottom: 1px solid map.get(map.get(clr.$colors, light), rendered-hr-color) !important;
     margin: 2.5em 0 !important;
   }
 
