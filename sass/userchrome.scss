@@ -94,22 +94,6 @@ button:not(
   @include mixBtn.buttonDefault;
 }
 
-// Synchronization section
-.sidebar > div:last-of-type {
-  background: transparent !important;
-  margin-bottom: 3px !important;
-
-  // Synchronization button
-  button {
-    @include mixBtn.buttonDefault;
-  }
-}
-
-div > .bLqnaV > .UdFVY {
-  // Synchronization message
-  color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
-}
-
 // Toolbar button styles
 .button,
 .toolbar-button,
@@ -188,8 +172,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 }
 
 .search-and-sort button.sort-order-field-button {
-  border-top-left-radius: btn.$btn-radius !important;
-  border-bottom-left-radius: btn.$btn-radius !important;
+  border-radius: btn.$btn-radius !important;
   min-width: btn.$btn-size-toolbar + 1px !important; // Compensate separator size
   position: relative !important;
 
@@ -204,8 +187,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 }
 
 .search-and-sort button.sort-order-reverse-button {
-  border-top-right-radius: btn.$btn-radius !important;
-  border-bottom-right-radius: btn.$btn-radius !important;
+  border-radius: btn.$btn-radius !important;
   min-width: btn.$btn-size-toolbar !important;
 }
 
@@ -219,12 +201,6 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
 
   > div {
     padding: sp.$spacing-sm !important; // Set general spacing around containers
-  }
-
-  // Synchronization message
-  .jEepNR, .jUPQRL{
-    color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
-    opacity: 1 !important;
   }
 }
 
@@ -263,11 +239,29 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 }
 
+// Synchronization section
+.sidebar > div:last-of-type {
+  background: transparent !important;
+  margin-bottom: 3px !important;
+
+  // Synchronization message
+  .jEepNR, .jUPQRL{
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-5) !important;
+    opacity: 1 !important;
+  }
+
+  // Synchronization button
+  button {
+    @include mixBtn.buttonDefault;
+  }
+}
+
 .sidebar-expand-link.toggle {
   order: 0 !important;
   padding-right: 0 !important;
 }
 
+// Notebooks items
 .list-item-wrapper:not(.sidebar-header-container):not(.sidebar-spacer-item) {
   background: transparent !important; // Remove default notebook background
   border-radius: btn.$btn-radius-sm !important;
@@ -298,7 +292,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 
   &:hover {
-    background: btn.$btn-bg-4 !important;
+    background: btn.$btn-bg-2 !important;
 
     a,
     i {
@@ -307,11 +301,15 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 
   &.-selected {
-    background: btn.$btn-bg-4 !important;
+    background: btn.$btn-bg-3 !important;
 
     &:hover {
-      background: btn.$btn-bg-5 !important;
+      background: btn.$btn-bg-4 !important;
     }
+  }
+
+  &:focus, &:active {
+    background: btn.$btn-bg-5 !important;
   }
 }
 
@@ -393,6 +391,7 @@ span[role="cell"] a:not([style*="text-decoration: underline"]) {
   }
 }
 
+// Note list items
 .note-list-item-wrapper {
   margin: 0 0 sp.$spacing-xxs 0 !important; // Add spacing between notes in list
 
@@ -502,10 +501,6 @@ div.note-editor-wrapper[role="main"] {
       &:not(.disabled):hover {
         background: btn.$btn-bg-0 !important;
       }
-
-      &:hover {
-        background: btn.$btn-bg-0 !important;
-      }
     }
   }
 }
@@ -538,7 +533,7 @@ div.note-editor-wrapper[role="main"] {
     }
 
     &:not(.disabled):hover {
-    background: btn.$btn-bg-3 !important;
+    background: btn.$btn-bg-2 !important;
     }
   }
 }
@@ -558,6 +553,10 @@ div.note-editor-wrapper[role="main"] {
 
 .CodeMirror-sizer {
   padding: 0 sp.$spacing-md !important; // Set padding for plain markdown
+}
+
+.codeMirrorEditor {
+  background: transparent !important;
 }
 
 // Document colors
@@ -613,6 +612,11 @@ span.cm-image {
 
 .cm-s-material-darker .cm-variable-2.cm-rm-list-token {
   color: map.get(map.get(clr.$colors, thm.$theme), purple-1) !important;
+}
+
+// Block quote
+.cm-quote {
+  color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
 }
 
 // Code blocks
@@ -713,7 +717,8 @@ span.cm-image {
 
     #note-properties-dialog-title {
       @include mixModal.positionModalTitle;
-      top: 20% !important;
+      color: map.get(map.get(clr.$colors, thm.$theme), headerbar-fg-color) !important;
+      top: 5% !important;
     }
 
     .form {
@@ -1013,22 +1018,41 @@ span.cm-image {
       box-shadow: unset !important;
       margin: sp.$spacing-lg !important;
 
+
+      .css-1fdsijx-ValueContainer .css-oxsf28-Input, .css-3w2yfm-ValueContainer .css-oxsf28-Input {
+        color: map.get(map.get(clr.$colors, thm.$theme), fg-3) !important;
+
+        input:focus-visible {
+          outline: none !important;
+        }
+      }
+
       .css-1vbpao6-multiValue {
         @include mixBtn.buttonTag;
-        background: btn.$btn-bg-4 !important;
         height: btn.$btn-size-tag-modal !important;
         padding: 0 sp.$spacing-md !important;
 
         .css-17tafsy-MultiValueGeneric {
+          color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
           line-height: 1.5 !important;
         }
 
-        .css-13htnhl-MultiValueRemove:hover {
-          color: map.get(map.get(clr.$colors, thm.$theme), red-1) !important;
+        .css-13htnhl-MultiValueRemove {
+          .css-tj5bde-Svg {
+            color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
+          }
+
+          &:hover {
+            background: transparent !important;
+
+            .css-tj5bde-Svg {
+              color: map.get(map.get(clr.$colors, thm.$theme), red-1) !important;
+            }
+          }
         }
 
         &:hover {
-          background: btn.$btn-bg-4 !important;
+          background: btn.$btn-bg-3 !important;
         }
       }
       

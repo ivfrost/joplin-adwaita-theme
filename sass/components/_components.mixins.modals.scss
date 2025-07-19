@@ -10,7 +10,7 @@
 @use 'components.buttons' as btn;
 
 @mixin positionModalTitle() {
-    font-weight: fnt.$font-weight-boldest !important;
+    font-weight: fnt.$font-weight-bold !important;
     position: absolute !important;
     transform: translate(-50%, -50%) !important;
     left: 50% !important;

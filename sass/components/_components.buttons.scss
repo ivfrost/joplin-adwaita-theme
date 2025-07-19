@@ -8,10 +8,10 @@
 // The higher the number, the lighter (for dark theme) or darker (for light theme) the button bg color is
 $btn-bg-0: if(thm.$theme == "dark", #353535, #f1f1f1);
 $btn-bg-1: if(thm.$theme == "dark", #3a3a3a, #e8e8e8);
-$btn-bg-2: if(thm.$theme == "dark", #3f3f3f, #dfdfdf);
-$btn-bg-3: if(thm.$theme == "dark", #444444, #d6d6d6);
-$btn-bg-4: if(thm.$theme == "dark", #494949, #cdcdcd);
-$btn-bg-5: if(thm.$theme == "dark", #4f4f4f, #d3d3d3);
+$btn-bg-2: if(thm.$theme == "dark", #3f3f3f, #dedede);
+$btn-bg-3: if(thm.$theme == "dark", #444444, #d9d9d9);
+$btn-bg-4: if(thm.$theme == "dark", #494949, #d3d3d3);
+$btn-bg-5: if(thm.$theme == "dark", #4f4f4f, #cdcdcd);
 
 
 $btn-bg-primary-0: #3584e4;

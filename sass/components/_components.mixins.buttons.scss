@@ -73,6 +73,10 @@
 @mixin buttonModal() {
     @include buttonToolbar;
     background-color: btn.$btn-bg-1 !important;
+    
+    span {
+        color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
+    }
 
     &:hover {
         background-color: btn.$btn-bg-3 !important;
@@ -80,8 +84,7 @@
 }
 
 @mixin buttonModalHeaderbar() {
-    color: if(thm.$theme == "dark", map.get(map.get(clr.$colors, thm.$theme), fg-1 !important),
-    map.get(map.get(clr.$colors, thm.$theme), bg-1 !important));
+    color: map.get(map.get(clr.$colors, thm.$theme), fg-1) !important;
     background: btn.$btn-bg-1 !important;
     margin-left: 0 !important;
 
